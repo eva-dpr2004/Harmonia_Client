@@ -1,0 +1,32 @@
+.aucun-animal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+  }
+  
+  .aucun-animal-container img {
+    max-width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .aucun-animal-container p {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .aucun-animal-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #6990ba;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .aucun-animal-container button:hover {
+    background-color: #0056b3;
+  }
+  

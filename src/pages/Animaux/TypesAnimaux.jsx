@@ -6,7 +6,6 @@ import Footer from '../../components/Basics/Footer'
 function TypesAnimaux() {
   return (
     <div>
-      TypesAnimaux
       <Navbar/>
       <TypesAnimauxList/>
       <Footer/>

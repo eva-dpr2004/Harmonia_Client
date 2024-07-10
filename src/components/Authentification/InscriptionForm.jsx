@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { createUser } from "../../controllers/Auth";
+import { createUser } from "../../services/Auth";
 import { useNavigate, Link } from "react-router-dom";
 import './AuthentificationForms.css'; 
 
@@ -26,8 +26,8 @@ function InscriptionForm() {
         Mot_De_Passe: Yup.string()
             .min(12, "Le mot de passe doit contenir au moins 12 caractères")
             .matches(
-                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{12,}$/,
-                "Le mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial."
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\^$*.[\]{}()?\-"!@#%&/,><':;|_~`])\S{12,}$/,
+              "Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et un caractère spécial."
             )
             .required("Le mot de passe est requis"),
         Confirm_Mot_De_Passe: Yup.string()

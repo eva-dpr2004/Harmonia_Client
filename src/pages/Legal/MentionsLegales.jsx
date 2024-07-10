@@ -1,8 +1,15 @@
 import React from 'react'
+import Navbar from '../../components/Basics/Navbar'
+import TextMentionsLegales from '../../components/Legal/TextMentionsLegales'
+import Footer from '../../components/Basics/Footer'
 
 function MentionsLegales() {
   return (
-    <div>Mentions Legales</div>
+    <div>
+      <Navbar/>
+      <TextMentionsLegales/>
+      <Footer/>
+    </div>
   )
 }
 

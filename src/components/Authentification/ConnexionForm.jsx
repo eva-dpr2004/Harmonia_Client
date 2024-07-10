@@ -1,36 +1,57 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../../controllers/Auth';
-import AuthContext from '../../context/AuthContext';
+import axios from 'axios';
 
 function ConnexionForm() {
-    const [identifier, setIdentifier] = useState("");
-    const [Mot_De_Passe, setMot_De_Passe] = useState("");
-    const { setAuthState } = useContext(AuthContext);
-    const navigate = useNavigate();
+  const [Nom, setNom] = useState("");
+  const [Mot_De_Passe, setMot_De_Passe] = useState("");
+  const navigate = useNavigate();
 
-    const login = () => {
-        const userData = { identifier: identifier, Mot_De_Passe: Mot_De_Passe };
-        loginUser(userData).then((response) => {
-            if (response.data.error) {
-                alert(response.data.error);
-            } else {
-                localStorage.setItem("accessToken", response.data.token);
-                setAuthState({ Nom: response.data.Nom, Id_Utilisateur: response.data.Id_Utilisateur, status: true });
-                navigate('/');
-            }
-        });
-    };
+  useEffect(() => {
+    axios.get("http://localhost:3001/auth/auth", { withCredentials: true })
+      .then((response) => {
+        if (!response.data.error) {
+          navigate('/');
+        }
+      });
+  }, [navigate]);
 
-    return (
-        <div className="loginContainer">
-            <label>Nom ou Email : </label>
-            <input type="text" onChange={(event) => setIdentifier(event.target.value)} />
-            <label>Mot de passe : </label>
-            <input type="password" onChange={(event) => setMot_De_Passe(event.target.value)} />
-            <button onClick={login}> Me connecter </button>
-        </div>
-    );
+  const login = () => {
+    if (!Nom || !Mot_De_Passe) {
+      alert("Veuillez remplir tous les champs");
+      return;
+    }
+    const data = { Nom: Nom, Mot_De_Passe: Mot_De_Passe };
+    axios.post("http://localhost:3001/auth/login", data, { withCredentials: true })
+      .then((response) => {
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        alert("Erreur de connexion: " + error.message);
+      });
+  };
+
+  return (
+    <div>
+      <label>Nom :</label>
+      <input
+        type="text"
+        value={Nom}
+        onChange={(event) => setNom(event.target.value)}
+      />
+      <label>Mot de passe :</label>
+      <input
+        type="password"
+        value={Mot_De_Passe}
+        onChange={(event) => setMot_De_Passe(event.target.value)}
+      />
+      <button onClick={login}>Login</button>
+    </div>
+  );
 }
 
 export default ConnexionForm;

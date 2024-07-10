@@ -1,0 +1,57 @@
+.AccueilContainer {
+    font-family: Arial, sans-serif;
+    background-color: #e5e5ff; /* Light purple background */
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .MainContent {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .MainTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .ImagesRow {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .ImageContainer {
+    flex: 0 1 calc(50% - 20px);
+    box-sizing: border-box;
+  }
+  
+  .ImageContainer img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Optional: adds rounded corners */
+  }
+  
+  .Description {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .StartButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .StartButton:hover {
+    background-color: #0056b3;
+  }
+  

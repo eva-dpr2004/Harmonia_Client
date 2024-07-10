@@ -1,4 +1,4 @@
-.inscription-container {
+.inscription-container, .connexion-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +9,7 @@
   color: red;
   font-size: 9px;
   text-align: left;
+  margin-bottom: 2%;
 }
 
 label{
@@ -18,7 +19,7 @@ label{
     text-align: left;
 }
 
-.inscription-box {
+.inscription-box, .connexion-box {
   background: #e0ebf89d;
   padding: 1.5rem;
   border-radius: 8px;
@@ -28,18 +29,18 @@ label{
   text-align: center;
 }
 
-.inscription-box h2, .connexion-link a {
+.inscription-box h2, .connexion-link a, .inscription-link a, .connexion-box h2 {
   margin-bottom: 1.5rem;
   color: #193356;
   text-decoration: underline;
 }
 
-.inscription-box form {
+.inscription-box form, .connexion-box form {
   display: flex;
   flex-direction: column;
 }
 
-.inscription-box input {
+.inscription-box input, .connexion-box input {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
@@ -48,27 +49,27 @@ label{
   font-size: 12px;
 }
 
-.inscription-box .terms {
+.inscription-box .terms, .connexion-box .terms {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 }
 
-.inscription-box .terms input {
+.inscription-box .terms input, .connexion-box .terms input {
   margin-top: 1.5rem;
   margin-right: 0.5rem;
 }
 
-.inscription-box .terms label {
+.inscription-box .terms label, .connexion-box .terms label {
   font-size: 0.7rem;
 }
 
-.inscription-box .terms a {
+.inscription-box .terms a, .connexion-box .terms a {
   color: #0066cc;
   text-decoration: none;
 }
 
-.inscription-box button {
+.inscription-box button, .connexion-box button {
   padding: 0.5rem;
   background: #003366;
   color: #fff;
@@ -76,7 +77,7 @@ label{
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
-  transition:0.3s ease;
+  transition: 0.3s ease;
 }
 
 .inscription-box button:hover {

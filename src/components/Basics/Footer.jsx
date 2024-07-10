@@ -11,7 +11,7 @@ const Footer = () => {
       </div>
       <div className="footer-rights">
         <p>© 2024 Harmonia. Tous Droits Réservés.</p>
-        <img src={`${process.env.PUBLIC_URL}/assets/img/cat-removebg-preview.png`} alt="Cat Logo" />
+        <img src={`${process.env.PUBLIC_URL}/assets/img/cat-removebg-preview.png`} alt="Harmonia Logo" />
       </div>
     </footer>
   );

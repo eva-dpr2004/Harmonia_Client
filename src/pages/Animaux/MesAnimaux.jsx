@@ -9,7 +9,6 @@ function MesAnimaux() {
 
   return (
     <div>
-      MesAnimaux
       <Navbar/>
       <MesAnimauxList/>
       <AucunAnimal/>

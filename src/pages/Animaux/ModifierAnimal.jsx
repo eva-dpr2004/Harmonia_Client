@@ -6,7 +6,6 @@ import Footer from '../../components/Basics/Footer'
 function ModifierAnimal() {
   return (
     <div>
-      ModifierAnimal
       <Navbar/>
       <ModifierAnimalForm/>
       <Footer/>

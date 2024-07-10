@@ -4,7 +4,6 @@ import CalendrierDeRappels from '../../components/Calendrier/CalendrierDeRappels
 function Calendrier() {
   return (
     <div>
-      Calendrier
       <CalendrierDeRappels/>
     </div>
   )
