@@ -37,11 +37,11 @@ const Router = () => {
       <Route path="/politique-de-confidentialite" element={<PolitiqueDeConfidentialite />} />
       <Route path="/politique-de-cookies" element={<PolitiqueDeCookies />} />
 
-      {/* Redirection si connecté */}
+      {/* Redirection si user déjà co */}
       <Route path="/inscription" element={authState.isAuthenticated ? <Navigate replace to="/" /> : <Inscription />} />
       <Route path="/connexion" element={authState.isAuthenticated ? <Navigate replace to="/" /> : <Connexion />} />
 
-      {/* Pages nécessitant une connexion */}
+      {/* Pages nécessitant une co */}
       <Route path="/calendrier" element={authState.isAuthenticated ? <Calendrier /> : <Navigate replace to="/connexion" />} />
       <Route path="/mes-animaux" element={authState.isAuthenticated ? <MesAnimaux /> : <Navigate replace to="/connexion" />} />
       <Route path="/mes-animaux/ajouter-animal" element={authState.isAuthenticated ? <AjouterAnimal /> : <Navigate replace to="/connexion" />} />

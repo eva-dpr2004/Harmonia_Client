@@ -1,37 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter } from "react-router-dom";
 import Router from './Router';
-import axios from 'axios';
 import { AuthContext } from './context/AuthContext';
+import useAuth from './context/useAuth'; 
 
 function App() {
-  const [authState, setAuthState] = useState({
-    isAuthenticated: false,
-    isLoading: true, 
-  });
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/auth/auth", { withCredentials: true })
-      .then((response) => {
-        if (response.data.error) {
-          setAuthState({
-            isAuthenticated: false,
-            isLoading: false,
-          });
-        } else {
-          setAuthState({
-            isAuthenticated: true,
-            isLoading: false,
-          });
-        }
-      }).catch(() => {
-        setAuthState({
-          isAuthenticated: false,
-          isLoading: false,
-        });
-      });
-  }, []);
+  const [authState, setAuthState] = useAuth(); //hook personnalisé
 
   return (
     <div className="App">
