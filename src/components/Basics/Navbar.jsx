@@ -1,34 +1,20 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext'; 
-import axios from 'axios';
+import logout from '../../context/useLogout'
 import './Navbar.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { authState, setAuthState } = useContext(AuthContext);  
+  const { authState, setAuthState } = useContext(AuthContext);
+
+  const handleLogoutClick = () => {
+    logout(setAuthState);
+  }; 
 
   const handleLoginClick = () => {
     navigate('/connexion');
   };
-
-  const handleLogoutClick = async () => {
-    try {
-      const response = await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true });
-      if (response.data.success) {
-        setAuthState({
-          isAuthenticated: false,
-          isLoading: false,
-        });
-        window.location.href = '/';
-      } else {
-        console.error('Logout failed:', response.data.message);
-      }
-    } catch (error) {
-      console.error('Error during logout:', error);
-    }
-  };
-  
 
   return (
     <nav className="navbar">
@@ -41,7 +27,6 @@ const Navbar = () => {
             <a href="/profil">Profil</a>
             <a href="/mes-animaux">Mes animaux</a>
             <a href="/calendrier">Calendrier</a>
-            <a href="/activites">Activités</a>
             <a href="/aides">Aides</a>
             <button className="logout-button" onClick={handleLogoutClick}>Déconnexion</button>
           </>
