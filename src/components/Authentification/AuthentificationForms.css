@@ -12,7 +12,7 @@
   margin-bottom: 2%;
 }
 
-label{
+.connexion-container label, .inscription-container label{
     color: #193356;
     margin-top: 2%;
     font-size: 14px;
@@ -27,6 +27,8 @@ label{
   max-width: 400px;
   width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .inscription-box h2, .connexion-link a, .inscription-link a, .connexion-box h2 {
@@ -49,13 +51,13 @@ label{
   font-size: 12px;
 }
 
-.inscription-box .terms, .connexion-box .terms {
+.inscription-box .terms{
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 }
 
-.inscription-box .terms input, .connexion-box .terms input {
+.inscription-box .terms input{
   margin-top: 1.5rem;
   margin-right: 0.5rem;
 }
@@ -64,7 +66,7 @@ label{
   font-size: 0.7rem;
 }
 
-.inscription-box .terms a, .connexion-box .terms a {
+.inscription-box .terms a {
   color: #0066cc;
   text-decoration: none;
 }

@@ -27,29 +27,38 @@ function ConnexionForm() {
         if (response.data.error) {
           alert(response.data.error);
         } else {
-          navigate('/');
+          window.location = '/';
         }
       })
       .catch((error) => {
         alert("Erreur de connexion: " + error.message);
       });
   };
+  
 
   return (
-    <div>
-      <label>Nom :</label>
-      <input
-        type="text"
-        value={Nom}
-        onChange={(event) => setNom(event.target.value)}
-      />
-      <label>Mot de passe :</label>
-      <input
-        type="password"
-        value={Mot_De_Passe}
-        onChange={(event) => setMot_De_Passe(event.target.value)}
-      />
-      <button onClick={login}>Login</button>
+    <div className="connexion-container">
+      <div className="connexion-box">
+        <h2>Connexion</h2>
+        <p className="inscription-link">
+          <a href="/inscription">Vous n'avez pas de compte ? cliquez ici.</a>
+        </p>
+        <label>Nom :</label>
+        <input
+          type="text"
+          value={Nom}
+          onChange={(event) => setNom(event.target.value)}
+          placeholder="Votre nom..."
+        />
+        <label>Mot de passe :</label>
+        <input
+          type="password"
+          value={Mot_De_Passe}
+          onChange={(event) => setMot_De_Passe(event.target.value)}
+          placeholder="Votre mot de passe..."
+        />
+        <button onClick={login}>Login</button>
+      </div>
     </div>
   );
 }
