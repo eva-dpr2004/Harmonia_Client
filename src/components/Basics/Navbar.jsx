@@ -16,9 +16,13 @@ const Navbar = () => {
     navigate('/connexion');
   };
 
+  const handleLogoClick = () => {
+    navigate('/'); 
+  };
+
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
+      <div className="navbar-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
         <img src={`${process.env.PUBLIC_URL}/assets/img/logo4-removebg-preview.png`} alt="Harmonia Logo" />
       </div>
       <div className="navbar-links">

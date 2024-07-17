@@ -51,9 +51,9 @@ const Router = () => {
       <Route path="/aides/avis-global" element={authState.isAuthenticated ? <AvisGlobal /> : <Navigate replace to="/connexion" />} />
       <Route path="/aides/besoin-d'aide" element={authState.isAuthenticated ? <BesoinAide /> : <Navigate replace to="/connexion" />} />
       <Route path="/profil:admin" element={authState.isAuthenticated ? <Profil /> : <Navigate replace to="/connexion" />} />
-      <Route path="/profil/:id" element={authState.isAuthenticated ? <Profil /> : <Navigate replace to="/connexion" />} />
-      <Route path="/profil/:id/modifier-profil" element={authState.isAuthenticated ? <ModifierProfil /> : <Navigate replace to="/connexion" />} />
-      <Route path="/profil/:id/supprimer-profil" element={authState.isAuthenticated ? <SupprimerProfil /> : <Navigate replace to="/connexion" />} />
+      <Route path="/profil/" element={authState.isAuthenticated ? <Profil /> : <Navigate replace to="/connexion" />} />
+      <Route path="/profil/modifier-profil" element={authState.isAuthenticated ? <ModifierProfil /> : <Navigate replace to="/connexion" />} />
+      <Route path="/profil/supprimer-profil" element={authState.isAuthenticated ? <SupprimerProfil /> : <Navigate replace to="/connexion" />} />
       <Route path="/validation-ajout" element={authState.isAuthenticated ? <ValidationAjout /> : <Navigate replace to="/connexion" />} />
       <Route path="/envoie-confirmation" element={authState.isAuthenticated ? <EnvoieConfirmation /> : <Navigate replace to="/connexion" />} />
       <Route path="*" element={<PageNotFound />} />

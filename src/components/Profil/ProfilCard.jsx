@@ -1,58 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
 
 function ProfilCard() {
-  const [Nom, setNom] = useState('');
-  const [Email, setEmail] = useState('');
-  const [error, setError] = useState('');
+    const { authState } = useContext(AuthContext);
+    const [userInfo, setUserInfo] = useState({ Nom: '', Email: '' });
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      axios.get("http://localhost:3001/auth/auth", {
-        headers: {
-          accessToken: accessToken,
-        },
-      }).then((response) => {
-        if (response.data.error) {
-          setError(response.data.error);
-        } else {
-          const userId = response.data.Id_Utilisateur;
-          axios.get(`http://localhost:3001/auth/basicinfo/${userId}`, {
-            headers: {
-              accessToken: accessToken,
-            },
-          })
-          .then(response => {
-            setNom(response.data.Nom);
-            setEmail(response.data.Email);
-          })
-          .catch(error => {
-            console.error('There was an error!', error);
-            setError('Erreur lors de la récupération des informations du profil.');
-          });
+    useEffect(() => {
+        console.log('authState:', authState); 
+        if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
+            const url = `http://localhost:3001/auth/basicinfo/${authState.user.Id_Utilisateur}`;
+            axios.get(url, { withCredentials: true })
+                .then(response => {
+                    console.log('Data received:', response.data); 
+                    if (response.data) {
+                        setUserInfo({ Nom: response.data.Nom, Email: response.data.Email });
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la récupération des informations utilisateur:', error);
+                });
         }
-      }).catch(error => {
-        console.error('There was an error!', error);
-        setError('Erreur lors de la validation du token.');
-      });
-    } else {
-      setError('Utilisateur non connecté.');
-    }
-  }, []);
+    }, [authState]);
 
-  return (
-    <div>
-      <h1>Profil Card</h1>
-      {error && <p>{error}</p>}
-      {!error && (
-        <>
-          <p>Nom: {Nom}</p>
-          <p>Email: {Email}</p>
-        </>
-      )}
-    </div>
-  );
+    return (
+        <div>
+            <h1>Profil</h1>
+            <p>Votre Nom: {userInfo.Nom}</p>  
+            <p>Votre Email: {userInfo.Email}</p> 
+        </div>
+    );
 }
 
 export default ProfilCard;

@@ -1,7 +1,14 @@
 import React from 'react';
 import './AccueilMain.css';
+import { useNavigate } from 'react-router-dom';
 
 function AccueilMain() {
+
+  const navigate = useNavigate();
+  const handleCommencerClick = () => {
+    navigate('/inscription'); 
+  };
+
   return (
     <div className="AccueilContainer">
       <main className="MainContent">
@@ -30,7 +37,7 @@ function AccueilMain() {
         <p className="Description">
           Surveillez leurs activités physiques dans un tableau répertoriant les sorties et découvrez la moyenne de temps pour chaque semaine !
         </p>
-        <button className="StartButton">Commencer maintenant</button>
+        <button className="StartButton" onClick={handleCommencerClick} style={{ cursor: 'pointer' }}>Commencer maintenant</button>
       </main>
     </div>
   );

@@ -5,6 +5,7 @@ const useAuth = () => {
   const [authState, setAuthState] = useState({
     isAuthenticated: false,
     isLoading: true,
+    user: null,
   });
 
   useEffect(() => {
@@ -14,17 +15,20 @@ const useAuth = () => {
           setAuthState({
             isAuthenticated: false,
             isLoading: false,
+            user: null,
           });
         } else {
           setAuthState({
             isAuthenticated: true,
             isLoading: false,
+            user: response.data,
           });
         }
       }).catch(() => {
         setAuthState({
           isAuthenticated: false,
           isLoading: false,
+          user: null,
         });
       });
   }, []);
