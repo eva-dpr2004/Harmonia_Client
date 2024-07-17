@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import logout from '../../context/useLogout';
-import './SupprimerProfilStyle.css'
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import './ProfilStyle.css';
 
 function SupprimerProfilForm() {
   const { authState, setAuthState } = useContext(AuthContext);
@@ -38,8 +38,8 @@ function SupprimerProfilForm() {
             <button onClick={onClose} className="modal-close-btn">x</button>
           </div>
           <div className="modal-warning">
-            <WarningAmberIcon sx={{ color: 'red', fontSize: 40,  }} />
-            <p>Cette action est irréversible. En supprimant votre compte, vous perdrez définitivement toutes vos données, y compris vos informations personnelles, et tout le contenu associé. Cette action ne peut pas être annulée. Êtes-vous sûr de vouloir continuer ?</p>
+            <WarningAmberIcon sx={{ color: 'red', fontSize: 40 }} />
+            <p>Cette action ne peut pas être annulée. Êtes-vous sûr de vouloir continuer ?</p>
           </div>
           <div className="modal-actions">
             <button onClick={onConfirm} className="modal-delete">Supprimer</button>
@@ -50,11 +50,14 @@ function SupprimerProfilForm() {
   };
 
   return (
-    <div>
-      <h1>Supprimer Profil</h1>
-      <button onClick={openModal}>Supprimer mon compte</button>
-      {isModalOpen && <Modal onClose={closeModal} onConfirm={handleDelete} />}
-      {message && <p>{message}</p>}
+    <div className="supprimer-container">
+      <div className="supprimer-box">
+        <h2 className="profil-title">Supprimer Profil</h2>
+        <p className='supprimer-para'>En supprimant votre compte, vous perdrez définitivement toutes vos données, y compris vos informations personnelles, et tout le contenu associé.</p>
+        <button onClick={openModal} className="supprimer-btn">Supprimer mon compte</button>
+        {isModalOpen && <Modal onClose={closeModal} onConfirm={handleDelete} />}
+        {message && <p className="message">{message}</p>}
+      </div>
     </div>
   );
 }

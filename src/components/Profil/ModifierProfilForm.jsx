@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
+import './ProfilStyle.css';
 
 function ModifierProfilForm() {
   const { authState } = useContext(AuthContext);
@@ -36,31 +37,31 @@ function ModifierProfilForm() {
   };
 
   return (
-    <div>
-      <h1>Modifier Profil</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="modifier-container">
+      <div className="modifier-box">
+        <h2 className="profil-title">Modifier Profil</h2>
+        <form onSubmit={handleSubmit}>
+          <p>Modifiez l'information de votre choix :</p>
           <label>Nom:</label>
           <input
             type="text"
             name="Nom"
+            placeholder='Votre nom'
             value={formData.Nom}
             onChange={handleChange}
           />
-        </div>
-        <div>
           <label>Email:</label>
           <input
             type="email"
             name="Email"
+            placeholder='Votre email'
             value={formData.Email}
             onChange={handleChange}
           />
-        </div>
-        
-        <button type="submit">Mettre à jour</button>
-      </form>
-      {message && <p>{message}</p>}
+          <button type="submit">Mettre à jour</button>
+        </form>
+        {message && <p className="message">{message}</p>}
+      </div>
     </div>
   );
 }

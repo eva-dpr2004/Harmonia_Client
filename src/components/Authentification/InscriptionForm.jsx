@@ -40,12 +40,23 @@ function InscriptionForm() {
 
     const navigate = useNavigate();
 
-    const onSubmit = (userData, { setSubmitting }) => {
+    const onSubmit = (userData, { setSubmitting, setFieldError }) => {
         createUser(userData).then(() => {
-            navigate("/");
+            navigate("/connexion");
             setSubmitting(false);
         }).catch(error => {
             console.error("Erreur lors de l'inscription: ", error);
+            if (error.response && error.response.data) {
+                if (error.response.data.error === "Nom déjà pris") {
+                    setFieldError("Nom", "Nom déjà pris");
+                } else if (error.response.data.error === "Email déjà pris") {
+                    setFieldError("Email", "Email déjà pris");
+                } else {
+                    setFieldError("submit", "Erreur lors de l'inscription");
+                }
+            } else {
+                setFieldError("submit", "Erreur lors de l'inscription");
+            }
             setSubmitting(false);
         });
     };
@@ -54,7 +65,7 @@ function InscriptionForm() {
         <div className="inscription-container">
             <div className="inscription-box"> 
                 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-                    {({ isSubmitting, values }) => (
+                    {({ isSubmitting, values, errors }) => (
                         <Form>
                             <h2>Inscription</h2>
                             <p className="connexion-link">
@@ -85,6 +96,8 @@ function InscriptionForm() {
                             </div>
 
                             <button type="submit" disabled={isSubmitting || !values.acceptTerms}>Créer mon compte</button>
+
+                            {errors.submit && <div className="error">{errors.submit}</div>}
                         </Form>
                     )}
                 </Formik>
