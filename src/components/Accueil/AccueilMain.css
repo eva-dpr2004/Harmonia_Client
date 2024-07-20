@@ -1,57 +1,113 @@
 .AccueilContainer {
-    font-family: Arial, sans-serif;
-    background-color: #e5e5ff; /* Light purple background */
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  .MainContent {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .MainTitle {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .ImagesRow {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
-  
-  .ImageContainer {
-    flex: 0 1 calc(50% - 20px);
-    box-sizing: border-box;
-  }
-  
-  .ImageContainer img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px; /* Optional: adds rounded corners */
-  }
-  
-  .Description {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .StartButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-  }
-  
-  .StartButton:hover {
-    background-color: #0056b3;
-  }
-  
+  font-family: Arial, sans-serif;
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.MainContent {
+  max-width: 910px;
+  margin: 0 auto;
+}
+
+.MainTitle {
+  font-size: 24px;
+  margin-bottom: 6%;
+  color: #333;
+}
+
+.ImagesRow {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative; 
+}
+
+.ImageContainer1, .ImageContainer2, .ImageContainer3, .ImageContainer4 {
+  flex: 0 1 calc(50% - 20px);
+  box-sizing: border-box;
+  position: absolute; /* Position absolute to overlap */
+  width: 50%; /* Adjust width to fill half of the row */
+}
+
+
+.ImageContainer2 {
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-left: 38%;
+  margin-top: 10%;
+}
+
+.ImageContainer1 {
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-left: 2%;
+}
+
+.ImageContainer4 {
+  margin-left: 52%;
+  top: 65vh;
+  z-index: 1;
+  margin-top: 10%;
+}
+
+.ImageContainer3 {
+  margin-right: 20%;
+  top: 80vh;
+  z-index: 2;
+  margin-top: 10%;
+}
+
+.ImageContainer img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Optional: adds rounded corners */
+}
+
+.Description {
+  font-size: 16px;
+  color: #171717;
+  margin-bottom: 20px;
+  clear: both;
+  position: relative;
+  top: 2%;
+  z-index: 4;
+  width: 78vh;
+  left: 50%;
+}
+
+.Description2 {
+  font-size: 16px;
+  color: #171717;
+  margin-bottom: 20px;
+  clear: both;
+  position: relative;
+  top: 80vh;
+  z-index: 4;
+  width: 78vh;
+  right: 8%;
+}
+
+.StartButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #72a0d0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 140vh;
+  margin-left: 80vh;
+}
+
+.StartButton:hover {
+  background-color: #0056b3;
+}
