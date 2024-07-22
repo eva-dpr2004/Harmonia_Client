@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import '../../styles/Formulaires.css'; 
 
 function ConnexionForm() {
   const [Nom, setNom] = useState("");
@@ -34,30 +35,29 @@ function ConnexionForm() {
         alert("Erreur de connexion: " + error.message);
       });
   };
-  
 
   return (
-    <div className="connexion-container">
-      <div className="connexion-box">
+    <div className="form-container">
+      <div className="form-box">
         <h2>Connexion</h2>
-        <p className="inscription-link">
-          <a href="/inscription">Vous n'avez pas de compte ? cliquez ici.</a>
+        <p className="form-link">
+          <Link to="/inscription">Vous n'avez pas de compte ? cliquez ici.</Link>
         </p>
-        <label>Nom :</label>
+        <label className="label">Nom :</label>
         <input
           type="text"
           value={Nom}
           onChange={(event) => setNom(event.target.value)}
           placeholder="Votre nom..."
         />
-        <label>Mot de passe :</label>
+        <label className="label">Mot de passe :</label>
         <input
           type="password"
           value={Mot_De_Passe}
           onChange={(event) => setMot_De_Passe(event.target.value)}
           placeholder="Votre mot de passe..."
         />
-        <button onClick={login}>Login</button>
+        <button onClick={login} className="button">Login</button>
       </div>
     </div>
   );

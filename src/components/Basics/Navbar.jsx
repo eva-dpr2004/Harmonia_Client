@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext'; 
-import logout from '../../context/useLogout'
+import logout from '../../context/useLogout';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -28,15 +28,15 @@ const Navbar = () => {
       <div className="navbar-links">
         {authState.isAuthenticated ? (
           <>
-            <a href="/profil">Profil</a>
-            <a href="/mes-animaux">Mes animaux</a>
-            <a href="/calendrier">Calendrier</a>
-            <a href="/aides">Aides</a>
+            <Link to="/profil">Profil</Link>
+            <Link to="/mes-animaux">Mes animaux</Link>
+            <Link to="/activites">Activités</Link>
+            <Link to="/aides">Aides</Link>
             <button className="logout-button" onClick={handleLogoutClick}>Déconnexion</button>
           </>
         ) : (
           <>
-            <a href="/inscription">Inscription</a>
+            <Link to="/inscription">Inscription</Link>
             <button className="login-button" onClick={handleLoginClick}>Me connecter</button>
           </>
         )}

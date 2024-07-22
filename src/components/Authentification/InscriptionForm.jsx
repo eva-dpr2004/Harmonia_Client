@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { createUser } from "../../services/Auth";
 import { useNavigate, Link } from "react-router-dom";
-import './AuthentificationForms.css'; 
+import '../../styles/Formulaires.css'; 
 
 function InscriptionForm() {
     const initialValues = {
@@ -62,28 +62,28 @@ function InscriptionForm() {
     };
 
     return (
-        <div className="inscription-container">
-            <div className="inscription-box"> 
+        <div className="form-container">
+            <div className="form-box"> 
                 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
                     {({ isSubmitting, values, errors }) => (
                         <Form>
                             <h2>Inscription</h2>
-                            <p className="connexion-link">
+                            <p className="form-link">
                                 <Link to="/connexion">Vous avez déjà un compte ? cliquez ici.</Link>
                             </p>
-                            <label>Nom:</label>
+                            <label className="label">Nom:</label>
                             <Field name="Nom" type="text" placeholder="Votre nom..." />
                             <ErrorMessage name="Nom" component="div" className="error" />
 
-                            <label>Email:</label>
+                            <label className="label">Email:</label>
                             <Field name="Email" type="email" placeholder="Votre email..." />
                             <ErrorMessage name="Email" component="div" className="error" />
 
-                            <label>Mot de Passe:</label>
+                            <label className="label">Mot de Passe:</label>
                             <Field name="Mot_De_Passe" type="password" placeholder="Votre mot de passe..." />
                             <ErrorMessage name="Mot_De_Passe" component="div" className="error" />
 
-                            <label>Confirmer Mot de Passe:</label>
+                            <label className="label">Confirmer Mot de Passe:</label>
                             <Field name="Confirm_Mot_De_Passe" type="password" placeholder="Confirmez votre mot de passe..." />
                             <ErrorMessage name="Confirm_Mot_De_Passe" component="div" className="error" />
 
@@ -95,7 +95,7 @@ function InscriptionForm() {
                                 <ErrorMessage name="acceptTerms" component="div" className="error" />
                             </div>
 
-                            <button type="submit" disabled={isSubmitting || !values.acceptTerms}>Créer mon compte</button>
+                            <button type="submit" disabled={isSubmitting || !values.acceptTerms} className="button">Créer mon compte</button>
 
                             {errors.submit && <div className="error">{errors.submit}</div>}
                         </Form>

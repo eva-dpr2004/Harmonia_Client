@@ -12,7 +12,7 @@ import MesAnimaux from './pages/Animaux/MesAnimaux';
 import AjouterAnimal from './pages/Animaux/AjouterAnimal';
 import TypesAnimaux from './pages/Animaux/TypesAnimaux';
 import ModifierAnimal from './pages/Animaux/ModifierAnimal';
-import Calendrier from './pages/Calendrier/Calendrier';
+import Activites from './pages/Activites/Activites';
 import Aides from './pages/Aides/Aides';
 import AvisGlobal from './pages/Aides/Feedback/AvisGlobal';
 import BesoinAide from './pages/Aides/Feedback/BesoinAide';
@@ -42,7 +42,7 @@ const Router = () => {
       <Route path="/connexion" element={authState.isAuthenticated ? <Navigate replace to="/" /> : <Connexion />} />
 
       {/* Pages nécessitant une co */}
-      <Route path="/calendrier" element={authState.isAuthenticated ? <Calendrier /> : <Navigate replace to="/connexion" />} />
+      <Route path="/activites" element={authState.isAuthenticated ? <Activites /> : <Navigate replace to="/connexion" />} />
       <Route path="/mes-animaux" element={authState.isAuthenticated ? <MesAnimaux /> : <Navigate replace to="/connexion" />} />
       <Route path="/mes-animaux/ajouter-animal" element={authState.isAuthenticated ? <AjouterAnimal /> : <Navigate replace to="/connexion" />} />
       <Route path="/mes-animaux/ajouter-animal/liste-animaux" element={authState.isAuthenticated ? <TypesAnimaux /> : <Navigate replace to="/connexion" />} />

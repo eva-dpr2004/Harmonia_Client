@@ -1,0 +1,93 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+  }
+  
+  .form-box {
+    background: #e0ebf89d;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-box h2, .form-link a {
+    margin-bottom: 1.5rem;
+    color: #193356;
+    text-decoration: underline;
+  }
+  
+  .form-box form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-box input {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .label {
+    color: #193356;
+    margin-top: 2%;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  .terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .terms input {
+    margin-top: 1.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .terms label {
+    font-size: 0.7rem;
+  }
+  
+  .terms a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  
+  .button {
+    padding: 0.5rem;
+    background: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .button:hover {
+    background: #004080;
+  }
+  
+  .button:disabled {
+    background: #819db8;
+    cursor: not-allowed;
+  }
+  
+  .error {
+    color: red;
+    font-size: 9px;
+    text-align: left;
+    margin-bottom: 2%;
+  }
+  
