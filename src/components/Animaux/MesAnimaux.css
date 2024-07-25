@@ -1,0 +1,79 @@
+.ajouter-animal-form {
+  background-color: #e6f0fa;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.ajouter-animal-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 3%;
+  margin-top: 5%;
+}
+
+.ajouter-animal-form h5{
+  margin-top: 3%;
+  color: #1a3558;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.ajouter-animal-form input[type="text"],
+.ajouter-animal-form input[type="date"],
+.ajouter-animal-form input[type="number"] {
+  width: 96%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.ajouter-animal-form div label input {
+  margin-right: 10px;
+}
+
+.sex-options, .habitat-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ajouter-animal-form button {
+  margin-top: 4%;
+  background-color: #193356;
+  color: white;
+  padding: 8px 35px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ajouter-animal-form button:hover {
+  background-color: #5c7494;
+}
+
+/*   TYPES ANIMAUX   */
+.file-upload-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-upload-container .upload-button-container {
+  margin-left: auto;
+}
+
+.centered-image {
+  display: block;
+  margin: 0 auto;
+  width: 25%;
+  border-radius: 50%;
+  max-height: 105px;
+}
+
+.sex-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

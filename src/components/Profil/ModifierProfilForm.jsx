@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import './ProfilStyle.css';
 
@@ -7,6 +8,7 @@ function ModifierProfilForm() {
   const { authState } = useContext(AuthContext);
   const [formData, setFormData] = useState({ Nom: '', Email: '' });
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (authState.isAuthenticated && authState.user) {
@@ -26,6 +28,7 @@ function ModifierProfilForm() {
       .then(response => {
         if (response.data.success) {
           setMessage('Profil mis à jour avec succès');
+          navigate('/profil'); 
         } else {
           setMessage('Erreur lors de la mise à jour du profil');
         }

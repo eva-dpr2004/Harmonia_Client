@@ -1,0 +1,19 @@
+.button-ajouter-animal-container {
+    margin-top: 2%;
+    margin-bottom: 5%;
+  }
+  
+  .add-animal-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #183159;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-animal-button:hover {
+    background-color: #394f6c;
+  }
+  

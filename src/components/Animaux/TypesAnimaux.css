@@ -1,0 +1,62 @@
+.types-animaux-container {
+    background-color: #e6f0fa;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 42%;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    text-align: left;
+  }
+  
+  .types-animaux-container h2 {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 20px;
+    color: #193356;
+  }
+  
+  .types-animaux-section {
+    margin-bottom: 20px;
+  }
+  
+  .types-animaux-section h3 {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #193356;
+  }
+  
+  .types-animaux-section svg {
+    margin-right: 10px;
+    margin-left: 2px;
+  }
+  
+  .types-animaux-list {
+    font-size: 14px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    text-align: center;
+  }
+  
+  .types-animaux-list li {
+    margin-bottom: 5px;
+  }
+  
+  .back-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #193356;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 3%;
+  }
+  
+  .back-button svg {
+    margin-right: 5px;
+    color: #193356;
+  }
+  

@@ -6,7 +6,7 @@ import { AuthContext } from './context/AuthContext';
 import useAuth from './context/useAuth'; 
 
 function App() {
-  const [authState, setAuthState] = useAuth(); //hook personnalisé
+  const [authState, setAuthState] = useAuth(); 
 
   return (
     <div className="App">

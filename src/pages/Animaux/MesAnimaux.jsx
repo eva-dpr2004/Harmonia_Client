@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../../components/Basics/Navbar'
 import Footer from '../../components/Basics/Footer'
 import AucunAnimal from '../../components/Animaux/AucunAnimal'
-import AjouterAnimalButton from '../../components/Animaux/AjouterAnimalButton'
+import BoutonAjouterAnimal from '../../components/Animaux/BoutonAjouterAnimal'
 import MesAnimauxList from '../../components/Animaux/MesAnimauxList'
 
 function MesAnimaux() {
@@ -12,7 +12,7 @@ function MesAnimaux() {
       <Navbar/>
       <MesAnimauxList/>
       <AucunAnimal/>
-      <AjouterAnimalButton/>
+      <BoutonAjouterAnimal/>
       <Footer/>
     </div>
   )

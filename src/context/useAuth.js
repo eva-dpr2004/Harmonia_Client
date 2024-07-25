@@ -6,6 +6,7 @@ const useAuth = () => {
     isAuthenticated: false,
     isLoading: true,
     user: null,
+    token: null,
   });
 
   useEffect(() => {
@@ -16,12 +17,14 @@ const useAuth = () => {
             isAuthenticated: false,
             isLoading: false,
             user: null,
+            token: null,
           });
         } else {
           setAuthState({
             isAuthenticated: true,
             isLoading: false,
             user: response.data,
+            token: response.data.token, 
           });
         }
       }).catch(() => {
@@ -29,6 +32,7 @@ const useAuth = () => {
           isAuthenticated: false,
           isLoading: false,
           user: null,
+          token: null,
         });
       });
   }, []);
