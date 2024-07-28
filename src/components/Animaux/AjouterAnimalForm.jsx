@@ -24,7 +24,7 @@ function AjouterAnimalForm() {
   const [preview, setPreview] = useState(null);
   const [fileError, setFileError] = useState('');
 
-  const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+  const today = new Date().toISOString().split('T')[0]; 
 
   const formik = useFormik({
     initialValues: {
@@ -55,7 +55,7 @@ function AjouterAnimalForm() {
         .max(today, 'La date d\'adoption ne peut pas être dans le futur'),
       Espece: Yup.string()
         .required('Type d\'animal est requis')
-        .transform(value => value ? value.toLowerCase() : value) // Transformer la valeur en minuscules
+        .transform(value => value ? value.toLowerCase() : value) 
         .oneOf(typesAnimauxDisponibles, 'Type d\'animal invalide'),
       Race: Yup.string().required('Race est requise'),
       Sexe: Yup.string().required('Sexe est requis'),
@@ -65,7 +65,6 @@ function AjouterAnimalForm() {
       Habitat: Yup.string().required('Habitat est requis'),
     }),
     onSubmit: async values => {
-      // Normaliser les valeurs avant de les envoyer à la base de données
       values.Espece = values.Espece.toLowerCase();
 
       if (file) {
