@@ -29,8 +29,8 @@
 .ImageContainer1, .ImageContainer2, .ImageContainer3, .ImageContainer4 {
   flex: 0 1 calc(50% - 20px);
   box-sizing: border-box;
-  position: absolute; /* Position absolute to overlap */
-  width: 50%; /* Adjust width to fill half of the row */
+  position: absolute; 
+  width: 50%; 
 }
 
 
@@ -68,7 +68,7 @@
 .ImageContainer img {
   width: 100%;
   height: auto;
-  border-radius: 10px; /* Optional: adds rounded corners */
+  border-radius: 10px; 
 }
 
 .Description {
@@ -98,8 +98,8 @@
 .StartButton {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #72a0d0;
-  color: #fff;
+  background-color: #b5cde7;
+  color: #193356;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -109,5 +109,5 @@
 }
 
 .StartButton:hover {
-  background-color: #0056b3;
+  background-color: #d2e1f0;
 }

@@ -1,18 +1,24 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
-import AucunAnimal from './AucunAnimal';  
+import AucunAnimal from './AucunAnimal';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import './MesAnimaux.css';
 
 function AnimauxList() {
     const { authState } = useContext(AuthContext);
     const [animaux, setAnimaux] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [animalToDelete, setAnimalToDelete] = useState(null);
+    const [message, setMessage] = useState('');
 
-    useEffect(() => {
+    const fetchAnimaux = useCallback(() => {
         if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
             const url = `http://localhost:3001/animals/byUserId/${authState.user.Id_Utilisateur}`;
             axios.get(url, { withCredentials: true })
                 .then(response => {
-                    console.log('Data received:', response.data); 
                     setAnimaux(response.data);
                 })
                 .catch(error => {
@@ -21,7 +27,60 @@ function AnimauxList() {
         }
     }, [authState]);
 
+    useEffect(() => {
+        fetchAnimaux();
+    }, [fetchAnimaux]);
+
     const defaultImage = `${process.env.PUBLIC_URL}/assets/img/dog.png`;
+
+    const handleDeleteClick = (animal) => {
+        setAnimalToDelete(animal);
+        setShowModal(true);
+    };
+
+    const handleConfirmDelete = async () => {
+        if (animalToDelete) {
+            try {
+                const url = `http://localhost:3001/animals/deleteAnimal/${animalToDelete.Id_Animal}`;
+                const response = await axios.delete(url, { withCredentials: true });
+                if (response.data.success) {
+                    setMessage('Animal supprimé avec succès.');
+                    fetchAnimaux(); // Refresh the list
+                } else {
+                    setMessage('Erreur lors de la suppression de l\'animal.');
+                }
+            } catch (error) {
+                setMessage('Erreur lors de la suppression de l\'animal.');
+                console.error('Erreur:', error);
+            }
+            setShowModal(false);
+        }
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+        setAnimalToDelete(null);
+    };
+
+    const Modal = ({ onClose, onConfirm }) => {
+        return (
+            <div className="modal-overlay">
+                <div className="modal">
+                    <div className="modal-header">
+                        <h2>Confirmation de Suppression</h2>
+                        <button onClick={onClose} className="modal-close-btn">x</button>
+                    </div>
+                    <div className="modal-warning">
+                        <WarningAmberIcon sx={{ color: 'red', fontSize: 40 }} />
+                        <p>Cette action ne peut pas être annulée. Êtes-vous sûr de vouloir continuer ?</p>
+                    </div>
+                    <div className="modal-actions">
+                        <button onClick={onConfirm} className="modal-delete">Supprimer</button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
 
     if (animaux.length === 0) {
         return <AucunAnimal />;
@@ -29,19 +88,28 @@ function AnimauxList() {
 
     return (
         <div className="animaux-list-container">
-            <h2 className='Title-Mes-Animaux'>Mes Animaux</h2>
+            <h2 className="Title-Mes-Animaux">Mes Animaux</h2>
+            {message && <p className="message">{message}</p>}
             <ul>
                 {animaux.map(animal => (
-                    <li key={animal.Id_Animal}>
-                        <img src={animal.photoURL || defaultImage} alt={animal.Nom} className="animal-image"/>
+                    <li key={animal.Id_Animal} className="animal-card">
+                        <img src={animal.photoURL || defaultImage} alt={animal.Nom} className="animal-image" />
                         <h3>{animal.Nom}</h3>
                         <p>Espèce: {animal.Espece}</p>
                         <p>Race: {animal.Race}</p>
                         <p>Date de Naissance: {animal.Date_De_Naissance}</p>
                         <p>Date d'Adoption: {animal.Date_Adoption}</p>
+                        <EditIcon className="edit-icon" />
+                        <DeleteIcon className="delete-icon" onClick={() => handleDeleteClick(animal)} />
                     </li>
                 ))}
             </ul>
+            {showModal && (
+                <Modal
+                    onClose={closeModal}
+                    onConfirm={handleConfirmDelete}
+                />
+            )}
         </div>
     );
 }
