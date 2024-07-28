@@ -5,6 +5,8 @@ import AucunAnimal from './AucunAnimal';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import './MesAnimaux.css';
 
 function AnimauxList() {
@@ -13,6 +15,8 @@ function AnimauxList() {
     const [showModal, setShowModal] = useState(false);
     const [animalToDelete, setAnimalToDelete] = useState(null);
     const [message, setMessage] = useState('');
+    const [page, setPage] = useState(1);
+    const [itemsPerPage] = useState(8);
 
     const fetchAnimaux = useCallback(() => {
         if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
@@ -45,7 +49,7 @@ function AnimauxList() {
                 const response = await axios.delete(url, { withCredentials: true });
                 if (response.data.success) {
                     setMessage('Animal supprimé avec succès.');
-                    fetchAnimaux(); // Refresh the list
+                    fetchAnimaux(); 
                 } else {
                     setMessage('Erreur lors de la suppression de l\'animal.');
                 }
@@ -60,6 +64,10 @@ function AnimauxList() {
     const closeModal = () => {
         setShowModal(false);
         setAnimalToDelete(null);
+    };
+
+    const handleChangePage = (event, value) => {
+        setPage(value);
     };
 
     const Modal = ({ onClose, onConfirm }) => {
@@ -86,12 +94,16 @@ function AnimauxList() {
         return <AucunAnimal />;
     }
 
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const displayedAnimaux = animaux.slice(startIndex, endIndex);
+
     return (
         <div className="animaux-list-container">
             <h2 className="Title-Mes-Animaux">Mes Animaux</h2>
             {message && <p className="message">{message}</p>}
             <ul>
-                {animaux.map(animal => (
+                {displayedAnimaux.map(animal => (
                     <li key={animal.Id_Animal} className="animal-card">
                         <img src={animal.photoURL || defaultImage} alt={animal.Nom} className="animal-image" />
                         <h3>{animal.Nom}</h3>
@@ -104,6 +116,16 @@ function AnimauxList() {
                     </li>
                 ))}
             </ul>
+            <Stack className="pagination-container">
+                <Pagination
+                    count={Math.ceil(animaux.length / itemsPerPage)}
+                    page={page}
+                    onChange={handleChangePage}
+                    color="primary"
+                    variant="outlined" 
+                    size="small"
+                />
+            </Stack>
             {showModal && (
                 <Modal
                     onClose={closeModal}

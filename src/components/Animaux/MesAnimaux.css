@@ -16,9 +16,7 @@
 .animaux-list-container li {
   list-style: none;
   margin: 20px;
-  flex-grow: 1;
   flex-shrink: 1;
-  flex-basis: calc(25% - 20px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,6 +68,7 @@
   color: #193356;
   right: 10px;
 }
+
 
 /*   Ajouter Animal   */
 .ajouter-animal-form {
