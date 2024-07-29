@@ -9,7 +9,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import './MesAnimaux.css';
 
-function AnimauxList() {
+function MesAnimauxList({ fetchAnimalCount }) {
     const { authState } = useContext(AuthContext);
     const [animaux, setAnimaux] = useState([]);
     const [showModal, setShowModal] = useState(false);
@@ -17,6 +17,7 @@ function AnimauxList() {
     const [message, setMessage] = useState('');
     const [page, setPage] = useState(1);
     const [itemsPerPage] = useState(8);
+    const defaultImage = `${process.env.PUBLIC_URL}/assets/img/dog.png`; 
 
     const fetchAnimaux = useCallback(() => {
         if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
@@ -24,18 +25,19 @@ function AnimauxList() {
             axios.get(url, { withCredentials: true })
                 .then(response => {
                     setAnimaux(response.data);
+                    if ((page - 1) * itemsPerPage >= response.data.length && page > 1) {
+                        setPage(prevPage => prevPage - 1); 
+                    }
                 })
                 .catch(error => {
                     console.error('Erreur lors de la récupération des animaux:', error);
                 });
         }
-    }, [authState]);
+    }, [authState, page, itemsPerPage]);
 
     useEffect(() => {
         fetchAnimaux();
     }, [fetchAnimaux]);
-
-    const defaultImage = `${process.env.PUBLIC_URL}/assets/img/dog.png`;
 
     const handleDeleteClick = (animal) => {
         setAnimalToDelete(animal);
@@ -48,8 +50,12 @@ function AnimauxList() {
                 const url = `http://localhost:3001/animals/deleteAnimal/${animalToDelete.Id_Animal}`;
                 const response = await axios.delete(url, { withCredentials: true });
                 if (response.data.success) {
-                    setMessage('Animal supprimé avec succès.');
+                    setMessage('Animal supprimé avec succès !');
+                    setTimeout(() => {
+                        setMessage('');
+                    }, 5000); 
                     fetchAnimaux(); 
+                    fetchAnimalCount(); 
                 } else {
                     setMessage('Erreur lors de la suppression de l\'animal.');
                 }
@@ -123,7 +129,7 @@ function AnimauxList() {
                 ))}
             </ul>
             <Stack className="pagination-container">
-                <Pagination count={Math.ceil(animaux.length / itemsPerPage)} page={page}  onChange={handleChangePage}  color="primary" variant="outlined"  size="small"/>
+                <Pagination count={Math.ceil(animaux.length / itemsPerPage)} page={page} onChange={handleChangePage} color="primary" variant="outlined" size="small"/>
             </Stack>
             {showModal && (
                 <Modal onClose={closeModal} onConfirm={handleConfirmDelete}/>
@@ -132,4 +138,4 @@ function AnimauxList() {
     );
 }
 
-export default AnimauxList;
+export default MesAnimauxList;

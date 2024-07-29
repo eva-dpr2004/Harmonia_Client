@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { storage } from '../../firebase.js';
+import { storage } from '../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
@@ -24,7 +24,7 @@ function AjouterAnimalForm() {
   const [preview, setPreview] = useState(null);
   const [fileError, setFileError] = useState('');
 
-  const today = new Date().toISOString().split('T')[0]; 
+  const today = new Date().toISOString().split('T')[0];
 
   const formik = useFormik({
     initialValues: {
@@ -40,7 +40,8 @@ function AjouterAnimalForm() {
     validationSchema: Yup.object({
       Nom: Yup.string()
         .required('Nom est requis')
-        .max(50, 'Le nom ne peut pas dépasser 50 caractères'), // Limite de caractères
+        .max(50, 'Le nom ne peut pas dépasser 50 caractères')
+        .matches(/^[A-Za-z ]*$/, 'Le nom ne doit contenir que des lettres'),
       Date_De_Naissance: Yup.date()
         .required('Date de naissance est requise')
         .nullable()
@@ -55,12 +56,12 @@ function AjouterAnimalForm() {
         .max(today, 'La date d\'adoption ne peut pas être dans le futur'),
       Espece: Yup.string()
         .required('Type d\'animal est requis')
-        .transform(value => value ? value.toLowerCase() : value) 
         .oneOf(typesAnimauxDisponibles, 'Type d\'animal invalide'),
       Race: Yup.string().required('Race est requise'),
       Sexe: Yup.string().required('Sexe est requis'),
       Poids: Yup.number()
         .required('Poids est requis')
+        .min(0.1, 'Le poids doit être au minimum de 0.1 kg')
         .max(4000, 'Le poids ne peut pas dépasser 4000kg'),
       Habitat: Yup.string().required('Habitat est requis'),
     }),
@@ -81,7 +82,7 @@ function AjouterAnimalForm() {
         withCredentials: true
       }).then((response) => {
         console.log('Animal ajouté:', response.data);
-        navigate('/validation-ajout');  
+        navigate('/validation-ajout');
       }).catch((error) => {
         console.error("Erreur lors de l'ajout de l'animal:", error);
       });
@@ -90,9 +91,10 @@ function AjouterAnimalForm() {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+    if (!selectedFile) return;
 
-    if (selectedFile && allowedTypes.includes(selectedFile.type)) {
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+    if (allowedTypes.includes(selectedFile.type)) {
       setFile(selectedFile);
       setFileError('');
       const reader = new FileReader();
@@ -185,8 +187,8 @@ function AjouterAnimalForm() {
           ) : null}
         </div>
         <div>
-          <label>Poids :</label>
-          <input type="number" name="Poids" value={formik.values.Poids} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+          <label>Poids (en kg) :</label>
+          <input type="number" name="Poids" value={formik.values.Poids} onChange={formik.handleChange} onBlur={formik.handleBlur} min="0.1" step="0.001" placeholder="Entrez le poids en kg (ex: 0.250)" />
           {formik.touched.Poids && formik.errors.Poids ? (
             <span className="error">{formik.errors.Poids}</span>
           ) : null}
@@ -205,7 +207,7 @@ function AjouterAnimalForm() {
             <span className="error">{formik.errors.Habitat}</span>
           ) : null}
         </div>
-        <button type="submit">Ajouter  +</button>
+        <button type="submit">Ajouter +</button>
       </form>
     </div>
   );
