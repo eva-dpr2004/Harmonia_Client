@@ -45,7 +45,7 @@ function ConnexionForm() {
           if (response.data.error) {
             alert(response.data.error);
           } else {
-            window.location = '/';
+            window.location = '/profil';
           }
         })
         .catch((error) => {

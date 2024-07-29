@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './AccueilMain.css';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext'; 
 
 function AccueilMain() {
-
   const navigate = useNavigate();
+  const { authState } = useContext(AuthContext); 
+
   const handleCommencerClick = () => {
     navigate('/inscription'); 
   };
@@ -37,7 +39,13 @@ function AccueilMain() {
         <p className="Description2">
           Surveillez leurs activités physiques dans un tableau répertoriant les sorties et découvrez la moyenne de temps pour chaque semaine !
         </p>
-        <button className="StartButton" onClick={handleCommencerClick} style={{ cursor: 'pointer' }}>Commencer maintenant</button>
+        <button 
+          className={`StartButton ${authState.isAuthenticated ? 'hidden' : ''}`} 
+          onClick={handleCommencerClick} 
+          style={{ cursor: 'pointer' }}
+        >
+          Commencer maintenant
+        </button>
       </main>
     </div>
   );

@@ -15,7 +15,7 @@ const Navbar = () => {
   const handleLoginClick = () => {
     navigate('/connexion');
   };
-
+  
   const handleLogoClick = () => {
     navigate('/'); 
   };

@@ -104,6 +104,7 @@ function MesAnimauxList({ fetchAnimalCount }) {
         return <AucunAnimal />;
     }
 
+    const totalPages = Math.ceil(animaux.length / itemsPerPage);
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const displayedAnimaux = animaux.slice(startIndex, endIndex);
@@ -111,6 +112,7 @@ function MesAnimauxList({ fetchAnimalCount }) {
     return (
         <div className="animaux-list-container">
             <h2 className="Title-Mes-Animaux">Mes Animaux</h2>
+            <p className="animal-count">Vous avez {animaux.length} {animaux.length === 1 ? 'animal' : 'animaux'}</p>
             {message && <p className="message">{message}</p>}
             <ul>
                 {displayedAnimaux.map(animal => (
@@ -128,9 +130,11 @@ function MesAnimauxList({ fetchAnimalCount }) {
                     </li>
                 ))}
             </ul>
-            <Stack className="pagination-container">
-                <Pagination count={Math.ceil(animaux.length / itemsPerPage)} page={page} onChange={handleChangePage} color="primary" variant="outlined" size="small"/>
-            </Stack>
+            {totalPages > 1 && (
+                <Stack className="pagination-container">
+                    <Pagination count={totalPages} page={page} onChange={handleChangePage} color="primary" variant="outlined" size="small"/>
+                </Stack>
+            )}
             {showModal && (
                 <Modal onClose={closeModal} onConfirm={handleConfirmDelete}/>
             )}
