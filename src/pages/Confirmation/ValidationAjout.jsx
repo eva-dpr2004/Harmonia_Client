@@ -3,9 +3,9 @@ import ValidationAjoutRedirection from '../../components/Confirmation/Validation
 
 function ValidationAjout() {
   return (
-    <div>
-      <ValidationAjoutRedirection/>
-      </div>
+    <div>   
+      <ValidationAjoutRedirection/>  
+    </div>
   )
 }
 

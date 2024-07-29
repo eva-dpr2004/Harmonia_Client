@@ -1,0 +1,32 @@
+.validation-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 10%;
+    color: #1a3558;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .validation-container h1 {
+    font-size: 24px;
+    margin-bottom: 5%;
+  }
+  
+  .validation-image {
+    width: 185px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+.para-redirection{
+    display: inline-block;
+    margin-top: 2%;
+    margin-bottom: 4%;
+    font-size: 18px;
+    color: #1a3558;
+    text-decoration: none;
+  }
+  
+  

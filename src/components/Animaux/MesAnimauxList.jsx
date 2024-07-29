@@ -67,7 +67,11 @@ function AnimauxList() {
     };
 
     const handleChangePage = (event, value) => {
-        setPage(value);
+        setPage(value); 
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     };
 
     const Modal = ({ onClose, onConfirm }) => {
@@ -107,30 +111,22 @@ function AnimauxList() {
                     <li key={animal.Id_Animal} className="animal-card">
                         <img src={animal.photoURL || defaultImage} alt={animal.Nom} className="animal-image" />
                         <h3>{animal.Nom}</h3>
-                        <p>Espèce: {animal.Espece}</p>
-                        <p>Race: {animal.Race}</p>
                         <p>Date de Naissance: {animal.Date_De_Naissance}</p>
                         <p>Date d'Adoption: {animal.Date_Adoption}</p>
+                        <p>Espèce: {animal.Espece}</p>
+                        <p>Race: {animal.Race}</p>
+                        <p>Sexe: {animal.Sexe}</p>
+                        <p>Poids: {animal.Poids} kg</p>
                         <EditIcon className="edit-icon" />
                         <DeleteIcon className="delete-icon" onClick={() => handleDeleteClick(animal)} />
                     </li>
                 ))}
             </ul>
             <Stack className="pagination-container">
-                <Pagination
-                    count={Math.ceil(animaux.length / itemsPerPage)}
-                    page={page}
-                    onChange={handleChangePage}
-                    color="primary"
-                    variant="outlined" 
-                    size="small"
-                />
+                <Pagination count={Math.ceil(animaux.length / itemsPerPage)} page={page}  onChange={handleChangePage}  color="primary" variant="outlined"  size="small"/>
             </Stack>
             {showModal && (
-                <Modal
-                    onClose={closeModal}
-                    onConfirm={handleConfirmDelete}
-                />
+                <Modal onClose={closeModal} onConfirm={handleConfirmDelete}/>
             )}
         </div>
     );

@@ -81,7 +81,7 @@ function AjouterAnimalForm() {
         withCredentials: true
       }).then((response) => {
         console.log('Animal ajouté:', response.data);
-        navigate('/mes-animaux');  
+        navigate('/validation-ajout');  
       }).catch((error) => {
         console.error("Erreur lors de l'ajout de l'animal:", error);
       });
@@ -112,99 +112,102 @@ function AjouterAnimalForm() {
   };
 
   return (
-    <form className="ajouter-animal-form" onSubmit={formik.handleSubmit}>
-      <div className="file-upload-container">
-        <label>Choisir une photo :</label>
-        <div className="upload-button-container">
-          <input accept="image/*" style={{ display: 'none' }} id="icon-button-file" type="file" onChange={handleFileChange}/>
-          <label htmlFor="icon-button-file">
-            <IconButton color="primary" aria-label="upload picture" component="span" sx={{ color: '#1a3558', fontSize: 48 }} >
-              <PhotoCamera fontSize="inherit" />
-            </IconButton>
-          </label>
+    <div>
+      <h2 className='Title-Mes-Animaux'>Ajouter Animal</h2>
+      <form className="ajouter-animal-form" onSubmit={formik.handleSubmit}>
+        <div className="file-upload-container">
+          <label>Choisir une photo :</label>
+          <div className="upload-button-container">
+            <input accept="image/*" style={{ display: 'none' }} id="icon-button-file" type="file" onChange={handleFileChange}/>
+            <label htmlFor="icon-button-file">
+              <IconButton color="primary" aria-label="upload picture" component="span" sx={{ color: '#1a3558', fontSize: 50 }} >
+                <PhotoCamera fontSize="inherit" />
+              </IconButton>
+            </label>
+          </div>
         </div>
-      </div>
-      {fileError && <div className="error">{fileError}</div>}
-      {preview && <img src={preview} alt="" className="image-preview centered-image" />}
-      <div>
-        <label>Nom :</label>
-        <input type="text" name="Nom" value={formik.values.Nom} onChange={formik.handleChange} onBlur={formik.handleBlur} />
-        {formik.touched.Nom && formik.errors.Nom ? (
-          <span className="error">{formik.errors.Nom}</span>
-        ) : null}
-      </div>
-      <div>
-        <label>Date de naissance :</label>
-        <input type="date" name="Date_De_Naissance" value={formik.values.Date_De_Naissance} onChange={formik.handleChange} onBlur={formik.handleBlur} max={today} />
-        {formik.touched.Date_De_Naissance && formik.errors.Date_De_Naissance ? (
-          <span className="error">{formik.errors.Date_De_Naissance}</span>
-        ) : null}
-      </div>
-      <div>
-        <label>Date d'adoption :</label>
-        <input type="date" name="Date_Adoption" value={formik.values.Date_Adoption} onChange={formik.handleChange} onBlur={formik.handleBlur} max={today} />
-        {formik.touched.Date_Adoption && formik.errors.Date_Adoption ? (
-          <span className="error">{formik.errors.Date_Adoption}</span>
-        ) : null}
-      </div>
-      <div>
-        <label>Type d'animal :</label>
-        <input type="text" name="Espece" value={formik.values.Espece} onChange={formik.handleChange} onBlur={formik.handleBlur} />
-        {formik.touched.Espece && formik.errors.Espece ? (
-          <span className="error">{formik.errors.Espece}</span>
-        ) : null}
-        <h5 className="link" onClick={navigateToList}>Voir la liste des types d'animaux disponibles</h5>
-      </div>
-      <div>
-        <label>Race :</label>
-        <input type="text" name="Race" value={formik.values.Race} onChange={formik.handleChange} onBlur={formik.handleBlur} />
-        {formik.touched.Race && formik.errors.Race ? (
-          <span className="error">{formik.errors.Race}</span>
-        ) : null}
-      </div>
-      <div>
-        <label>Sexe :</label>
-        <div className="sex-options">
-          <label>
-            <input type="radio" name="Sexe" value="Mâle" checked={formik.values.Sexe === 'Mâle'} onChange={formik.handleChange} /> Mâle
-          </label>
-          <label>
-            <input type="radio" name="Sexe" value="Femelle" checked={formik.values.Sexe === 'Femelle'} onChange={formik.handleChange} /> Femelle
-          </label>
-          <label>
-            <input type="radio" name="Sexe" value="Inconnu" checked={formik.values.Sexe === 'Inconnu'} onChange={formik.handleChange} /> Inconnu
-          </label>
-          <label>
-            <input type="radio" name="Sexe" value="Hermaphrodite" checked={formik.values.Sexe === 'Hermaphrodite'} onChange={formik.handleChange} /> Hermaphrodite
-          </label>
+        {fileError && <div className="error">{fileError}</div>}
+        {preview && <img src={preview} alt="" className="image-preview centered-image" />}
+        <div>
+          <label>Nom :</label>
+          <input type="text" name="Nom" value={formik.values.Nom} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+          {formik.touched.Nom && formik.errors.Nom ? (
+            <span className="error">{formik.errors.Nom}</span>
+          ) : null}
         </div>
-        {formik.touched.Sexe && formik.errors.Sexe ? (
-          <span className="error">{formik.errors.Sexe}</span>
-        ) : null}
-      </div>
-      <div>
-        <label>Poids :</label>
-        <input type="number" name="Poids" value={formik.values.Poids} onChange={formik.handleChange} onBlur={formik.handleBlur} />
-        {formik.touched.Poids && formik.errors.Poids ? (
-          <span className="error">{formik.errors.Poids}</span>
-        ) : null}
-      </div>
-      <div>
-        <label>Habitat :</label>
-        <div className="habitat-options">
-          <label>
-            <input type="radio" name="Habitat" value="Intérieur" checked={formik.values.Habitat === 'Intérieur'} onChange={formik.handleChange} /> Intérieur
-          </label>
-          <label>
-            <input type="radio" name="Habitat" value="Extérieur" checked={formik.values.Habitat === 'Extérieur'} onChange={formik.handleChange} /> Extérieur
-          </label>
+        <div>
+          <label>Date de naissance :</label>
+          <input type="date" name="Date_De_Naissance" value={formik.values.Date_De_Naissance} onChange={formik.handleChange} onBlur={formik.handleBlur} max={today} />
+          {formik.touched.Date_De_Naissance && formik.errors.Date_De_Naissance ? (
+            <span className="error">{formik.errors.Date_De_Naissance}</span>
+          ) : null}
         </div>
-        {formik.touched.Habitat && formik.errors.Habitat ? (
-          <span className="error">{formik.errors.Habitat}</span>
-        ) : null}
-      </div>
-      <button type="submit">Ajouter</button>
-    </form>
+        <div>
+          <label>Date d'adoption :</label>
+          <input type="date" name="Date_Adoption" value={formik.values.Date_Adoption} onChange={formik.handleChange} onBlur={formik.handleBlur} max={today} />
+          {formik.touched.Date_Adoption && formik.errors.Date_Adoption ? (
+            <span className="error">{formik.errors.Date_Adoption}</span>
+          ) : null}
+        </div>
+        <div>
+          <label>Type d'animal :</label>
+          <input type="text" name="Espece" value={formik.values.Espece} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+          {formik.touched.Espece && formik.errors.Espece ? (
+            <span className="error">{formik.errors.Espece}</span>
+          ) : null}
+          <h5 className="link" onClick={navigateToList}>Voir la liste des types d'animaux disponibles</h5>
+        </div>
+        <div>
+          <label>Race :</label>
+          <input type="text" name="Race" value={formik.values.Race} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+          {formik.touched.Race && formik.errors.Race ? (
+            <span className="error">{formik.errors.Race}</span>
+          ) : null}
+        </div>
+        <div>
+          <label>Sexe :</label>
+          <div className="sex-options">
+            <label>
+              <input type="radio" name="Sexe" value="Mâle" checked={formik.values.Sexe === 'Mâle'} onChange={formik.handleChange} /> Mâle
+            </label>
+            <label>
+              <input type="radio" name="Sexe" value="Femelle" checked={formik.values.Sexe === 'Femelle'} onChange={formik.handleChange} /> Femelle
+            </label>
+            <label>
+              <input type="radio" name="Sexe" value="Inconnu" checked={formik.values.Sexe === 'Inconnu'} onChange={formik.handleChange} /> Inconnu
+            </label>
+            <label>
+              <input type="radio" name="Sexe" value="Hermaphrodite" checked={formik.values.Sexe === 'Hermaphrodite'} onChange={formik.handleChange} /> Hermaphrodite
+            </label>
+          </div>
+          {formik.touched.Sexe && formik.errors.Sexe ? (
+            <span className="error">{formik.errors.Sexe}</span>
+          ) : null}
+        </div>
+        <div>
+          <label>Poids :</label>
+          <input type="number" name="Poids" value={formik.values.Poids} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+          {formik.touched.Poids && formik.errors.Poids ? (
+            <span className="error">{formik.errors.Poids}</span>
+          ) : null}
+        </div>
+        <div>
+          <label>Habitat :</label>
+          <div className="habitat-options">
+            <label>
+              <input type="radio" name="Habitat" value="Intérieur" checked={formik.values.Habitat === 'Intérieur'} onChange={formik.handleChange} /> Intérieur
+            </label>
+            <label>
+              <input type="radio" name="Habitat" value="Extérieur" checked={formik.values.Habitat === 'Extérieur'} onChange={formik.handleChange} /> Extérieur
+            </label>
+          </div>
+          {formik.touched.Habitat && formik.errors.Habitat ? (
+            <span className="error">{formik.errors.Habitat}</span>
+          ) : null}
+        </div>
+        <button type="submit">Ajouter  +</button>
+      </form>
+    </div>
   );
 }
 

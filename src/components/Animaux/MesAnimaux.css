@@ -69,28 +69,31 @@
   right: 10px;
 }
 
-
 /*   Ajouter Animal   */
 .ajouter-animal-form {
-  background-color: #e6f0fa;
-  padding: 20px;
+  background-color: #e6f0fac0;
+  padding: 18px;
   border-radius: 8px;
   max-width: 400px;
   margin: auto;
+  margin-bottom: 1%;
 }
 
 .ajouter-animal-form label {
   display: block;
   font-weight: bold;
   margin-bottom: 3%;
-  margin-top: 5%;
+  margin-top: 2%;
+  color: #193356;
+  font-size: 13px;
 }
 
-.ajouter-animal-form h5{
-  margin-top: 3%;
+.ajouter-animal-form h5 {
+  margin-top: 2%;
   color: #1a3558;
   text-decoration: underline;
   cursor: pointer;
+  font-size: 10px;
 }
 
 .ajouter-animal-form input[type="text"],
@@ -100,6 +103,23 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #1a3558;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked {
+  background-color: #1a3558; 
+  border-color: #1a3558; 
 }
 
 .ajouter-animal-form div label input {
@@ -113,13 +133,14 @@
 }
 
 .ajouter-animal-form button {
-  margin-top: 4%;
+  margin-top: 2%;
   background-color: #193356;
   color: white;
-  padding: 8px 35px;
+  padding: 8px 30px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .ajouter-animal-form button:hover {
@@ -140,9 +161,9 @@
 .centered-image {
   display: block;
   margin: 0 auto;
-  width: 25%;
+  width: 20%;
   border-radius: 50%;
-  max-height: 105px;
+  height: 75px;
 }
 
 .sex-options {
