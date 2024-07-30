@@ -64,7 +64,7 @@ const Router = () => {
       <Route path="/activites" element={authState.isAuthenticated ? <Activites /> : <Navigate to="/connexion" />} />
       <Route path="/aides" element={authState.isAuthenticated ? <Aides /> : <Navigate to="/connexion" />} />
       <Route path="/aides/avis-global" element={authState.isAuthenticated ? <AvisGlobal /> : <Navigate to="/connexion" />} />
-      <Route path="/aides/besoin-d'aide" element={authState.isAuthenticated ? <BesoinAide /> : <Navigate to="/connexion" />} />
+      <Route path="/aides/anomalies" element={authState.isAuthenticated ? <BesoinAide /> : <Navigate to="/connexion" />} />
       <Route path="/validation-ajout" element={authState.isAuthenticated ? <ValidationAjout /> : <Navigate to="/connexion" />} />
       <Route path="/envoie-confirmation" element={authState.isAuthenticated ? <EnvoieConfirmation /> : <Navigate to="/connexion" />} />
       <Route path="/mentions-legales" element={<MentionsLegales />} />
