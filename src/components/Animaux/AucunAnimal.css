@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 7%; 
+    margin-top: 8%; 
   }
   
   .aucun-animal-container img {
@@ -12,6 +12,7 @@
   }
   
   .aucun-animal-container p {
+    margin-top: 2%;
     font-size: 18px;
     color: #333;
   }
