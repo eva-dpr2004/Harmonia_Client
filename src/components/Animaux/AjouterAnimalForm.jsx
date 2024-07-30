@@ -41,7 +41,9 @@ function AjouterAnimalForm() {
       Nom: Yup.string()
         .required('Nom est requis')
         .max(50, 'Le nom ne peut pas dépasser 50 caractères')
-        .matches(/^[A-Za-z ]*$/, 'Le nom ne doit contenir que des lettres'),
+        .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ _-]*$/, 'Le nom ne doit contenir que des lettres, des espaces, des tirets ou des underscores')
+        .test('contains-two-letters', 'Le nom doit contenir au moins 2 lettres', value => 
+          (value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []).length >= 2),
       Date_De_Naissance: Yup.date()
         .required('Date de naissance est requise')
         .nullable()

@@ -17,7 +17,7 @@ function MesAnimauxList({ fetchAnimalCount }) {
     const [message, setMessage] = useState('');
     const [page, setPage] = useState(1);
     const [itemsPerPage] = useState(8);
-    const defaultImage = `${process.env.PUBLIC_URL}/assets/img/dog.png`; 
+    const defaultImage = `${process.env.PUBLIC_URL}/assets/img/dog.png`;
 
     const fetchAnimaux = useCallback(() => {
         if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
@@ -26,7 +26,7 @@ function MesAnimauxList({ fetchAnimalCount }) {
                 .then(response => {
                     setAnimaux(response.data);
                     if ((page - 1) * itemsPerPage >= response.data.length && page > 1) {
-                        setPage(prevPage => prevPage - 1); 
+                        setPage(prevPage => prevPage - 1);
                     }
                 })
                 .catch(error => {
@@ -53,9 +53,9 @@ function MesAnimauxList({ fetchAnimalCount }) {
                     setMessage('Animal supprimé avec succès !');
                     setTimeout(() => {
                         setMessage('');
-                    }, 5000); 
-                    fetchAnimaux(); 
-                    fetchAnimalCount(); 
+                    }, 5000);
+                    fetchAnimaux();
+                    fetchAnimalCount();
                 } else {
                     setMessage('Erreur lors de la suppression de l\'animal.');
                 }
@@ -73,7 +73,7 @@ function MesAnimauxList({ fetchAnimalCount }) {
     };
 
     const handleChangePage = (event, value) => {
-        setPage(value); 
+        setPage(value);
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -104,7 +104,6 @@ function MesAnimauxList({ fetchAnimalCount }) {
         return <AucunAnimal />;
     }
 
-    const totalPages = Math.ceil(animaux.length / itemsPerPage);
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const displayedAnimaux = animaux.slice(startIndex, endIndex);
@@ -112,7 +111,6 @@ function MesAnimauxList({ fetchAnimalCount }) {
     return (
         <div className="animaux-list-container">
             <h2 className="Title-Mes-Animaux">Mes Animaux</h2>
-            <p className="animal-count">Vous avez {animaux.length} {animaux.length === 1 ? 'animal' : 'animaux'}</p>
             {message && <p className="message">{message}</p>}
             <ul>
                 {displayedAnimaux.map(animal => (
@@ -130,11 +128,18 @@ function MesAnimauxList({ fetchAnimalCount }) {
                     </li>
                 ))}
             </ul>
-            {totalPages > 1 && (
-                <Stack className="pagination-container">
-                    <Pagination count={totalPages} page={page} onChange={handleChangePage} color="primary" variant="outlined" size="small"/>
-                </Stack>
-            )}
+            <Stack className="pagination-container">
+                {animaux.length >= 9 && (
+                    <Pagination
+                        count={Math.ceil(animaux.length / itemsPerPage)}
+                        page={page}
+                        onChange={handleChangePage}
+                        color="primary"
+                        variant="outlined"
+                        size="small"
+                    />
+                )}
+            </Stack>
             {showModal && (
                 <Modal onClose={closeModal} onConfirm={handleConfirmDelete}/>
             )}

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Avatar from '@mui/material/Avatar';
 import './ProfilStyle.css';
 
 function ProfilCard() {
@@ -13,12 +14,10 @@ function ProfilCard() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log('authState:', authState); 
         if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
             const url = `http://localhost:3001/auth/basicinfo/${authState.user.Id_Utilisateur}`;
             axios.get(url, { withCredentials: true })
                 .then(response => {
-                    console.log('Data received:', response.data); 
                     if (response.data) {
                         setUserInfo({ Nom: response.data.Nom, Email: response.data.Email });
                     }
@@ -41,8 +40,10 @@ function ProfilCard() {
         <div className="profil-container">
             <h2 className="profil-title">Votre profil</h2>
             <div className="profil-card">
-                <div className="profil-icon">
-                    <img src={`${process.env.PUBLIC_URL}/assets/img/avatar.png`} alt="Harmonia Logo" />
+                <div className="profil-avatar">
+                    <Avatar sx={{ width: 80, height: 80, bgcolor: '#193356' }}>
+                        {userInfo.Nom.charAt(0)}
+                    </Avatar>
                 </div>
                 <div className="profil-info">
                     <div className="profil-field">
@@ -55,7 +56,7 @@ function ProfilCard() {
                     </div>
                 </div>
                 <div className="profil-actions">
-                <Button
+                    <Button
                         variant="outlined"
                         startIcon={<EditIcon />}
                         onClick={handleModify}
