@@ -57,17 +57,19 @@ function ConnexionForm() {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-box">
-        <h2>Connexion</h2>
-        <p className="form-link">
-          <Link to="/inscription">Vous n'avez pas de compte ? cliquez ici.</Link>
-        </p>
-        <label className="label">Nom ou Email :</label>
-        <input type="text" value={NomOrEmail} onChange={(event) => setNomOrEmail(event.target.value)} placeholder="Votre nom ou email..."/>
-        <label className="label">Mot de passe :</label>
-        <input type="password" value={Mot_De_Passe} onChange={(event) => setMot_De_Passe(event.target.value)} placeholder="Votre mot de passe..."/>
-        <button onClick={login} className="button">Login</button>
+    <div className='connexion'>
+      <h2>Connexion</h2>
+      <p className="form-link">
+        <Link to="/inscription">Vous n'avez pas de compte ? cliquez ici.</Link>
+      </p>
+      <div className="form-container">
+        <div className="form-box">
+          <label className="label">Nom ou Email :</label>
+          <input type="text" value={NomOrEmail} onChange={(event) => setNomOrEmail(event.target.value)} placeholder="Votre nom ou email..."/>
+          <label className="label">Mot de passe :</label>
+          <input type="password" value={Mot_De_Passe} onChange={(event) => setMot_De_Passe(event.target.value)} placeholder="Votre mot de passe..."/>
+          <button onClick={login} className="button">Login</button>
+        </div>
       </div>
     </div>
   );
