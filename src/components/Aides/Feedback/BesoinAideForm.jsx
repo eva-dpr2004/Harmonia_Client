@@ -17,8 +17,7 @@ function BesoinAideForm() {
             description: descriptionAnomalie,
             timestamp: new Date()
         });        
-            alert('Anomalie reported successfully!');
-            navigate('/'); 
+            navigate('/envoie-confirmation');
         } catch (error) {
             console.error("Error adding document: ", error);
             alert('Failed to report the anomaly. Please try again.');
@@ -26,27 +25,29 @@ function BesoinAideForm() {
     };
 
     return (
-        <div className="besoin-aide-form">
-            <h1>Vous avez rencontré une anomalie ? Un problème ?</h1>
+        <div className='besoin-aide-container'>
+            <h1 className='besoin-aide-title'>Vous avez rencontré une anomalie ? Un problème ?</h1>
             <p>Merci de nous aider à améliorer Harmonia en nous rapportant les bugs ou problèmes que vous rencontrez.</p>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="type-anomalie">Type d'anomalie :</label>
-                <input 
-                    type="text" 
-                    id="type-anomalie" 
-                    value={typeAnomalie}
-                    onChange={(e) => setTypeAnomalie(e.target.value)}
-                    placeholder="Exemple : bug"
-                />
-                <label htmlFor="description-anomalie">Description de l'anomalie :</label>
-                <textarea 
-                    id="description-anomalie" 
-                    value={descriptionAnomalie}
-                    onChange={(e) => setDescriptionAnomalie(e.target.value)}
-                    placeholder="Ceci est la description d'un bug..."
-                />
-                <button type="submit">Soumettre</button>
-            </form>
+            <div className="besoin-aide-form">
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="type-anomalie">Type d'anomalie :</label>
+                    <input 
+                        type="text" 
+                        id="type-anomalie" 
+                        value={typeAnomalie}
+                        onChange={(e) => setTypeAnomalie(e.target.value)}
+                        placeholder="Exemple : bug"
+                    />
+                    <label htmlFor="description-anomalie">Description de l'anomalie :</label>
+                    <textarea 
+                        id="description-anomalie" 
+                        value={descriptionAnomalie}
+                        onChange={(e) => setDescriptionAnomalie(e.target.value)}
+                        placeholder="Ceci est la description d'un bug..."
+                    />
+                    <button type="submit">Soumettre</button>
+                </form>
+            </div>
         </div>
     );
 }
