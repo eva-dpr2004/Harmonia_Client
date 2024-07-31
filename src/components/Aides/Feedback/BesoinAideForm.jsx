@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { doc, setDoc } from "firebase/firestore"; 
 import { db } from '../../../firebase'; 
+import ReplyIcon from '@mui/icons-material/Reply';
 import '../Aides.css'; 
 
 function BesoinAideForm() {
@@ -26,7 +27,13 @@ function BesoinAideForm() {
 
     return (
         <div className='besoin-aide-container'>
-            <h1 className='besoin-aide-title'>Vous avez rencontré une anomalie ? Un problème ?</h1>
+            <h1 className='besoin-aide-title'>
+                <ReplyIcon 
+                    style={{ color: '#183255', cursor: 'pointer', marginRight: '10px' }}
+                    onClick={() => navigate(-1)}
+                />
+                Vous avez rencontré une anomalie ? Un problème ?
+            </h1>
             <p>Merci de nous aider à améliorer Harmonia en nous rapportant les bugs ou problèmes que vous rencontrez.</p>
             <div className="besoin-aide-form">
                 <form onSubmit={handleSubmit}>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { doc, setDoc } from "firebase/firestore";
 import { db } from '../../../firebase'; 
 import { FormControl, RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
-import { SentimentVeryDissatisfied, SentimentNeutral, SentimentVerySatisfied } from '@mui/icons-material';
+import { SentimentVeryDissatisfied, SentimentNeutral, SentimentVerySatisfied, Reply } from '@mui/icons-material';
 import '../Aides.css'; 
 
 function FormulaireAvisGlobal() {
@@ -46,7 +46,13 @@ function FormulaireAvisGlobal() {
 
     return (
         <div>
-            <h1 className="avis-global-title">Formulaire d'Avis Global</h1>
+            <h1 className="avis-global-title">
+                <Reply 
+                    style={{ color: '#183255', cursor: 'pointer', marginRight: '10px' }}
+                    onClick={() => navigate(-1)}
+                />
+                Formulaire d'Avis Global
+            </h1>
             <form onSubmit={handleSubmit} className="avis-global-form">
 
                 <details>

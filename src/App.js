@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter } from "react-router-dom";
 import Router from './Router';
 import { AuthContext } from './context/AuthContext';
+import { AnimalProvider } from './context/AnimalContext';
 import useAuth from './context/useAuth'; 
 
 function App() {
@@ -11,9 +12,11 @@ function App() {
   return (
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
+        <AnimalProvider>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </AnimalProvider>
       </AuthContext.Provider>
     </div>
   );
