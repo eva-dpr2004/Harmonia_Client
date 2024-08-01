@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AnimalContext } from '../../context/AnimalContext';
@@ -24,8 +24,10 @@ function ModifierAnimalForm() {
   useEffect(() => {
     if (selectedAnimal) {
       setAnimal(selectedAnimal);
+    } else {
+      navigate('/mes-animaux');  // Redirect if no animal is selected
     }
-  }, [selectedAnimal]);
+  }, [selectedAnimal, navigate]);
 
   const validationSchema = Yup.object().shape({
     Nom: Yup.string()
@@ -74,14 +76,12 @@ function ModifierAnimalForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate form
     const isValid = await validationSchema.isValid(animal);
     if (!isValid) {
       alert('Veuillez remplir correctement tous les champs.');
       return;
     }
 
-    // Check if any field has been modified
     const isModified = Object.keys(animal).some(key => animal[key] !== selectedAnimal[key]);
     if (!isModified) {
       alert('Veuillez modifier au moins un champ.');
@@ -89,7 +89,6 @@ function ModifierAnimalForm() {
     }
 
     try {
-      console.log('Submitting update:', animal);
       await axios.put(`http://localhost:3001/animals/updateAnimal/${selectedAnimal.Id_Animal}`, animal, {
         headers: {
           'Authorization': `Bearer ${authState.token}`
