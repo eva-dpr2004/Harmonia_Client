@@ -25,7 +25,7 @@ function ModifierAnimalForm() {
     if (selectedAnimal) {
       setAnimal(selectedAnimal);
     } else {
-      navigate('/mes-animaux');  // Redirect if no animal is selected
+      navigate('/mes-animaux');  
     }
   }, [selectedAnimal, navigate]);
 

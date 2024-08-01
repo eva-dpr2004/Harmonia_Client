@@ -1,0 +1,35 @@
+.title-activites{
+    color: #193356;
+    text-decoration: underline;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+
+.tableau{
+    margin-top: 2%;
+    margin-bottom: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .actions {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  select {
+    padding: 5px;
+    font-size: 14px;
+    margin-bottom: 2%;
+  }
