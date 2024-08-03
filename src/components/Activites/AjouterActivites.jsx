@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
+import { Select, MenuItem, TextField, Button, FormControl, InputLabel } from '@mui/material';
 import './Tableau.css';
 
 function AjouterActivites() {
@@ -94,6 +95,7 @@ function AjouterActivites() {
           dureeActivite: ''
         });
         setError('');
+        window.location.reload(); 
       } else {
         console.error('Erreur lors de l\'ajout de l\'activité');
       }
@@ -120,47 +122,69 @@ function AjouterActivites() {
             <tbody>
               <tr>
                 <td>
-                  <select
-                    value={activity.animalId}
-                    onChange={(e) => handleChange('animalId', e.target.value)}
-                    required
-                  >
-                    <option value="">Sélectionner un animal</option>
-                    {animaux.map(animal => (
-                      <option key={animal.Id_Animal} value={animal.Id_Animal}>
-                        {animal.Nom}
-                      </option>
-                    ))}
-                  </select>
+                  <FormControl fullWidth>
+                    <InputLabel id="animal-select-label">Sélectionner un animal</InputLabel>
+                    <Select
+                      labelId="animal-select-label"
+                      value={activity.animalId}
+                      onChange={(e) => handleChange('animalId', e.target.value)}
+                      required
+                      label="Sélectionner un animal"
+                      sx={{ width: '175px' }} 
+                    >
+                      <MenuItem value="">
+                        <em>Aucun</em>
+                      </MenuItem>
+                      {animaux.map(animal => (
+                        <MenuItem key={animal.Id_Animal} value={animal.Id_Animal}>
+                          {animal.Nom}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
                 </td>
                 <td>
-                  <input
+                  <TextField
                     type="date"
                     value={activity.date}
                     onChange={(e) => handleChange('date', e.target.value)}
                     required
+                    fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                   />
                 </td>
                 <td>
-                  <input
+                  <TextField
                     type="time"
                     value={activity.debutActivite}
                     onChange={(e) => handleChange('debutActivite', e.target.value)}
                     required
+                    fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                   />
                 </td>
                 <td>
-                  <input
+                  <TextField
                     type="time"
                     value={activity.finActivite}
                     onChange={(e) => handleChange('finActivite', e.target.value)}
                     required
+                    fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                   />
                 </td>
               </tr>
             </tbody>
           </table>
-          <button type="submit" className='AddActivité'>Ajouter Activité</button>
+          <Button type="submit" variant="contained" color="primary" className='AddActivité'>
+            Ajouter Activité
+          </Button>
         </form>
       </div>
     </div>
