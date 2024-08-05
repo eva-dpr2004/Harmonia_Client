@@ -6,13 +6,15 @@
 }
 
 .tableau{
+    color: #193356;
     margin-top: 2%;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
     display: flex;
     justify-content: center;
 }
 
 table {
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
     border-collapse: collapse;
   }
   
@@ -27,13 +29,9 @@ table {
     margin-left: 10px;
   }
 
-  select {
-    font-size: 10px;
-    margin-bottom: 2%;
-  }
-
   .AddActivité {
-    margin-top: 4%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     padding: 10px 20px;
     font-size: 14px;
     color: white;
@@ -42,3 +40,79 @@ table {
     border-radius: 5px;
     cursor: pointer;
   }
+
+  /*     Tableau et Moyenne Activité     */
+
+  .BoutonsMoyenne{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 4%;
+  }
+
+  .animated-card {
+    max-width: 35%;
+    margin: 20px auto;
+    margin-bottom: 2%;
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    border-radius: 15px;
+    box-shadow:  5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+    transition: all 0.3s ease;
+    transform: scale(0.95);
+    opacity: 0;
+    animation: fadeInScale 0.5s forwards;
+  }
+  
+  @keyframes fadeInScale {
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .title-activites{
+      color: #193356;
+      text-decoration: underline;
+      margin-top: 3%;
+      margin-bottom: 2%;
+  }
+  
+  .tableauActivites{
+      color: #193356;
+      margin-bottom: 2%;
+      display: flex;
+      justify-content: center;
+  }
+  
+  table {
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      border: 2px solid #193356;
+      padding: 8px;
+      text-align: left;
+    }
+    
+    .actions {
+      cursor: pointer;
+      margin-left: 10px;
+    }
+  
+    select {
+      font-size: 10px;
+      margin-bottom: 2%;
+    }
+  
+    .AddActivité {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: white;
+      background-color: #183159;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
