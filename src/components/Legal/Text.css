@@ -1,0 +1,10 @@
+.LegalContainer{
+    margin-top: 2%;
+}
+
+.LegalContainer h3, h2{
+    margin-top: 2%;
+    margin-bottom: 1%;
+    color: #183159;
+    text-decoration: underline;
+}

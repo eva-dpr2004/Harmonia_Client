@@ -98,7 +98,7 @@
 .StartButton {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #b5cde7;
+  background-color: #bedeff;
   color: #193356;
   border: none;
   border-radius: 5px;
@@ -109,7 +109,7 @@
 }
 
 .StartButton:hover {
-  background-color: #d2e1f0;
+  background-color: #e1f0ff;
 }
 
 .hidden {

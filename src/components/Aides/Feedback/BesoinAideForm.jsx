@@ -27,12 +27,13 @@ function BesoinAideForm() {
 
     return (
         <div className='besoin-aide-container'>
+            <img src={`${process.env.PUBLIC_URL}/assets/img/Vecteurs/imprevu.png`} alt="Img Imprevu" className='imgImprevu'/>
             <h1 className='besoin-aide-title'>
                 <ReplyIcon 
                     style={{ color: '#183255', cursor: 'pointer', marginRight: '10px' }}
                     onClick={() => navigate(-1)}
                 />
-                Vous avez rencontré une anomalie ? Un problème ?
+                Vous avez rencontré une anomalie ?
             </h1>
             <p>Merci de nous aider à améliorer Harmonia en nous rapportant les bugs ou problèmes que vous rencontrez.</p>
             <div className="besoin-aide-form">
@@ -43,14 +44,14 @@ function BesoinAideForm() {
                         id="type-anomalie" 
                         value={typeAnomalie}
                         onChange={(e) => setTypeAnomalie(e.target.value)}
-                        placeholder="Exemple : bug"
+                        placeholder="Type d'anomalie rencontré"
                     />
                     <label htmlFor="description-anomalie">Description de l'anomalie :</label>
                     <textarea 
                         id="description-anomalie" 
                         value={descriptionAnomalie}
                         onChange={(e) => setDescriptionAnomalie(e.target.value)}
-                        placeholder="Ceci est la description d'un bug..."
+                        placeholder="Inscrivez la description ici"
                     />
                     <button type="submit">Soumettre</button>
                 </form>

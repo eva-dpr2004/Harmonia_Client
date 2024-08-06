@@ -20,6 +20,7 @@ import BesoinAide from './pages/Aides/Feedback/BesoinAide';
 import ValidationAjout from './pages/Confirmation/ValidationAjout';
 import EnvoieConfirmation from './pages/Confirmation/EnvoieConfirmation';
 import MentionsLegales from './pages/Legal/MentionsLegales';
+import ConditionsUtilisations from './pages/Legal/ConditionsUtilisations';
 import PolitiqueDeConfidentialite from './pages/Legal/PolitiqueDeConfidentialite';
 import PolitiqueDeCookies from './pages/Legal/PolitiqueDeCookies';
 import PageNotFound from './pages/Error/PageNotFound';
@@ -68,6 +69,7 @@ const Router = () => {
       <Route path="/validation-ajout" element={authState.isAuthenticated ? <ValidationAjout /> : <Navigate to="/connexion" />} />
       <Route path="/envoie-confirmation" element={authState.isAuthenticated ? <EnvoieConfirmation /> : <Navigate to="/connexion" />} />
       <Route path="/mentions-legales" element={<MentionsLegales />} />
+      <Route path="/conditions-utilisations" element={<ConditionsUtilisations />} />
       <Route path="/politique-de-confidentialite" element={<PolitiqueDeConfidentialite />} />
       <Route path="/politique-de-cookies" element={<PolitiqueDeCookies />} />
       <Route path="*" element={<PageNotFound />} />

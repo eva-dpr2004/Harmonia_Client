@@ -137,7 +137,7 @@ function AjouterActivites() {
             <thead>
               <tr>
                 <th>Animal</th>
-                <th>Date</th>
+                <th>Date du jour</th>
                 <th>Début de l'activité</th>
                 <th>Fin de l'activité</th>
               </tr>
@@ -153,7 +153,7 @@ function AjouterActivites() {
                       onChange={(e) => handleChange('animalId', e.target.value)}
                       required
                       label="Sélectionner un animal"
-                      sx={{ width: '175px' }} 
+                      sx={{ width: '210px' }} 
                     >
                       <MenuItem value="">
                         <em>Aucun</em>

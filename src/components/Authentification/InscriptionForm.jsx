@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { createUser } from "../../services/Auth";
 import { useNavigate, Link } from "react-router-dom";
-import '../../styles/Formulaires.css'; 
+import '../../styles/Formulaires.css';
 
 function InscriptionForm() {
     const initialValues = {
@@ -63,6 +63,7 @@ function InscriptionForm() {
 
     return (
         <div className="inscription">
+            <img src={`${process.env.PUBLIC_URL}/assets/img/Vecteurs/inscription-rbg.png`} alt="Img inscription" className='imgInscription'/>
             <h2>Inscription</h2>
             <p className="form-link">
                 <Link to="/connexion">Vous avez déjà un compte ? cliquez ici.</Link>

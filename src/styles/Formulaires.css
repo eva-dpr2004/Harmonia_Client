@@ -107,3 +107,49 @@
     margin-bottom: 2%;
   }
   
+  /*  IMAGES */
+
+  .imgConnexion{
+    width: 22%;
+    position: absolute;
+    left: 17%;
+    top: 25%;
+}
+
+.imgInscription{
+    transform: scaleX(-1);
+    width: 23%;
+    position: absolute;
+    right: 15%;
+    top: 35%;
+}
+
+.imgModifierProfil{
+  width: 18%;
+  position: absolute;
+  right: 15%;
+  top: 18%;
+}
+
+.imgSupprimerProfil{
+  width: 20%;
+  position: absolute;
+  left: 15%;
+  top: 20%;
+}
+
+.imgAvisGlobal{
+  transform: scaleX(-1);
+  width: 25%;
+  position: absolute;
+  left: 5%;
+  top: 25%;
+}
+
+.imgImprevu{
+  width: 20%;
+  position: absolute;
+  right: 12%;
+  top: 25%;
+}
+

@@ -41,6 +41,7 @@ function ModifierProfilForm() {
 
   return (
     <div className="modifier-container">
+      <img src={`${process.env.PUBLIC_URL}/assets/img/Vecteurs/modification_profil.png`} alt="Img inscription" className='imgModifierProfil'/>
       <div className="modifier-box">
         <h2 className="profil-title">Modifier Profil</h2>
         <form onSubmit={handleSubmit}>

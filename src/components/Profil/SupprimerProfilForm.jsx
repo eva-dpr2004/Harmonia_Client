@@ -51,9 +51,10 @@ function SupprimerProfilForm() {
 
   return (
     <div className="supprimer-container">
+      <img src={`${process.env.PUBLIC_URL}/assets/img/Vecteurs/supprimer_profil.png`} alt="Img inscription" className='imgSupprimerProfil'/>
       <div className="supprimer-box">
         <h2 className="profil-title">Supprimer Profil</h2>
-        <p className='supprimer-para'>En supprimant votre compte, vous perdrez définitivement toutes vos données, y compris vos informations personnelles, et tout le contenu associé.</p>
+        <p className='supprimer-para'>Vous souhaitez supprimer votre profil ? En supprimant votre compte, vous perdrez définitivement toutes vos données, et tout le contenu associé.</p>
         <button onClick={openModal} className="supprimer-btn">Supprimer mon compte</button>
         {isModalOpen && <Modal onClose={closeModal} onConfirm={handleDelete} />}
         {message && <p className="message">{message}</p>}
