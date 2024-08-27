@@ -49,7 +49,7 @@
   margin-bottom: 10px;
 }
 
-.animal-card h3 {
+.animal-card h4 {
   margin: 10px 0;
   color: #193356;
 }
@@ -57,6 +57,8 @@
 .animal-card p {
   margin: 5px 0;
   color: #1a3558;
+  font-size: 14px;
+  width: 80%;
 }
 
 .edit-icon, .delete-icon {
@@ -75,84 +77,6 @@
   color: #193356;
   top: 25px;
   right: 30px;
-}
-
-/* Ajouter Animal */
-.ajouter-animal-form {
-  background-color: #e6f0fac0;
-  padding: 18px;
-  border-radius: 8px;
-  max-width: 400px;
-  margin: auto;
-  margin-bottom: 1%;
-}
-
-.ajouter-animal-form label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 3%;
-  margin-top: 2%;
-  color: #193356;
-  font-size: 13px;
-}
-
-.ajouter-animal-form h5 {
-  margin-top: 2%;
-  color: #1a3558;
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 10px;
-}
-
-.ajouter-animal-form input[type="text"],
-.ajouter-animal-form input[type="date"],
-.ajouter-animal-form input[type="number"] {
-  width: 96%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-input[type="radio"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #1a3558;
-  border-radius: 30px;
-  position: relative;
-  cursor: pointer;
-}
-
-input[type="radio"]:checked {
-  background-color: #1a3558; 
-  border-color: #1a3558; 
-}
-
-.ajouter-animal-form div label input {
-  margin-right: 10px;
-}
-
-.sex-options, .habitat-options {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.ajouter-animal-form button {
-  margin-top: 2%;
-  background-color: #193356;
-  color: white;
-  padding: 8px 30px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.ajouter-animal-form button:hover {
-  background-color: #5c7494;
 }
 
 /* Types Animaux */
@@ -242,4 +166,63 @@ input[type="radio"]:checked {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/*     AUCUN ANIMAUX     */
+.aucun-animal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7%;
+  margin-bottom: 3%;
+}
+
+.aucun-animal-container img {
+  max-width: 12%;
+  margin-bottom: 2%;
+}
+
+.aucun-animal-container p {
+  margin-top: 2%;
+  font-size: 18px;
+  color: #333;
+}
+
+@media screen and (max-width: 360px) {
+
+  .animal-card{
+    max-width: 265px;
+  }
+
+  .animal-card p{
+    font-size: 12px;
+  }
+
+  .Title-Mes-Animaux{
+    margin-top: 8%;
+  }
+
+  .modal{
+    max-width: 485px;
+    width: 65%;
+  }
+
+  .modal p{
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .modal h2{
+    font-size: 15px;
+  }
+
+  .modal-warning{
+    padding: 5px;
+  }
+
+  .animaux-list-container li{
+    margin: 15px;
+  }
+
 }

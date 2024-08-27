@@ -1,120 +1,121 @@
 .AccueilContainer {
-  font-family: Arial, sans-serif;
-  padding: 40px 20px;
-  text-align: center;
+  font-family: 'Poppins', Arial, sans-serif;
+  padding: 40px;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 5%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f6f9fd;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 3% auto;
+  max-width: 1200px;
 }
 
-.MainContent {
-  max-width: 910px;
-  margin: 0 auto;
+.Harmonia_logo{
+  width: 8%;
+  margin-top: 2%;
+}
+
+.TextColumn {
+  flex: 1;
+  text-align: left;
+  padding-right: 40px;
 }
 
 .MainTitle {
-  font-size: 24px;
-  margin-bottom: 6%;
-  color: #333;
-}
-
-.ImagesRow {
+  font-size: 30px;
+  font-weight: 700;
+  color: #2b2e4a;
   margin-top: 5%;
-  display: flex;
-  justify-content: center;
   margin-bottom: 20px;
-  position: relative; 
-}
-
-.ImageContainer1, .ImageContainer2, .ImageContainer3, .ImageContainer4 {
-  flex: 0 1 calc(50% - 20px);
-  box-sizing: border-box;
-  position: absolute; 
-  width: 50%; 
-}
-
-
-.ImageContainer2 {
-  left: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  margin-left: 38%;
-  margin-top: 10%;
-}
-
-.ImageContainer1 {
-  left: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  margin-left: 2%;
-}
-
-.ImageContainer4 {
-  margin-left: 52%;
-  top: 65vh;
-  z-index: 1;
-  margin-top: 10%;
-}
-
-.ImageContainer3 {
-  margin-right: 20%;
-  top: 80vh;
-  z-index: 2;
-  margin-top: 10%;
-}
-
-.ImageContainer img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px; 
+  line-height: 1.2;
 }
 
 .Description {
   font-size: 16px;
-  color: #171717;
-  margin-bottom: 20px;
-  clear: both;
-  position: relative;
-  top: 2%;
-  z-index: 4;
-  width: 78vh;
-  left: 50%;
+  color: #444752;
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
 
-.Description2 {
-  font-size: 16px;
-  color: #171717;
-  margin-bottom: 20px;
-  clear: both;
-  position: relative;
-  top: 80vh;
-  z-index: 4;
-  width: 78vh;
-  right: 8%;
+.ImagesColumn {
+  flex: 1;
+  text-align: center;
+}
+
+.ImageContainer1 img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .StartButton {
-  padding: 10px 20px;
+  background-color: #183159;
+  color: white;
   font-size: 16px;
-  background-color: #bedeff;
-  color: #193356;
+  padding: 13px 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 140vh;
-  margin-left: 80vh;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .StartButton:hover {
-  background-color: #e1f0ff;
+  background-color: #29415a;
+  transform: translateY(-5px);
 }
 
 .hidden {
   visibility: hidden;
   height: 0;
-  margin-top: 5;
+  margin-top: 5px;
   padding: 0;
+}
+
+@media screen and (max-width: 360px) {
+  .AccueilContainer {
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+    max-width: 100%;
+  }
+
+  .Harmonia_logo {
+    width: 30%;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .TextColumn {
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .MainTitle {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  .Description {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .StartButton {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .ImagesColumn {
+    width: 100%;
+  }
+
+  .ImageContainer1 img {
+    width: 100%;
+    border-radius: 10px;
+  }
 }

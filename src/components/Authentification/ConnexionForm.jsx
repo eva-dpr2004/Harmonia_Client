@@ -70,7 +70,7 @@ function ConnexionForm() {
             <input type="text" value={NomOrEmail} onChange={(event) => setNomOrEmail(event.target.value)} placeholder="Votre nom ou email..."/>
             <label className="label">Mot de passe :</label>
             <input type="password" value={Mot_De_Passe} onChange={(event) => setMot_De_Passe(event.target.value)} placeholder="Votre mot de passe..."/>
-            <button onClick={login} className="button">Login</button>
+            <button onClick={login} className="button">Connexion</button>
           </div>
         </div>
       </div>

@@ -8,6 +8,8 @@ import { storage } from '../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import '../../styles/Boutons.css';
+import '../../styles/Formulaires.css';
 import './MesAnimaux.css';
 
 const typesAnimauxDisponibles = [
@@ -40,7 +42,7 @@ function AjouterAnimalForm() {
     validationSchema: Yup.object({
       Nom: Yup.string()
         .required('Nom est requis')
-        .max(50, 'Le nom ne peut pas dépasser 50 caractères')
+        .max(100, 'Le nom ne peut pas dépasser 100 caractères')
         .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ _-]*$/, 'Le nom ne doit contenir que des lettres, des espaces, des tirets ou des underscores')
         .test('contains-two-letters', 'Le nom doit contenir au moins 2 lettres', value => 
           (value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []).length >= 2),
@@ -59,7 +61,10 @@ function AjouterAnimalForm() {
       Espece: Yup.string()
         .required('Type d\'animal est requis')
         .oneOf(typesAnimauxDisponibles, 'Type d\'animal invalide'),
-      Race: Yup.string().required('Race est requise'),
+        Race: Yup.string()
+        .required('Race est requise')
+        .max(100, 'La race ne peut pas dépasser 100 caractères')
+        .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ -]*$/, 'La race ne doit contenir que des lettres, des espaces ou des tirets'),
       Sexe: Yup.string().required('Sexe est requis'),
       Poids: Yup.number()
         .required('Poids est requis')
@@ -120,7 +125,7 @@ function AjouterAnimalForm() {
       <h2 className='Title-Mes-Animaux'>Ajouter Animal</h2>
       <form className="ajouter-animal-form" onSubmit={formik.handleSubmit}>
         <div className="file-upload-container">
-          <label>Choisir une photo :</label>
+          <label>Choisir une photo (optionnel)</label>
           <div className="upload-button-container">
             <input accept="image/*" style={{ display: 'none' }} id="icon-button-file" type="file" onChange={handleFileChange}/>
             <label htmlFor="icon-button-file">
@@ -209,7 +214,7 @@ function AjouterAnimalForm() {
             <span className="error">{formik.errors.Habitat}</span>
           ) : null}
         </div>
-        <button type="submit">Ajouter +</button>
+        <button type="submit">Ajouter</button>
       </form>
     </div>
   );

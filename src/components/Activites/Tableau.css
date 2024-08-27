@@ -7,7 +7,7 @@
 
 .tableau{
     color: #193356;
-    margin-top: 2%;
+    margin-top: 5%;
     margin-bottom: 2%;
     display: flex;
     justify-content: center;
@@ -42,6 +42,12 @@ table {
   }
 
   /*     Tableau et Moyenne Activité     */
+
+  .pagination-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
 
   .BoutonsMoyenne{
     display: flex;
@@ -105,7 +111,7 @@ table {
     }
   
     .AddActivité {
-      margin-top: 3%;
+      margin-top: 8%;
       margin-bottom: 2%;
       padding: 10px 20px;
       font-size: 14px;
@@ -115,4 +121,98 @@ table {
       border-radius: 5px;
       cursor: pointer;
     }
+  
+  .para-bleu{
+    color: #183159;
+    margin-top: 3%;
+    margin-bottom: 5%;
+  }
+
+  @media screen and (max-width: 360px) {
+    .title-activites {
+      font-size: 1.4rem;
+      margin-top: 5%;
+      margin-bottom: 5%;
+      text-align: center;
+    }
+  
+    .tableau {
+      margin: 5% auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto; 
+    }
+  
+    table {
+      width: 100%;
+      max-width: 340px; 
+      font-size: 12px;
+      border-collapse: collapse;
+    }
+  
+    th, td {
+      padding: 2px;
+      text-align: left;
+      font-size: 10px;
+    }
+  
+    .tableau td .MuiFormControl-root,
+    .tableau td .MuiTextField-root {
+      width: 100% !important; 
+      font-size: 12px; 
+    }
+  
+    .AddActivité {
+      width: 60%;
+      padding: 8px;
+    }
+  
+    /* Boutons Moyenne d'activité */
+    .BoutonsMoyenne {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin: 10% 0;
+    }
+  
+    /* Carte animée */
+    .animated-card {
+      width: 90%;
+      margin: 20px auto;
+      padding: 15px;
+      background: linear-gradient(145deg, #e6e6e6, #ffffff);
+      border-radius: 15px;
+      box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+      transition: all 0.3s ease;
+      transform: scale(0.95);
+      opacity: 0;
+      animation: fadeInScale 0.5s forwards;
+    }
+  
+    /* Sélecteurs */
+    select, .MuiTextField-root {
+      width: 100%;
+      padding: 10px;
+      font-size: 12px;
+      margin-bottom: 5%;
+    }
+  
+    /* Paragraphes */
+    .para-bleu {
+      font-size: 14px;
+      margin-top: 5%;
+      margin-bottom: 5%;
+      text-align: center;
+    }
+  
+    /* Actions */
+    .actions {
+      cursor: pointer;
+      margin-left: 5px;
+      font-size: 12px;
+    }
+  }
+  
   

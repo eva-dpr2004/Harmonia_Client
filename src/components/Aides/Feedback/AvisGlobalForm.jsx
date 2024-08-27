@@ -5,6 +5,8 @@ import { db } from '../../../firebase';
 import { FormControl, RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
 import { SentimentVeryDissatisfied, SentimentNeutral, SentimentVerySatisfied, Reply } from '@mui/icons-material';
 import '../Aides.css'; 
+import '../../../styles/Formulaires.css'
+import '../../../styles/Boutons.css'
 
 function FormulaireAvisGlobal() {
     const [reponses, setReponses] = useState({

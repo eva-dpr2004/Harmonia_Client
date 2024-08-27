@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './BoutonAnimal.css';
+import '../../styles/Boutons.css';
 
 function BoutonAjouterAnimal() {
   const navigate = useNavigate();

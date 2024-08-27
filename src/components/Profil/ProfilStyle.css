@@ -352,3 +352,47 @@ background: #285b9f;
   align-items: center;
   padding: 15px; 
 }
+
+.fleche, .fleche2{
+  left: 42%;
+}
+
+/*     RESPONSIVE MOBILE     */
+@media screen and (max-width: 360px) {
+
+  .fleche{
+    top: 20%;
+    left: 12%;
+  }
+
+  .fleche2{
+    left: 15%;
+    top: 18%;
+  }
+
+  .profil-container{
+    margin-top: 5%;
+  }
+
+  .profil-card{
+    margin-top: 5%;
+    width: 275px;
+  }
+
+  .profil-info {
+    margin-bottom: 10px;
+  }
+
+  .supprimer-box{
+    max-width: 275px;
+  }
+
+  .supprimer-para{
+    margin-top: 38%;
+    font-size: 13px;
+  }
+
+  .modifier-box{
+    max-width: 300px;
+  }
+}

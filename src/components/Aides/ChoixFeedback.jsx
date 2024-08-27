@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Aides.css'; 
+import '../../styles/Formulaires.css'; 
 
 function ChoixFeedback() {
     const navigate = useNavigate();

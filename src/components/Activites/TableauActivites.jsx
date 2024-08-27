@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import { Select, MenuItem, FormControl, InputLabel, Card, CardContent, Typography } from '@mui/material';
+import { Select, MenuItem, FormControl, InputLabel, Card, CardContent, Typography, Pagination, Stack } from '@mui/material';
 import './Tableau.css';
 
 function TableauActivites() {
@@ -14,6 +14,11 @@ function TableauActivites() {
   const [showWeeklyCard, setShowWeeklyCard] = useState(false);
   const [totalTime, setTotalTime] = useState(0);
   const [totalWeeklyTime, setTotalWeeklyTime] = useState(0);
+  const [hasWeeklyActivitiesForEachDay, setHasWeeklyActivitiesForEachDay] = useState(false);
+
+  // Pagination states
+  const [page, setPage] = useState(1);
+  const [itemsPerPage] = useState(10); // 10 items per page
 
   const fetchActivities = useCallback(() => {
     if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
@@ -57,14 +62,47 @@ function TableauActivites() {
     ? activities.filter(activity => activity.Nom_Animal === selectedAnimal)
     : [];
 
+  const sortedActivities = filteredActivities.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+
+  // Pagination logic
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedActivities = sortedActivities.slice(startIndex, endIndex);
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const today = new Date().toISOString().split('T')[0];
-  const todaysActivities = filteredActivities.filter(activity => activity.Date === today);
+  const todaysActivities = sortedActivities.filter(activity => activity.Date === today);
 
   const weekAgo = new Date();
   weekAgo.setDate(weekAgo.getDate() - 7);
-  const lastWeekActivities = filteredActivities.filter(activity => new Date(activity.Date) > weekAgo);
+  const lastWeekActivities = sortedActivities.filter(activity => new Date(activity.Date) >= weekAgo);
 
   const hasEnoughActivities = todaysActivities.length >= 2;
+
+  const checkWeeklyActivitiesForEachDay = useCallback(() => {
+    const daysWithActivities = new Set(lastWeekActivities.map(activity => activity.Date));
+    
+    const past7Days = Array.from({ length: 7 }, (_, i) => {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      return date.toISOString().split('T')[0];
+    });
+
+    // Check if each of the past 7 days has at least one activity
+    const allDaysCovered = past7Days.every(day => daysWithActivities.has(day));
+    
+    setHasWeeklyActivitiesForEachDay(allDaysCovered);
+  }, [lastWeekActivities]);
+
+  useEffect(() => {
+    if (lastWeekActivities.length > 0) {
+      checkWeeklyActivitiesForEachDay();
+    }
+  }, [lastWeekActivities, checkWeeklyActivitiesForEachDay]);
 
   const convertMinutesToHoursAndMinutes = (minutes) => {
     const hours = Math.floor(minutes / 60);
@@ -92,11 +130,6 @@ function TableauActivites() {
     }, 0);
     setTotalWeeklyTime(totalMinutes);
     setShowWeeklyCard(true);
-  };
-
-  const checkWeeklyActivities = () => {
-    const daysWithActivities = new Set(lastWeekActivities.map(activity => activity.Date));
-    return daysWithActivities.size >= 7;
   };
 
   return (
@@ -137,8 +170,8 @@ function TableauActivites() {
                 </tr>
               </thead>
               <tbody>
-                {filteredActivities.length > 0 ? (
-                  filteredActivities.map(activity => (
+                {displayedActivities.length > 0 ? (
+                  displayedActivities.map(activity => (
                     <tr key={activity.Id_Activite}>
                       <td>{activity.Nom_Animal}</td>
                       <td>{activity.Date}</td>
@@ -160,15 +193,28 @@ function TableauActivites() {
               </tbody>
             </table>
           </div>
+          <Stack >
+            {sortedActivities.length > itemsPerPage && (
+              <Pagination
+              className='pagination-container'
+                count={Math.ceil(sortedActivities.length / itemsPerPage)}
+                page={page}
+                onChange={handlePageChange}
+                color="primary"
+                variant="outlined"
+                size="small"
+              />
+            )}
+          </Stack>
           <div className='BoutonsMoyenne'>
             {hasEnoughActivities && (
               <button variant="contained" className='AddActivité' onClick={calculateTotalTime}>
                 Calculer la durée totale quotidienne
               </button>
             )}
-            {checkWeeklyActivities() && (
+            {hasWeeklyActivitiesForEachDay && (
               <button variant="contained" className='AddActivité' onClick={calculateTotalWeeklyTime}>
-                Calculer la durée totale hebdomadaire
+                Calculer la durée totale des 7 derniers jours
               </button>
             )}
           </div>
@@ -188,7 +234,7 @@ function TableauActivites() {
             <Card className="animated-card">
               <CardContent>
                 <Typography variant="h5" component="div" color="#183159">
-                  Total de temps d'activité pour la semaine
+                  Total de temps d'activité pour les 7 derniers jours
                 </Typography>
                 <Typography variant="body2" color="#183159">
                   {convertMinutesToHoursAndMinutes(totalWeeklyTime)} cette semaine
@@ -198,7 +244,7 @@ function TableauActivites() {
           )}
         </div>
       ) : (
-        <p>Aucune activité enregistrée pour vos animaux.</p>
+        <p className='para-bleu'>Aucune activité enregistrée pour vos animaux.</p>
       )}
     </div>
   );

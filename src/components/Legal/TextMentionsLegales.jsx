@@ -20,7 +20,7 @@ function TextMentionsLegales() {
 
       <h3>3. Description des services fournis :</h3>
       <p>
-        Le site www.harmonia.com a pour objet de fournir une information concernant l’ensemble des activités de la société. Le propriétaire du site s’efforce de fournir sur le site www.harmonia.com des informations aussi précises que possible. Toutefois, il ne pourra être tenu responsable des omissions, des inexactitudes et des carences dans la mise à jour, qu’elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.
+        Le site www.harmonia.com a pour objet de fournir une information concernant l’ensemble des activités de la société. La propriétaire du site s’efforce de fournir sur le site www.harmonia.com des informations aussi précises que possible. Toutefois, il ne pourra être tenu responsable des omissions, des inexactitudes et des carences dans la mise à jour, qu’elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.
       </p>
 
       <h3>4. Limitations contractuelles sur les données techniques :</h3>
@@ -30,12 +30,15 @@ function TextMentionsLegales() {
 
       <h3>5. Propriété intellectuelle et contrefaçons :</h3>
       <p>
-        Harmonia est propriétaire des droits de propriété intellectuelle ou détient les droits d’usage sur tous les éléments accessibles sur le site, notamment les textes, images, graphismes, logo, icônes, sons, logiciels. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de : Harmonia.
+        Harmonia est propriétaire des droits de propriété intellectuelle ou détient les droits d’usage sur tous les éléments accessibles sur le site, notamment les textes, images, graphismes, logo, icônes, sons, logiciels. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de Eva De Palma Rosario(Propriétaire de Harmonia).
       </p>
 
       <h3>6. Limitations de responsabilité :</h3>
       <p>
-        Harmonia ne pourra être tenu responsable des dommages directs et indirects causés au matériel de l’utilisateur, lors de l’accès au site www.harmonia.com, et résultant soit de l’utilisation d’un matériel ne répondant pas aux spécifications indiquées au point 4, soit de l’apparition d’un bug ou d’une incompatibilité.
+        Harmonia est un site web et une application mobile développés uniquement par passion pour les animaux. Bien que nous nous efforcions de fournir des informations utiles et pertinentes, nous ne pouvons garantir l'exactitude complète de celles-ci. En conséquence, certaines informations peuvent être incorrectes ou incomplètes.
+      </p>
+      <p>
+        Harmonia ne pourra être tenu responsable des dommages directs et indirects causés au matériel de l’utilisateur lors de l’accès au site www.harmonia.com ou à l'application mobile, et résultant soit de l’utilisation d’un matériel ne répondant pas aux spécifications indiquées au point 4, soit de l’apparition d’un bug ou d’une incompatibilité.
       </p>
 
       <h3>7. Gestion des données personnelles :</h3>
@@ -51,6 +54,18 @@ function TextMentionsLegales() {
       <h3>9. Droit applicable et attribution de juridiction :</h3>
       <p>
         Tout litige en relation avec l’utilisation du site www.harmonia.com est soumis au droit français. Il est fait attribution exclusive de juridiction aux tribunaux compétents de Paris.
+      </p>
+
+      <h3>10. Crédits, Sources et Licences :</h3>
+      <p>
+        Licenses des images en provenance de Freepik :
+        <ul>
+          <li><a href="http://www.freepik.com">Designed by slidesgo / Freepik</a></li>
+          <li><a href="http://www.freepik.com">Designed by stories / Freepik</a></li>
+          <li><a href="http://www.freepik.com">Designed by Freepik</a></li>
+          <li><a href="http://www.freepik.com">Designed by vectorjuice / Freepik</a></li>
+          <li><a href="http://www.freepik.com">Designed by pch.vector / Freepik</a></li>
+        </ul>
       </p>
     </div>
   )

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { AnimalContext } from '../../context/AnimalContext';
 import * as Yup from 'yup';
 import { AuthContext } from '../../context/AuthContext';
+import '../../styles/Formulaires.css';
 
 function ModifierAnimalForm() {
   const { selectedAnimal, setSelectedAnimal } = useContext(AnimalContext);
@@ -20,10 +21,12 @@ function ModifierAnimalForm() {
     Habitat: ''
   });
   const [message, setMessage] = useState('');
+  const [initialNom, setInitialNom] = useState('');
 
   useEffect(() => {
     if (selectedAnimal) {
       setAnimal(selectedAnimal);
+      setInitialNom(selectedAnimal.Nom); 
     } else {
       navigate('/mes-animaux');  
     }
@@ -31,11 +34,11 @@ function ModifierAnimalForm() {
 
   const validationSchema = Yup.object().shape({
     Nom: Yup.string()
-      .required('Nom est requis')
-      .max(50, 'Le nom ne peut pas dépasser 50 caractères')
-      .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ _-]*$/, 'Le nom ne doit contenir que des lettres, des espaces, des tirets ou des underscores')
-      .test('contains-two-letters', 'Le nom doit contenir au moins 2 lettres', value => 
-        (value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []).length >= 2),
+    .required('Nom est requis')
+    .max(100, 'Le nom ne peut pas dépasser 100 caractères')
+    .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ _-]*$/, 'Le nom ne doit contenir que des lettres, des espaces, des tirets ou des underscores')
+    .test('contains-two-letters', 'Le nom doit contenir au moins 2 lettres', value => 
+      (value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []).length >= 2),
     Date_De_Naissance: Yup.date()
       .required('Date de naissance est requise')
       .nullable()
@@ -96,7 +99,7 @@ function ModifierAnimalForm() {
         withCredentials: true
       });
       setSelectedAnimal(null);
-      navigate('/mes-animaux') 
+      navigate('/mes-animaux');
     } catch (error) {
       console.error('Erreur lors de la mise à jour de l\'animal:', error);
       setMessage('Erreur lors de la mise à jour de l\'animal');
@@ -108,44 +111,40 @@ function ModifierAnimalForm() {
   }
 
   return (
-    <div>
-      <h1>Modifier Animal: {animal.Nom}</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nom:</label>
-          <input type="text" name="Nom" value={animal.Nom} onChange={handleChange} />
+    <div className="modification-animal">
+      <h2>Modifier Animal: {initialNom}</h2> 
+      <div className="form-container">
+        <div className="form-box">
+          <form onSubmit={handleSubmit}>
+            <label className="label">Nom:</label>
+            <input type="text" name="Nom" value={animal.Nom} onChange={handleChange} />
+            
+            <label className="label">Date de Naissance:</label>
+            <input type="date" name="Date_De_Naissance" value={animal.Date_De_Naissance} onChange={handleChange} />
+            
+            <label className="label">Date d'Adoption:</label>
+            <input type="date" name="Date_Adoption" value={animal.Date_Adoption} onChange={handleChange} />
+            
+            <label className="label">Espèce:</label>
+            <input type="text" name="Espece" value={animal.Espece} onChange={handleChange} />
+            
+            <label className="label">Race:</label>
+            <input type="text" name="Race" value={animal.Race} onChange={handleChange} />
+            
+            <label className="label">Sexe:</label>
+            <input type="text" name="Sexe" value={animal.Sexe} onChange={handleChange} />
+            
+            <label className="label">Poids (kg):</label>
+            <input type="number" name="Poids" value={animal.Poids} onChange={handleChange} />
+            
+            <label className="label">Habitat:</label>
+            <input type="text" name="Habitat" value={animal.Habitat} onChange={handleChange} />
+            
+            <button type="submit" className="button">Enregistrer les modifications</button>
+            {message && <p className="error">{message}</p>}
+          </form>
         </div>
-        <div>
-          <label>Date de Naissance:</label>
-          <input type="date" name="Date_De_Naissance" value={animal.Date_De_Naissance} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Date d'Adoption:</label>
-          <input type="date" name="Date_Adoption" value={animal.Date_Adoption} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Espèce:</label>
-          <input type="text" name="Espece" value={animal.Espece} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Race:</label>
-          <input type="text" name="Race" value={animal.Race} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Sexe:</label>
-          <input type="text" name="Sexe" value={animal.Sexe} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Poids (kg):</label>
-          <input type="number" name="Poids" value={animal.Poids} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Habitat:</label>
-          <input type="text" name="Habitat" value={animal.Habitat} onChange={handleChange} />
-        </div>
-        <button type="submit">Enregistrer les modifications</button>
-        {message && <p className="error">{message}</p>}
-      </form>
+      </div>
     </div>
   );
 }

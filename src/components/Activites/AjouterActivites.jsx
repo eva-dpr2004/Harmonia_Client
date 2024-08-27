@@ -121,12 +121,6 @@ function AjouterActivites() {
     }
   };
 
-  const animauxAvecActivites = [
-    'chat', 'chien', 'lapin', 'furet', 'singe', 'hérisson',
-    'perroquet', 'canari', 'poule', 'coq', 'canard', 'oie', 'dindon', 'perruche', 'pigeon', 'moineau',
-    'tortue', 'lézard', 'gecko', 'serpent', 'iguane', 'caméléon', 'grenouille', 'triton'
-  ];
-
   return (
     <div>
       <h2 className='title-activites'>Activités</h2>
@@ -137,7 +131,7 @@ function AjouterActivites() {
             <thead>
               <tr>
                 <th>Animal</th>
-                <th>Date du jour</th>
+                <th>Date de l'activité</th>
                 <th>Début de l'activité</th>
                 <th>Fin de l'activité</th>
               </tr>
@@ -153,14 +147,12 @@ function AjouterActivites() {
                       onChange={(e) => handleChange('animalId', e.target.value)}
                       required
                       label="Sélectionner un animal"
-                      sx={{ width: '210px' }} 
+                      sx={{ width: '100%' }}
                     >
                       <MenuItem value="">
                         <em>Aucun</em>
                       </MenuItem>
-                      {animaux
-                        .filter(animal => animauxAvecActivites.includes(animal.Espece.toLowerCase()))
-                        .map(animal => (
+                      {animaux.map(animal => (
                           <MenuItem key={animal.Id_Animal} value={animal.Id_Animal}>
                             {animal.Nom}
                           </MenuItem>
@@ -178,7 +170,9 @@ function AjouterActivites() {
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    disabled
+                    inputProps={{
+                      max: getCurrentDate(),
+                    }}
                   />
                 </td>
                 <td>
@@ -209,7 +203,7 @@ function AjouterActivites() {
             </tbody>
           </table>
           <button type="submit" variant="contained" className='AddActivité'>
-            Ajouter l'Activité du jour
+            Ajouter l'Activité
           </button>
         </form>
       </div>

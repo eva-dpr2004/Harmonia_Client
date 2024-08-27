@@ -1,14 +1,17 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
+import { Reply } from '@mui/icons-material';
 import logout from '../../context/useLogout';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import './ProfilStyle.css';
+import { useNavigate } from 'react-router-dom';
 
 function SupprimerProfilForm() {
   const { authState, setAuthState } = useContext(AuthContext);
   const [message, setMessage] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleDelete = async () => {
     try {
@@ -53,7 +56,14 @@ function SupprimerProfilForm() {
     <div className="supprimer-container">
       <img src={`${process.env.PUBLIC_URL}/assets/img/Vecteurs/supprimer_profil.png`} alt="Img inscription" className='imgSupprimerProfil'/>
       <div className="supprimer-box">
-        <h2 className="profil-title">Supprimer Profil</h2>
+        <h2 className="profil-title">
+          <Reply 
+            className='fleche'
+            style={{  color: '#183255', cursor: 'pointer', marginRight: '10px', position: 'absolute' }}
+            onClick={() => navigate(-1)}
+          />
+          Supprimer Profil
+        </h2>
         <p className='supprimer-para'>Vous souhaitez supprimer votre profil ? En supprimant votre compte, vous perdrez définitivement toutes vos données, et tout le contenu associé.</p>
         <button onClick={openModal} className="supprimer-btn">Supprimer mon compte</button>
         {isModalOpen && <Modal onClose={closeModal} onConfirm={handleDelete} />}

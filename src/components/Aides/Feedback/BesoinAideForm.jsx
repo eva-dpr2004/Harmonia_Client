@@ -4,6 +4,8 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from '../../../firebase'; 
 import ReplyIcon from '@mui/icons-material/Reply';
 import '../Aides.css'; 
+import '../../../styles/Formulaires.css'
+import '../../../styles/Boutons.css'
 
 function BesoinAideForm() {
     const [typeAnomalie, setTypeAnomalie] = useState('');

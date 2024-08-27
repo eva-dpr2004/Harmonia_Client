@@ -63,7 +63,7 @@ function InscriptionForm() {
 
     return (
         <div className="inscription">
-            <img src={`${process.env.PUBLIC_URL}/assets/img/Vecteurs/inscription-rbg.png`} alt="Img inscription" className='imgInscription'/>
+            <img src={`${process.env.PUBLIC_URL}/assets/img/Vecteurs/inscription.png`} alt="Img" className='imgInscription'/>
             <h2>Inscription</h2>
             <p className="form-link">
                 <Link to="/connexion">Vous avez déjà un compte ? cliquez ici.</Link>

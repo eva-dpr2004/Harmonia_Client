@@ -125,7 +125,7 @@ function MesAnimauxList({ fetchAnimalCount }) {
         {displayedAnimaux.map(animal => (
           <li key={animal.Id_Animal} className="animal-card">
             <img src={animal.photoURL || defaultImage} alt={animal.Nom} className="animal-image" />
-            <h3>{animal.Nom}</h3>
+            <h4>{animal.Nom}</h4>
             <p>Date de Naissance: {animal.Date_De_Naissance}</p>
             <p>Date d'Adoption: {animal.Date_Adoption}</p>
             <p>Espèce: {animal.Espece}</p>
