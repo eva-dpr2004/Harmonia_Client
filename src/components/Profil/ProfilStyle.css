@@ -396,3 +396,26 @@ background: #285b9f;
     max-width: 300px;
   }
 }
+
+@media screen and (max-width: 834px) {
+
+  .profil-title{
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .profil-card{
+    margin-bottom: 6%;
+  }
+
+  .fleche{
+    top: 26%;
+    left: 30%;
+  }
+
+  .fleche2{
+    left: 32%;
+    top: 23%;
+  }
+}
+

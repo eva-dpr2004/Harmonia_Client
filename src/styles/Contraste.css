@@ -1,0 +1,27 @@
+/* Contraste.css */
+.contraste {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.contraste a {
+  color: #FFD700 !important; /* Jaune pour le contraste */
+}
+
+.contraste .footer {
+  background-color: #111 !important;
+}
+
+.contraste .footer-links a {
+  color: #FFD700 !important;
+}
+
+.contraste .contraste-toggle {
+  background-color: #FFD700 !important;
+  color: #000 !important;
+}
+
+.contraste button {
+  background-color: #FFD700 !important;
+  color: #000 !important;
+}

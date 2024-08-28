@@ -5,6 +5,7 @@ import { AnimalContext } from '../../context/AnimalContext';
 import * as Yup from 'yup';
 import { AuthContext } from '../../context/AuthContext';
 import '../../styles/Formulaires.css';
+import { Reply } from '@mui/icons-material';  
 
 function ModifierAnimalForm() {
   const { selectedAnimal, setSelectedAnimal } = useContext(AnimalContext);
@@ -34,11 +35,11 @@ function ModifierAnimalForm() {
 
   const validationSchema = Yup.object().shape({
     Nom: Yup.string()
-    .required('Nom est requis')
-    .max(100, 'Le nom ne peut pas dépasser 100 caractères')
-    .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ _-]*$/, 'Le nom ne doit contenir que des lettres, des espaces, des tirets ou des underscores')
-    .test('contains-two-letters', 'Le nom doit contenir au moins 2 lettres', value => 
-      (value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []).length >= 2),
+      .required('Nom est requis')
+      .max(100, 'Le nom ne peut pas dépasser 100 caractères')
+      .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ _-]*$/, 'Le nom ne doit contenir que des lettres, des espaces, des tirets ou des underscores')
+      .test('contains-two-letters', 'Le nom doit contenir au moins 2 lettres', value => 
+        (value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []).length >= 2),
     Date_De_Naissance: Yup.date()
       .required('Date de naissance est requise')
       .nullable()
@@ -92,17 +93,21 @@ function ModifierAnimalForm() {
     }
 
     try {
-      await axios.put(`http://localhost:3001/animals/updateAnimal/${selectedAnimal.Id_Animal}`, animal, {
+      const response = await axios.put(`http://localhost:3001/animals/updateAnimal/${selectedAnimal.Id_Animal}`, animal, {
         headers: {
           'Authorization': `Bearer ${authState.token}`
         },
         withCredentials: true
       });
-      setSelectedAnimal(null);
-      navigate('/mes-animaux');
+
+      if (response.data.success) {
+        setSelectedAnimal(null);
+        navigate('/mes-animaux');
+      } else if (response.data.error) {
+        setMessage(response.data.error); 
+      }
     } catch (error) {
-      console.error('Erreur lors de la mise à jour de l\'animal:', error);
-      setMessage('Erreur lors de la mise à jour de l\'animal');
+      setMessage('Vous avez dépasser la limite de 3 modification de l\'animal par jour');
     }
   };
 
@@ -112,9 +117,16 @@ function ModifierAnimalForm() {
 
   return (
     <div className="modification-animal">
-      <h2>Modifier Animal: {initialNom}</h2> 
+      <h2>
+        <Reply 
+          style={{ color: '#183255', cursor: 'pointer', marginRight: '10px' }} 
+          onClick={() => navigate(-1)} 
+        />
+        Modifier Animal: {initialNom}
+      </h2>
       <div className="form-container">
         <div className="form-box">
+          {message && <p className="error"></p>} 
           <form onSubmit={handleSubmit}>
             <label className="label">Nom:</label>
             <input type="text" name="Nom" value={animal.Nom} onChange={handleChange} />

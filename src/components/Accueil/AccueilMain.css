@@ -119,3 +119,28 @@
     border-radius: 10px;
   }
 }
+
+@media screen and (max-width: 834px) {
+  
+  .AccueilContainer{
+    max-width: 650px;
+  }
+
+  .MainTitle{
+    font-size: 16px;
+  }
+
+  .Description{
+    font-size: 12px;
+  }
+
+  .StartButton{
+    font-size: 12px;
+    padding: 8px 30px;
+    margin-left: 12%;
+  }
+
+  .Harmonia_logo{
+    width: 11%;
+  }
+}

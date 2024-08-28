@@ -104,3 +104,10 @@
       margin-bottom: 18%;
     }
   }
+
+  @media screen and (max-width: 834px) {
+    .help-container img{
+      width: 100px;
+      top: 16%;
+    }
+  }

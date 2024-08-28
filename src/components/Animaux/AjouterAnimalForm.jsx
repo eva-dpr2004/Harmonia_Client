@@ -8,6 +8,7 @@ import { storage } from '../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import { Reply } from '@mui/icons-material'; // Importer l'icône Reply
 import '../../styles/Boutons.css';
 import '../../styles/Formulaires.css';
 import './MesAnimaux.css';
@@ -122,7 +123,13 @@ function AjouterAnimalForm() {
 
   return (
     <div>
-      <h2 className='Title-Mes-Animaux'>Ajouter Animal</h2>
+      <h2 className='Title-Mes-Animaux'>
+        <Reply 
+          style={{ color: '#183255', cursor: 'pointer', marginRight: '10px' }} 
+          onClick={() => navigate(-1)} 
+        />
+        Ajouter Animal
+      </h2>
       <form className="ajouter-animal-form" onSubmit={formik.handleSubmit}>
         <div className="file-upload-container">
           <label>Choisir une photo (optionnel)</label>
