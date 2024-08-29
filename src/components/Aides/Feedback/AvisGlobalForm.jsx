@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc } from "firebase/firestore";
 import { db } from '../../../firebase'; 
 import { FormControl, RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
 import { SentimentVeryDissatisfied, SentimentNeutral, SentimentVerySatisfied, Reply } from '@mui/icons-material';
+import DOMPurify from 'dompurify';
 import '../Aides.css'; 
 import '../../../styles/Formulaires.css'
 import '../../../styles/Boutons.css'
@@ -21,8 +22,17 @@ function FormulaireAvisGlobal() {
         suggestions: '',
         recommandation: ''
     });
-
+    const [isSubmissionAllowed, setIsSubmissionAllowed] = useState(true);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const lastSubmissionDate = localStorage.getItem('lastSubmissionDateAvisGlobal');
+        const today = new Date().toISOString().split('T')[0];
+
+        if (lastSubmissionDate === today) {
+            setIsSubmissionAllowed(false);
+        }
+    }, []);
 
     const handleChangeRadio = (event) => {
         setReponses({ ...reponses, [event.target.name]: event.target.value });
@@ -32,14 +42,54 @@ function FormulaireAvisGlobal() {
         setReponses({ ...reponses, [event.target.name]: event.target.value });
     };
 
+    const validateText = (text, fieldName) => {
+        const sanitizedText = DOMPurify.sanitize(text);
+        if (sanitizedText.replace(/\s/g, '').length < 3) {
+            return `${fieldName} doit contenir au minimum 3 caractères (sans les espaces).`;
+        }
+        if (sanitizedText.replace(/\s/g, '').length > 500) {
+            return `${fieldName} ne peut pas dépasser 500 caractères (sans les espaces).`;
+        }
+        if (/(?:[A-Z]{2,})/.test(sanitizedText)) {
+            return `${fieldName} ne doit pas contenir deux majuscules consécutives.`;
+        }
+        if (/(DROP\s+TABLE|SELECT|DELETE|INSERT|UPDATE|CREATE|ALTER|EXEC)/i.test(sanitizedText)) {
+            return `${fieldName} contient des mots réservés SQL non autorisés.`;
+        }
+        return '';
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (!isSubmissionAllowed) {
+            alert('Vous ne pouvez soumettre ce formulaire qu\'une fois par jour.');
+            return;
+        }
+
+        const errors = [
+            validateText(reponses.suggestions, 'Suggestions')
+        ].filter(error => error !== '');
+
+        if (errors.length > 0) {
+            alert(errors.join('\n'));
+            return;
+        }
+
+        const sanitizedResponses = Object.keys(reponses).reduce((acc, key) => {
+            acc[key] = DOMPurify.sanitize(reponses[key]);
+            return acc;
+        }, {});
+
         try {
             await setDoc(doc(db, "Feedback_Avis_Global", `${Date.now()}`), {
-                ...reponses,
+                ...sanitizedResponses,
                 timestamp: new Date()
             });
-            navigate('/envoie-confirmation'); 
+
+            const today = new Date().toISOString().split('T')[0];
+            localStorage.setItem('lastSubmissionDateAvisGlobal', today);
+            navigate('/envoie-confirmation');
         } catch (error) {
             console.error("Erreur lors de l'ajout du document: ", error);
             alert('Échec de la soumission du retour. Veuillez réessayer.');
@@ -56,6 +106,9 @@ function FormulaireAvisGlobal() {
                 />
                 Formulaire d'Avis Global
             </h1>
+            {!isSubmissionAllowed && (
+                <p className="submission-warning">Vous avez déjà soumis ce formulaire aujourd'hui. Vous pourrez le soumettre à nouveau demain.</p>
+            )}
             <form onSubmit={handleSubmit} className="avis-global-form">
 
                 <details>
@@ -75,7 +128,7 @@ function FormulaireAvisGlobal() {
                     <FormControl component="fieldset">
                         <RadioGroup row name="fonctionnaliteUtile" value={reponses.fonctionnaliteUtile} onChange={handleChangeRadio}>
                             <FormControlLabel value="tableauActivités" control={<Radio />} label="Tableau d'activités" />
-                            <FormControlLabel value="graphique" control={<Radio />} label="Graphique de moyenne d'activités" />
+                            <FormControlLabel value="graphique" control={<Radio />} label="Cartes durée total d'activités" />
                             <FormControlLabel value="modificationAnimaux" control={<Radio />} label="Modification des animaux" />
                         </RadioGroup>
                     </FormControl>
@@ -89,7 +142,7 @@ function FormulaireAvisGlobal() {
                             <FormControlLabel value="ajoutAnimal" control={<Radio />} label="Ajout d'un animal" />
                             <FormControlLabel value="modificationAnimaux" control={<Radio />} label="Modification des animaux" />
                             <FormControlLabel value="tableauActivités" control={<Radio />} label="Tableau d'activités" />
-                            <FormControlLabel value="graphiqueActivite" control={<Radio />} label="Graphique de moyenne d'activités" />
+                            <FormControlLabel value="graphiqueActivite" control={<Radio />} label="Cartes durée total d'activités" />
                         </RadioGroup>
                     </FormControl>
                 </details>
@@ -180,7 +233,7 @@ function FormulaireAvisGlobal() {
                     </FormControl>
                 </details>
 
-                <Button type="submit" variant="contained" color="primary">Soumettre</Button>
+                <Button type="submit" variant="contained" color="primary" disabled={!isSubmissionAllowed}>Soumettre</Button>
             </form>
         </div>
     );

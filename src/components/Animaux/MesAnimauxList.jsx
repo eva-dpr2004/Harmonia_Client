@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { AnimalContext } from '../../context/AnimalContext';
+import { getAnimalsByUserId, deleteAnimalById } from '../../services/Animaux';
 import AucunAnimal from './AucunAnimal';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -25,15 +25,14 @@ function MesAnimauxList({ fetchAnimalCount }) {
 
   const fetchAnimaux = useCallback(() => {
     if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
-      const url = `http://localhost:3001/animals/byUserId/${authState.user.Id_Utilisateur}`;
-      axios.get(url, { withCredentials: true })
-        .then(response => {
-          setAnimaux(response.data);
-          if ((page - 1) * itemsPerPage >= response.data.length && page > 1) {
+      getAnimalsByUserId(authState.user.Id_Utilisateur)
+        .then((data) => {
+          setAnimaux(data);
+          if ((page - 1) * itemsPerPage >= data.length && page > 1) {
             setPage(prevPage => prevPage - 1);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Erreur lors de la récupération des animaux:', error);
         });
     }
@@ -51,9 +50,8 @@ function MesAnimauxList({ fetchAnimalCount }) {
   const handleConfirmDelete = async () => {
     if (animalToDelete) {
       try {
-        const url = `http://localhost:3001/animals/deleteAnimal/${animalToDelete.Id_Animal}`;
-        const response = await axios.delete(url, { withCredentials: true });
-        if (response.data.success) {
+        const data = await deleteAnimalById(animalToDelete.Id_Animal);
+        if (data.success) {
           setMessage('Animal supprimé avec succès !');
           setTimeout(() => {
             setMessage('');
@@ -80,7 +78,7 @@ function MesAnimauxList({ fetchAnimalCount }) {
     setPage(value);
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   };
 

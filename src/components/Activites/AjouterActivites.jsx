@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
-import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import { Select, MenuItem, TextField, FormControl, InputLabel } from '@mui/material';
+import { getAnimauxByUserId, addActivite } from '../../services/Activites';
 import './Tableau.css';
 
 function AjouterActivites() {
@@ -22,16 +22,14 @@ function AjouterActivites() {
   const [animaux, setAnimaux] = useState([]);
   const [error, setError] = useState('');
 
-  const fetchAnimaux = useCallback(() => {
+  const fetchAnimaux = useCallback(async () => {
     if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
-      const url = `http://localhost:3001/animals/byUserId/${authState.user.Id_Utilisateur}`;
-      axios.get(url, { withCredentials: true })
-        .then(response => {
-          setAnimaux(response.data);
-        })
-        .catch(error => {
-          console.error('Erreur lors de la récupération des animaux:', error);
-        });
+      try {
+        const data = await getAnimauxByUserId(authState.user.Id_Utilisateur);
+        setAnimaux(data);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des animaux:', error);
+      }
     }
   }, [authState]);
 
@@ -93,11 +91,12 @@ function AjouterActivites() {
     const animalNom = selectedAnimal ? selectedAnimal.Nom : '';
 
     try {
-      const response = await axios.post('http://localhost:3001/activities/ajoutActivite', {
+      const response = await addActivite({
         ...activity,
         dureeActivite,
         animalNom
-      }, { withCredentials: true });
+      });
+
       if (response.status === 201) {
         console.log('Activité ajoutée avec succès');
         setActivity({
@@ -125,7 +124,7 @@ function AjouterActivites() {
     <div>
       <h2 className='title-activites'>Activités</h2>
       <div className='tableau'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='ajout-activite-tableau'>
           {error && <p className="error">{error}</p>}
           <table>
             <thead>

@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { Reply } from '@mui/icons-material';
 import './ProfilStyle.css';
+import { updateUserProfile } from '../../services/Users';  
 
 function ModifierProfilForm() {
   const { authState } = useContext(AuthContext);
@@ -13,7 +13,6 @@ function ModifierProfilForm() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Charger les compteurs de modifications à partir du stockage local par utilisateur
     const userId = authState.user.Id_Utilisateur;
     const storedCounts = JSON.parse(localStorage.getItem(`updateCounts_${userId}`));
     if (storedCounts) {
@@ -43,8 +42,7 @@ function ModifierProfilForm() {
       return;
     }
 
-    const url = `http://localhost:3001/auth/updateuser/${authState.user.Id_Utilisateur}`;
-    axios.put(url, formData, { withCredentials: true })
+    updateUserProfile(authState.user.Id_Utilisateur, formData) 
       .then(response => {
         if (response.data.success) {
           setMessage('Profil mis à jour avec succès');
@@ -54,7 +52,6 @@ function ModifierProfilForm() {
           if (formData.Email) newCounts.Email += 1;
           setUpdateCounts(newCounts);
 
-          // Sauvegarder les compteurs de modifications dans le stockage local par utilisateur
           const userId = authState.user.Id_Utilisateur;
           localStorage.setItem(`updateCounts_${userId}`, JSON.stringify(newCounts));
 

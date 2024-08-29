@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { storage } from '../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import { Reply } from '@mui/icons-material'; // Importer l'icône Reply
+import { Reply } from '@mui/icons-material'; 
+import { addAnimal } from '../../services/Animaux';
 import '../../styles/Boutons.css';
 import '../../styles/Formulaires.css';
 import './MesAnimaux.css';
@@ -46,7 +46,14 @@ function AjouterAnimalForm() {
         .max(100, 'Le nom ne peut pas dépasser 100 caractères')
         .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ _-]*$/, 'Le nom ne doit contenir que des lettres, des espaces, des tirets ou des underscores')
         .test('contains-two-letters', 'Le nom doit contenir au moins 2 lettres', value => 
-          (value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []).length >= 2),
+          (value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []).length >= 2)
+        .test('no-sql-words', 'Le nom contient des mots réservés SQL non autorisés', value => 
+          !/(DROP\s+TABLE|SELECT|DELETE|INSERT|UPDATE|CREATE|ALTER|EXEC)/i.test(value))
+        .test('no-consecutive-uppercase', 'Le nom ne doit pas contenir deux majuscules consécutives', value => 
+          !/(?:[A-Z]{2,})/.test(value))
+        .test('min-length-no-spaces', 'Le nom doit contenir au minimum 3 caractères (sans les espaces)', value => 
+          value.replace(/\s/g, '').length >= 3)
+        .matches(/^[^!@#$%^&*(),.?":{}|<>]*$/, 'Le nom ne doit pas contenir de caractères spéciaux'),
       Date_De_Naissance: Yup.date()
         .required('Date de naissance est requise')
         .nullable()
@@ -62,15 +69,24 @@ function AjouterAnimalForm() {
       Espece: Yup.string()
         .required('Type d\'animal est requis')
         .oneOf(typesAnimauxDisponibles, 'Type d\'animal invalide'),
-        Race: Yup.string()
+      Race: Yup.string()
         .required('Race est requise')
         .max(100, 'La race ne peut pas dépasser 100 caractères')
-        .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ -]*$/, 'La race ne doit contenir que des lettres, des espaces ou des tirets'),
+        .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ -]*$/, 'La race ne doit contenir que des lettres, des espaces ou des tirets')
+        .test('no-sql-words', 'La race contient des mots réservés SQL non autorisés', value => 
+          !/(DROP\s+TABLE|SELECT|DELETE|INSERT|UPDATE|CREATE|ALTER|EXEC)/i.test(value))
+        .test('no-consecutive-uppercase', 'La race ne doit pas contenir deux majuscules consécutives', value => 
+          !/(?:[A-Z]{2,})/.test(value))
+        .test('min-length-no-spaces', 'La race doit contenir au minimum 3 caractères (sans les espaces)', value => 
+          value.replace(/\s/g, '').length >= 3)
+        .matches(/^[^!@#$%^&*(),.?":{}|<>]*$/, 'La race ne doit pas contenir de caractères spéciaux'),
       Sexe: Yup.string().required('Sexe est requis'),
       Poids: Yup.number()
         .required('Poids est requis')
         .min(0.1, 'Le poids doit être au minimum de 0.1 kg')
-        .max(4000, 'Le poids ne peut pas dépasser 4000kg'),
+        .max(4000, 'Le poids ne peut pas dépasser 4000kg')
+        .test('no-special-characters', 'Le poids ne doit pas contenir de caractères spéciaux', value => 
+          /^[0-9]*\.?[0-9]*$/.test(value)),
       Habitat: Yup.string().required('Habitat est requis'),
     }),
     onSubmit: async values => {
@@ -83,17 +99,13 @@ function AjouterAnimalForm() {
         values.photoURL = photoURL;
       }
 
-      axios.post("http://localhost:3001/animals/ajoutAnimal", values, {
-        headers: {
-          'Authorization': `Bearer ${authState.token}`
-        },
-        withCredentials: true
-      }).then((response) => {
-        console.log('Animal ajouté:', response.data);
+      try {
+        const responseData = await addAnimal(values, authState.token);
+        console.log('Animal ajouté:', responseData);
         navigate('/validation-ajout');
-      }).catch((error) => {
+      } catch (error) {
         console.error("Erreur lors de l'ajout de l'animal:", error);
-      });
+      }
     },
   });
 
@@ -111,7 +123,7 @@ function AjouterAnimalForm() {
       };
       reader.readAsDataURL(selectedFile);
     } else {
-      setFileError('Please select a valid image file (jpeg, jpg, png, webp).');
+      setFileError('Veuillez sélectionner un fichier image valide (jpeg, jpg, png, webp).');
       setFile(null);
       setPreview(null);
     }

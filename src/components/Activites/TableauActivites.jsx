@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
-import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import { Select, MenuItem, FormControl, InputLabel, Card, CardContent, Typography, Pagination, Stack } from '@mui/material';
+import { getActivitesByUserId, deleteActivite } from '../../services/Activites';
 import './Tableau.css';
 
 function TableauActivites() {
@@ -16,20 +16,17 @@ function TableauActivites() {
   const [totalWeeklyTime, setTotalWeeklyTime] = useState(0);
   const [hasWeeklyActivitiesForEachDay, setHasWeeklyActivitiesForEachDay] = useState(false);
 
-  // Pagination states
   const [page, setPage] = useState(1);
-  const [itemsPerPage] = useState(10); // 10 items per page
+  const [itemsPerPage] = useState(10); 
 
-  const fetchActivities = useCallback(() => {
+  const fetchActivities = useCallback(async () => {
     if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
-      const url = `http://localhost:3001/activities/getActivitesByUserId/${authState.user.Id_Utilisateur}`;
-      axios.get(url, { withCredentials: true })
-        .then(response => {
-          setActivities(response.data);
-        })
-        .catch(error => {
-          console.error('Erreur lors de la récupération des activités:', error);
-        });
+      try {
+        const data = await getActivitesByUserId(authState.user.Id_Utilisateur);
+        setActivities(data);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des activités:', error);
+      }
     }
   }, [authState]);
 
@@ -37,16 +34,15 @@ function TableauActivites() {
     fetchActivities();
   }, [fetchActivities]);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Suppression de l\'activité ? appuyer sur ok pour confirmer')) {
-      axios.delete(`http://localhost:3001/activities/deleteActivites/${id}`, { withCredentials: true })
-        .then((response) => {
-          console.log('Réponse de suppression:', response);
-          fetchActivities();
-        })
-        .catch(error => {
-          console.error('Erreur lors de la suppression de l\'activité:', error);
-        });
+      try {
+        const response = await deleteActivite(id);
+        console.log('Réponse de suppression:', response);
+        fetchActivities();
+      } catch (error) {
+        console.error('Erreur lors de la suppression de l\'activité:', error);
+      }
     }
   };
 
@@ -64,7 +60,6 @@ function TableauActivites() {
 
   const sortedActivities = filteredActivities.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-  // Pagination logic
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedActivities = sortedActivities.slice(startIndex, endIndex);
@@ -92,7 +87,6 @@ function TableauActivites() {
       return date.toISOString().split('T')[0];
     });
 
-    // Check if each of the past 7 days has at least one activity
     const allDaysCovered = past7Days.every(day => daysWithActivities.has(day));
     
     setHasWeeklyActivitiesForEachDay(allDaysCovered);

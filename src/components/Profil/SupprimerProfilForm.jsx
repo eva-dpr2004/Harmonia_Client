@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
-import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import { Reply } from '@mui/icons-material';
 import logout from '../../context/useLogout';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import './ProfilStyle.css';
 import { useNavigate } from 'react-router-dom';
+import { deleteUser } from '../../services/Users';  
 
 function SupprimerProfilForm() {
   const { authState, setAuthState } = useContext(AuthContext);
@@ -15,7 +15,7 @@ function SupprimerProfilForm() {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://localhost:3001/auth/deleteuser/${authState.user.Id_Utilisateur}`, { withCredentials: true });
+      const response = await deleteUser(authState.user.Id_Utilisateur);  
       if (response.data.success) {
         setMessage('Compte supprimé avec succès.');
         logout(setAuthState);

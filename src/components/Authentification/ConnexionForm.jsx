@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
 import * as Yup from 'yup';
+import DOMPurify from 'dompurify'; 
 import '../../styles/Formulaires.css';
+import { checkAuthStatus, loginUser } from '../../services/Auth'; 
 
 function ConnexionForm() {
   const [NomOrEmail, setNomOrEmail] = useState("");
   const [Mot_De_Passe, setMot_De_Passe] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
@@ -15,8 +17,10 @@ function ConnexionForm() {
       .test(
         'is-valid',
         "Le nom ou l'email doit être valide",
-        value => value && (Yup.string().email().isValidSync(value) || /^[\p{L}0-9-_' ]{3,15}$/u.test(value))
-      ),
+        value => value && (Yup.string().email().isValidSync(value) || /^[\p{L}0-9-_' ]{3,15}$/u.test(value.replace(/\s/g, ''))) 
+      )
+      .test('no-sql-keywords', 'Le nom ou l\'email ne doit pas contenir des mots réservés SQL', value =>
+        !/(DROP\s+TABLE|SELECT|DELETE|INSERT|UPDATE|CREATE|ALTER|EXEC)/i.test(value.replace(/\s/g, ''))), 
     Mot_De_Passe: Yup.string()
       .min(12, "Le mot de passe doit contenir au moins 12 caractères")
       .matches(
@@ -27,11 +31,14 @@ function ConnexionForm() {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:3001/auth/auth", { withCredentials: true })
+    checkAuthStatus()  
       .then((response) => {
-        if (!response.data.error) {
+        if (!response.error) {
           navigate('/');
         }
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la vérification de l'authentification:", error);
       });
   }, [navigate]);
 
@@ -39,20 +46,26 @@ function ConnexionForm() {
     try {
       await validationSchema.validate({ NomOrEmail, Mot_De_Passe });
 
-      const data = { NomOrEmail, Mot_De_Passe };
-      axios.post("http://localhost:3001/auth/login", data, { withCredentials: true })
-        .then((response) => {
-          if (response.data.error) {
-            alert(response.data.error);
-          } else {
-            window.location = '/profil';
-          }
-        })
-        .catch((error) => {
-          alert("Erreur de connexion: " + error.message);
-        });
-    } catch (validationError) {
-      alert(validationError.message);
+      const sanitizedData = {
+        NomOrEmail: DOMPurify.sanitize(NomOrEmail),
+        Mot_De_Passe: DOMPurify.sanitize(Mot_De_Passe)
+      };
+
+      const response = await loginUser(sanitizedData);  
+
+      if (response.error) {
+        setErrorMessage(response.error);
+      } else {
+        window.location = '/profil';
+      }
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        setErrorMessage(error.message);
+      } else if (error.response && error.response.status === 403 && error.response.data.error) {
+        setErrorMessage(error.response.data.error);
+      } else {
+        setErrorMessage("Erreur de connexion: Veuillez réessayer.");
+      }
     }
   };
 
@@ -66,6 +79,7 @@ function ConnexionForm() {
         </p>
         <div className="form-container">
           <div className="form-box">
+            {errorMessage && <p className="error">{errorMessage}</p>}
             <label className="label">Nom ou Email :</label>
             <input type="text" value={NomOrEmail} onChange={(event) => setNomOrEmail(event.target.value)} placeholder="Votre nom ou email..."/>
             <label className="label">Mot de passe :</label>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
@@ -7,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Avatar from '@mui/material/Avatar';
 import './ProfilStyle.css';
+import { getUserInfo } from '../../services/Users'; 
 
 function ProfilCard() {
     const { authState } = useContext(AuthContext);
@@ -15,8 +15,7 @@ function ProfilCard() {
 
     useEffect(() => {
         if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
-            const url = `http://localhost:3001/auth/basicinfo/${authState.user.Id_Utilisateur}`;
-            axios.get(url, { withCredentials: true })
+            getUserInfo(authState.user.Id_Utilisateur)  
                 .then(response => {
                     if (response.data) {
                         setUserInfo({ Nom: response.data.Nom, Email: response.data.Email });

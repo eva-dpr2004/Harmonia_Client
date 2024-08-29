@@ -4,7 +4,7 @@ import Footer from '../../components/Basics/Footer';
 import BoutonAjouterAnimal from '../../components/Animaux/BoutonAjouterAnimal';
 import MesAnimauxList from '../../components/Animaux/MesAnimauxList';
 import { AuthContext } from '../../context/AuthContext';
-import axios from 'axios';
+import { getAnimalsByUserId } from '../../services/Animaux'; 
 
 function MesAnimaux() {
   const { authState } = useContext(AuthContext);
@@ -13,8 +13,8 @@ function MesAnimaux() {
   const fetchAnimalCount = useCallback(async () => {
     if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
       try {
-        const response = await axios.get(`http://localhost:3001/animals/byUserId/${authState.user.Id_Utilisateur}`);
-        setAnimalCount(response.data.length);
+        const animals = await getAnimalsByUserId(authState.user.Id_Utilisateur); 
+        setAnimalCount(animals.length);
       } catch (error) {
         console.error("Error fetching animals:", error);
       }

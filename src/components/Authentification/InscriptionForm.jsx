@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import DOMPurify from "dompurify";
 import { createUser } from "../../services/Auth";
 import { useNavigate, Link } from "react-router-dom";
 import '../../styles/Formulaires.css';
@@ -16,10 +17,16 @@ function InscriptionForm() {
 
     const validationSchema = Yup.object().shape({
         Nom: Yup.string()
-            .matches(/^[\p{L}0-9-_' ]{3,15}$/u, {
-                message: "Le nom doit contenir uniquement des lettres, des chiffres ou les caractères -_' et doit avoir entre 3 et 15 caractères.",
-            })
-            .required("Le nom est requis"),
+            .required("Le nom est requis")
+            .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ0-9-_' ]*$/, "Le nom doit contenir uniquement des lettres, des chiffres ou les caractères -_' et doit avoir entre 3 et 15 caractères.")
+            .test('contains-min-chars', 'Le nom doit contenir au moins 3 caractères sans les espaces', value =>
+                value && value.replace(/\s/g, '').length >= 3)
+            .test('contains-max-chars', 'Le nom ne peut pas dépasser 15 caractères sans les espaces', value =>
+                value && value.replace(/\s/g, '').length <= 15)
+            .test('no-consecutive-uppercase', 'Le nom ne doit pas contenir deux majuscules consécutives', value =>
+                !/(?:[A-Z]{2,})/.test(value))
+            .test('no-sql-keywords', 'Le nom ne doit pas contenir des mots réservés SQL', value =>
+                !/(DROP\s+TABLE|SELECT|DELETE|INSERT|UPDATE|CREATE|ALTER|EXEC)/i.test(value)),
         Email: Yup.string()
             .email("L'email doit être une adresse email valide")
             .required("L'email est requis"),
@@ -41,7 +48,14 @@ function InscriptionForm() {
     const navigate = useNavigate();
 
     const onSubmit = (userData, { setSubmitting, setFieldError }) => {
-        createUser(userData).then(() => {
+        const sanitizedUserData = {
+            ...userData,
+            Nom: DOMPurify.sanitize(userData.Nom),
+            Email: DOMPurify.sanitize(userData.Email),
+            Mot_De_Passe: DOMPurify.sanitize(userData.Mot_De_Passe),
+        };
+
+        createUser(sanitizedUserData).then(() => {
             navigate("/connexion");
             setSubmitting(false);
         }).catch(error => {

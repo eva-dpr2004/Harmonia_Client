@@ -24,6 +24,10 @@
     flex-direction: column;
   }
 
+  .form-link{
+    margin-bottom: 2%;
+  }
+
   .connexion h2, .form-link a{
     margin-top: 5%;
     margin-bottom: 1.2rem;
@@ -112,7 +116,7 @@
   .imgConnexion{
     width: 22%;
     position: absolute;
-    left: 17%;
+    left: 15%;
     top: 25%;
 }
 
@@ -171,6 +175,7 @@
 
 .besoin-aide-container p{
   margin-top: 2%;
+  margin-bottom: 2%;
   color: #183255;
 }
 
