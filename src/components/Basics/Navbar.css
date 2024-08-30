@@ -26,16 +26,6 @@
   text-decoration: underline;
 }
 
-.login-button, .logout-button {
-  padding: 10px 20px;
-  background-color: #ffffffaa;
-  border-radius: 5px;
-  color: #1f3b64;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 13px;
-}
-
 .burger-menu {
   display: none;
   cursor: pointer;
@@ -50,7 +40,7 @@
   transition: all 0.3s ease;
 }
 
-/* Responsive styles for mobile */
+/*     BURGER MENU RESPONSIVE     */
 @media screen and (max-width: 768px) {
   .navbar-links {
     display: none;
@@ -75,7 +65,6 @@
   }
 }
 
-/* Additional styling to animate the burger menu bars */
 .burger-menu.open .burger-bar:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }

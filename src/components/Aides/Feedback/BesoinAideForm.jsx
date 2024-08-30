@@ -78,7 +78,7 @@ const BesoinAideForm = () => {
     return (
         <div className='besoin-aide-container'>
             <img src={`${process.env.PUBLIC_URL}/assets/img/Vecteurs/imprevu.png`} alt="Img Imprevu" className='imgImprevu'/>
-            <h1 className='besoin-aide-title'>
+            <h1 className='aide-title'>
                 <ReplyIcon 
                     style={{ color: '#183255', cursor: 'pointer', marginRight: '10px' }}
                     onClick={() => navigate(-1)}

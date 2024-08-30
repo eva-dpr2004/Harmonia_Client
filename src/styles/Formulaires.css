@@ -435,20 +435,12 @@ input[type="radio"]:checked {
   }
 
   .imgInscription{
-    width: 40%;
-    top: 25%;
-    left: 60%;
+    left: -3%;
   }
 
   .imgAvisGlobal{
     top: 21%;
     width: 38%;
-  }
-
-  .imgImprevu{
-    left: 65%;
-    top: 31%;
-    width: 35%;
   }
 
   .imgSupprimerProfil{
@@ -531,18 +523,18 @@ input[type="radio"]:checked {
   .imgImprevu{
     width: 22%;
     right: 0%;
-    top: 24%;
+    top: 32%;
   }
 
   .imgAvisGlobal{
     left: 1%;
-    top: 15%;
+    top: 20%;
   }
 
   .imgModifierProfil{
-    width: 18%;
+    width: 28%;
     right: 6%;
-    top: 14%;
+    top: 25%;
   }
 
   .imgSupprimerProfil{

@@ -5,6 +5,7 @@ import BoutonAjouterAnimal from '../../components/Animaux/BoutonAjouterAnimal';
 import MesAnimauxList from '../../components/Animaux/MesAnimauxList';
 import { AuthContext } from '../../context/AuthContext';
 import { getAnimalsByUserId } from '../../services/Animaux'; 
+import ContrasteBouton from '../../components/Contraste/ContrasteBouton';
 
 function MesAnimaux() {
   const { authState } = useContext(AuthContext);
@@ -34,6 +35,7 @@ function MesAnimaux() {
       ) : (
         <div className="limit-message">Vous avez atteint la limite d'animal</div>
       )}
+      <ContrasteBouton/>
       <Footer />
     </div>
   );

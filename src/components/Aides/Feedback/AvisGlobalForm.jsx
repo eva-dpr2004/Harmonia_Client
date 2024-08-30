@@ -99,7 +99,7 @@ function FormulaireAvisGlobal() {
     return (
         <div>
             <img src={`${process.env.PUBLIC_URL}/assets/img/Vecteurs/feedback-rbg.png`} alt="Img connexion" className='imgAvisGlobal'/>
-            <h1 className="avis-global-title">
+            <h1 className="aide-title">
                 <Reply 
                     style={{ color: '#183255', cursor: 'pointer', marginRight: '10px' }}
                     onClick={() => navigate(-1)}

@@ -50,23 +50,6 @@
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.StartButton {
-  background-color: #183159;
-  color: white;
-  font-size: 16px;
-  padding: 13px 30px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.StartButton:hover {
-  background-color: #29415a;
-  transform: translateY(-5px);
-}
-
 .hidden {
   visibility: hidden;
   height: 0;
@@ -105,11 +88,6 @@
     margin-bottom: 20px;
   }
 
-  .StartButton {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
   .ImagesColumn {
     width: 100%;
   }
@@ -132,12 +110,6 @@
 
   .Description{
     font-size: 12px;
-  }
-
-  .StartButton{
-    font-size: 12px;
-    padding: 8px 30px;
-    margin-left: 12%;
   }
 
   .Harmonia_logo{

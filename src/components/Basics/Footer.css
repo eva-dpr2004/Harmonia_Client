@@ -65,29 +65,3 @@
   }
 }
 
-@media screen and (max-width: 834px) {
-    .footer {
-      padding: 15px;
-      gap: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  
-    .footer-links {
-      gap: 50px;
-    }
-  
-    .footer-links a {
-      font-size: 13px;
-    }
-  
-    .footer-rights p {
-      font-size: 13px;
-    }
-  
-    .footer-rights img {
-      height: 30px;
-    }
-    
-}
