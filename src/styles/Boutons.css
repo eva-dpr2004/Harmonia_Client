@@ -2,13 +2,16 @@
 .contraste-btn{
   margin-top: 1%;
   margin-bottom: 2%;
-  padding: 10px 20px;
+  padding: 12px 20px;
   background-color: #ffffff7b;
   border-radius: 5px;
   color: #1f3b64;
   cursor: pointer;
   font-weight: bold;
   font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /*     NAV     */

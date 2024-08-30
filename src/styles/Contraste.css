@@ -19,7 +19,7 @@ body.contraste-mode .help-container h1, body.contraste-mode .aide-title, body.co
 body.contraste-mode .help-container p, body.contraste-mode .besoin-aide-container p, body.contraste-mode label, body.contraste-mode .label, 
 body.contraste-mode .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, body.contraste-mode .modal-warning, body.contraste-mode .navbar-links a,
 body.contraste-mode .modal-close-btn, body.contraste-mode .modifier-container p, body.contraste-mode .supprimer-para, body.contraste-mode .LegalContainer h3, 
-h2, body.contraste-mode .form-link a, body.contraste-mode .para-redirection{
+h2, body.contraste-mode .form-link a, body.contraste-mode .para-redirection, body.contraste-mode .para-bleu, body.contraste-mode .aucun-animal-container p{
     color: #ffd901;
 }
 

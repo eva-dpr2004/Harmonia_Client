@@ -66,9 +66,7 @@
   }
 
   .Harmonia_logo {
-    width: 30%;
-    margin: 20px auto;
-    display: block;
+    display: none;
   }
 
   .TextColumn {

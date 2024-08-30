@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import '../../styles/Contraste.css';
 import '../../styles/Boutons.css';
 
@@ -28,6 +30,11 @@ function ContrasteBouton() {
     return (
         <button onClick={toggleContrasteMode} className='contraste-btn'>
             {isContraste ? 'Désactiver le mode contraste' : 'Activer le mode contraste'}
+            {isContraste ? (
+                <Visibility style={{ color: 'gray', marginLeft: '5px' }} />
+            ) : (
+                <VisibilityOff style={{ marginLeft: '5px' }} />
+            )}
         </button>
     );
 }
