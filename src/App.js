@@ -5,6 +5,8 @@ import Router from './Router';
 import { AuthContext } from './context/AuthContext';
 import { AnimalProvider } from './context/AnimalContext';
 import useAuth from './context/useAuth'; 
+import DisableRightClick from './restrictions/disableRightClick';
+import DisableConsoleScripts from './restrictions/disableConsoleScripts';  
 
 function App() {
   const [authState, setAuthState] = useAuth(); 
@@ -14,7 +16,10 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <AnimalProvider>
           <BrowserRouter>
-            <Router />
+            <DisableConsoleScripts />  
+            <DisableRightClick>
+              <Router />
+            </DisableRightClick>
           </BrowserRouter>
         </AnimalProvider>
       </AuthContext.Provider>
