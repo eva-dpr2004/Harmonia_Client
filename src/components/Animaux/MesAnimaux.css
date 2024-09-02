@@ -1,0 +1,228 @@
+.Title-Mes-Animaux {
+  color: #193356;
+  text-decoration: underline;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+.animal-count {
+  color: #193356;
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.animaux-list-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+}
+
+.animaux-list-container li {
+  list-style: none;
+  margin: 20px;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.animal-card {
+  background-color: #E0EBF8;
+  border: 1px solid #d3dfea;
+  border-radius: 90px;
+  box-shadow: 0 4px 6px rgba(12, 55, 101, 0.527);
+  padding: 20px;
+  width: 100%;
+  max-width: 285px;
+  text-align: center;
+  position: relative;
+}
+
+.animal-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid #1a3558;
+  margin-bottom: 10px;
+}
+
+.animal-card h4 {
+  margin: 10px 0;
+  color: #193356;
+}
+
+.animal-card p {
+  margin: 5px 0;
+  color: #1a3558;
+  font-size: 14px;
+  width: 80%;
+}
+
+.edit-icon, .delete-icon {
+  position: absolute;
+  top: 10px;
+  cursor: pointer;
+}
+
+.edit-icon {
+  color: #193356;
+  top: 25px;
+  right: 70px;
+}
+
+.delete-icon {
+  color: #193356;
+  top: 25px;
+  right: 30px;
+}
+
+/* Types Animaux */
+.file-upload-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-upload-container .upload-button-container {
+  margin-left: auto;
+}
+
+.centered-image {
+  display: block;
+  margin: 0 auto;
+  width: 20%;
+  border-radius: 50%;
+  height: 75px;
+}
+
+.sex-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: rgb(27, 27, 27);
+}
+
+.modal-warning {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-delete {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/*     AUCUN ANIMAUX     */
+.aucun-animal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7%;
+  margin-bottom: 3%;
+}
+
+.aucun-animal-container img {
+  max-width: 12%;
+  margin-bottom: 2%;
+}
+
+.aucun-animal-container p {
+  margin-top: 2%;
+  font-size: 18px;
+  color: #333;
+}
+
+@media screen and (max-width: 360px) {
+
+  .animal-card{
+    max-width: 265px;
+  }
+
+  .animal-card p{
+    font-size: 12px;
+  }
+
+  .Title-Mes-Animaux{
+    margin-top: 8%;
+  }
+
+  .modal{
+    max-width: 485px;
+    width: 65%;
+  }
+
+  .modal p{
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .modal h2{
+    font-size: 15px;
+  }
+
+  .modal-warning{
+    padding: 5px;
+  }
+
+  .animaux-list-container li{
+    margin: 15px;
+  }
+
+}

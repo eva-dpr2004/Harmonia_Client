@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+*{
+  font-family: Inter;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+body{
+  background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+}
+
 .App {
   text-align: center;
 }

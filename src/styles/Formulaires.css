@@ -1,0 +1,564 @@
+.connexion{
+  margin-bottom: 6%;
+}
+
+.inscription, .modification-animal{
+  margin-bottom: 2%;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-box {
+    background: #e0ebf89d;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-link{
+    margin-bottom: 2%;
+  }
+
+  .connexion h2, .form-link a{
+    margin-top: 5%;
+    margin-bottom: 1.2rem;
+    color: #193356;
+    text-decoration: underline;
+  }
+
+  .inscription h2{
+    margin-top: 3%;
+    margin-bottom: 1.5rem;
+    color: #193356;
+    text-decoration: underline;
+  }
+  
+  .form-box form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-box input {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .label {
+    color: #193356;
+    margin-top: 2%;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  .terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .terms input {
+    margin-top: 1.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .terms label {
+    font-size: 0.7rem;
+  }
+  
+  .terms a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  
+  .button {
+    padding: 0.5rem;
+    background: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .button:hover {
+    background: #004080;
+  }
+  
+  .button:disabled {
+    border-radius: 30px;
+    background: #819db8;
+    cursor: not-allowed;
+  }
+  
+  .error {
+    color: red;
+    font-size: 9px;
+    text-align: left;
+    margin-bottom: 2%;
+  }
+  
+  /*  IMAGES */
+
+  .imgConnexion{
+    width: 22%;
+    position: absolute;
+    left: 15%;
+    top: 25%;
+}
+
+.imgInscription{
+    transform: scaleX(-1);
+    width: 23%;
+    position: absolute;
+    right: 15%;
+    top: 35%;
+}
+
+.imgModifierProfil{
+  width: 14%;
+  position: absolute;
+  right: 20%;
+  top: 18%;
+}
+
+.imgSupprimerProfil{
+  width: 20%;
+  position: absolute;
+  left: 15%;
+  top: 20%;
+}
+
+.imgAvisGlobal{
+  transform: scaleX(-1);
+  width: 25%;
+  position: absolute;
+  left: 3%;
+  top: 25%;
+}
+
+.imgImprevu{
+  width: 20%;
+  position: absolute;
+  right: 12%;
+  top: 25%;
+}
+
+/* Besoin d'aide */
+.besoin-aide-form {
+  background-color: white;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  margin-left: 33%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+}
+
+.besoin-aide-form h1 {
+  text-align: center;
+}
+
+.besoin-aide-container p{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: #183255;
+}
+
+.besoin-aide-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.besoin-aide-form input, .besoin-aide-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.besoin-aide-form button {
+  padding: 10px 20px;
+  background-color: #183255;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.besoin-aide-form button:hover {
+  background-color: #0f1c2d;
+}
+
+/* Avis global */
+
+.avis-global-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 50%; 
+  margin: 40px auto;
+}
+
+.avis-global-form h1, .avis-global-form p {
+  text-align: center;
+  color: #183255;
+}
+
+.avis-global-form details {
+  width: 85%;
+  background-color: white;
+  margin-top: 2%;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.avis-global-form summary {
+  font-size: 16px;
+  color: #183255;
+  cursor: pointer;
+  outline: none;
+}
+
+.avis-global-form summary::marker {
+  display: none;
+}
+
+.avis-global-form input, .avis-global-form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.avis-global-form button {
+  width: 35%;
+  padding: 6px 10px;
+  background-color: #183255;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 4%;
+}
+
+.avis-global-form button:hover {
+  background-color: #0f1c2d;
+}
+
+.avis-global-form span{
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.icon-label {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #183255;
+}
+
+.icon-label .icon {
+  margin-bottom: 2%;
+  color: #183255;
+}
+
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Ajouter Animal */
+.ajouter-animal-form {
+  background-color: #e6f0fac0;
+  padding: 18px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 1%;
+}
+
+.ajouter-animal-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 3%;
+  margin-top: 2%;
+  color: #193356;
+  font-size: 13px;
+  text-align: left;
+}
+
+.ajouter-animal-form h5 {
+  margin-top: 2%;
+  color: #1a3558;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.ajouter-animal-form input[type="text"],
+.ajouter-animal-form input[type="date"],
+.ajouter-animal-form input[type="number"] {
+  width: 96%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #1a3558;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked {
+  background-color: #1a3558; 
+  border-color: #1a3558; 
+}
+
+.ajouter-animal-form div label input {
+  margin-right: 10px;
+}
+
+.sex-options, .habitat-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ajouter-animal-form button {
+  margin-top: 5%;
+  background-color: #193356;
+  color: white;
+  padding: 8px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.ajouter-animal-form button:hover {
+  background-color: #5c7494;
+}
+
+/*     RESPONSIVE MOBILE     */
+@media screen and (max-width: 360px) {
+  .form-container {
+    padding: 10px;
+    width: 90%;
+    margin-top: 15%;
+  }
+
+  .form-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .connexion h2, .inscription h2, .modification-animal h2 {
+    margin-top: 8%;
+    font-size: 1.4rem;
+  }
+
+  .form-box input,
+  .form-box textarea {
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+  }
+
+  .label {
+    margin-top: 2%;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .ajouter-animal-form{
+    margin-top: 8%;
+    max-width: 300px;
+  }
+
+  .button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .error {
+    font-size: 10px;
+  }
+
+  .imgConnexion{
+    width: 40%;
+    left: 60%;
+    top: 24%;
+  }
+
+  .imgInscription{
+    left: -3%;
+  }
+
+  .imgAvisGlobal{
+    top: 21%;
+    width: 38%;
+  }
+
+  .imgSupprimerProfil{
+    left: 27%;
+    width: 45%;
+  }
+
+  .imgModifierProfil {
+    width: 35%;
+    left: 31%;
+    top: 23%;
+  }
+
+  .modifier-box form{
+    margin-top: 35%;
+  }
+
+  .besoin-aide-form,
+  .avis-global-form {
+    width: 85%;
+    padding: 1rem;
+    margin: 20px auto;
+  }
+
+  .besoin-aide-form input,
+  .besoin-aide-form textarea,
+  .avis-global-form input,
+  .avis-global-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .avis-global-form button{
+    width: 93%;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .besoin-aide-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .avis-global-form summary{
+    font-size: 12px;
+  }
+
+  .icon-label {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .form-link a {
+    font-size: 14px;
+    margin-top: 8%;
+  }
+}
+
+/*     RESPONSIVE TABLETTE     */
+@media screen and (max-width: 834px) {
+  .form-box{
+    margin-top: 5%;
+    margin-bottom: 2%;
+  }
+
+  .imgInscription{
+    right: 2%;
+    top: 20%;
+    width: 25%;
+  }
+
+  .imgConnexion{
+    width: 30%;
+    left: 5%;
+    top: 18%;
+  }
+
+  .imgImprevu{
+    width: 22%;
+    right: 0%;
+    top: 32%;
+  }
+
+  .imgAvisGlobal{
+    left: 1%;
+    top: 20%;
+  }
+
+  .imgModifierProfil{
+    width: 28%;
+    right: 6%;
+    top: 25%;
+  }
+
+  .imgSupprimerProfil{
+    width: 25%;
+    left: 0%;
+    top: 18%;
+  }
+
+  .ajouter-animal-form{
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .besoin-aide-form{
+    width: 50%;
+    margin-left: 22%;
+  }
+
+  .avis-global-form{
+    width: 66%
+  }
+
+  .modification-animal{
+    margin-top: 5%;
+    margin-bottom: 2%;
+  }
+}

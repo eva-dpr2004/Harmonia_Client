@@ -4,7 +4,6 @@ import NotFoundRedirection from '../../components/Error/NotFoundRedirection'
 function PageNotFound() {
   return (
     <div>
-      PageNotFound
       <NotFoundRedirection/>
     </div>
   )

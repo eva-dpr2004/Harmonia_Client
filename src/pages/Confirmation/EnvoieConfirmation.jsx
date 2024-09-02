@@ -4,7 +4,6 @@ import FeedbackEnvoieConfirmation from '../../components/Confirmation/FeedbackEn
 function EnvoieConfirmation() {
   return (
     <div>
-      EnvoieConfirmation
       <FeedbackEnvoieConfirmation/>
     </div>
   )

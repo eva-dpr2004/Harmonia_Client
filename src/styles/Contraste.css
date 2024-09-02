@@ -1,0 +1,143 @@
+body.contraste-mode .ImageContainer1 img {
+    filter: contrast(1.4) brightness(0.6) saturate(0.8);
+}
+
+body.contraste-mode .help-container img, body.contraste-mode .imgModifierProfil, body.contraste-mode .imgSupprimerProfil, body.contraste-mode .imgAvisGlobal, body.contraste-mode .imgImprevu {
+    filter: contrast(1.5) brightness(0.8) saturate(0.8);
+}
+
+body.contraste-mode .imgInscription, body.contraste-mode .imgConnexion{
+    filter: contrast(1) brightness(0.4) saturate(0.8);  
+}
+
+body.contraste-mode {
+    background: linear-gradient(#111, #2b2b2b, #111); 
+  }
+
+body.contraste-mode .footer-rights p, body.contraste-mode .MainTitle, body.contraste-mode h2, body.contraste-mode h4, body.contraste-mode .animal-card p, 
+body.contraste-mode .help-container h1, body.contraste-mode .aide-title, body.contraste-mode .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon, 
+body.contraste-mode .help-container p, body.contraste-mode .besoin-aide-container p, body.contraste-mode label, body.contraste-mode .label, 
+body.contraste-mode .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, body.contraste-mode .modal-warning, body.contraste-mode .navbar-links a,
+body.contraste-mode .modal-close-btn, body.contraste-mode .modifier-container p, body.contraste-mode .supprimer-para, body.contraste-mode .LegalContainer h3, 
+h2, body.contraste-mode .form-link a, body.contraste-mode .para-redirection, body.contraste-mode .para-bleu, body.contraste-mode .aucun-animal-container p{
+    color: #ffd901;
+}
+
+body.contraste-mode .contraste-btn,  body.contraste-mode .logout-button, body.contraste-mode .add-animal-button, body.contraste-mode .AddActivité, 
+body.contraste-mode .help-container button{
+    background-color: #000000;
+    color: #ffd901;
+  }
+
+body.contraste-mode .animal-card{
+    box-shadow: 0 4px 6px rgba(5, 11, 19, 0.52);
+}
+
+body.contraste-mode .form-box{
+    background-color: #000000;
+    color: #ffd901;
+    border: none;
+  }
+
+body.contraste-mode .css-i4bv87-MuiSvgIcon-root{
+    background-color: #ffd901;
+    border-radius: 10px;
+  }
+
+body.contraste-mode .burger-bar{
+    background-color: #ffd901;
+}
+
+body.contraste-mode .css-1rw5g0q-MuiAvatar-root{
+    background-color: #ffd901;
+    color: #000000;
+}
+
+body.contraste-mode, body.contraste-mode .profil-card {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.contraste-mode .button, body.contraste-mode .modifier-box button, body.contraste-mode .ajouter-animal-form, body.contraste-mode .supprimer-box button, 
+body.contraste-mode .avis-global-form details, body.contraste-mode .avis-global-form summary, body.contraste-mode .avis-global-form button, 
+body.contraste-mode .besoin-aide-form button, body.contraste-mode .value, body.contraste-mode .css-14b7xtd-MuiButtonBase-root-MuiButton-root, 
+body.contraste-mode .modifier-box input, body.contraste-mode .form-box input, body.contraste-mode .modal, body.contraste-mode .supprimer-box, 
+body.contraste-mode .besoin-aide-form input, body.contraste-mode .besoin-aide-form textarea, body.contraste-mode .StartButton, body.contraste-mode .login-button{
+    background-color: #1b1a1a;
+    color: #ffd901;
+    border: 2px solid #232323;
+}
+
+body.contraste-mode .modifier-box, body.contraste-mode .avis-global-form, 
+body.contraste-mode .modal-actions .modal-delete, body.contraste-mode .besoin-aide-form {
+    background-color: #000000;
+}
+
+body.contraste-mode .css-ltys2l-MuiSvgIcon-root{
+    color: #000000;
+}
+
+body.contraste-mode .navbar {
+    background-color: #111;
+    color: #fff;
+}
+
+body.contraste-mode .footer {
+    background-color: #111;
+    color: #fff;
+}
+
+body.contraste-mode .footer-links a {
+    color: #ffcc00;
+}
+
+/* Page 404 */
+body.contraste-mode .not-found-container {
+    background-color: #222;
+    color: #fff;
+}
+
+body.contraste-mode .validation-container {
+    background-color: #333;
+    color: #fff;
+}
+
+body.contraste-mode .AccueilContainer {
+    background-color: #111;
+    color: #fff;
+}
+
+body.contraste-mode .Description {
+    color: #ccc;
+}
+
+body.contraste-mode .tableau, 
+body.contraste-mode .tableauActivites {
+    color: #fff;
+}
+
+body.contraste-mode th, 
+body.contraste-mode td {
+    border-color: #080808;
+    color: #000000;
+}
+
+body.contraste-mode .animated-card {
+    background-color: #333;
+    color: #fff;
+}
+
+body.contraste-mode .centered-image {
+    border-color: #000000;
+}
+
+body.contraste-mode .animal-card {
+    background-color: #333;
+    color: #fff;
+    border-color: #444;
+}
+
+body.contraste-mode .edit-icon, 
+body.contraste-mode .delete-icon {
+    color: #111;
+}

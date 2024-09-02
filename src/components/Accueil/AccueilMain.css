@@ -1,0 +1,116 @@
+.AccueilContainer {
+  font-family: 'Poppins', Arial, sans-serif;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f6f9fd;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 3% auto;
+  max-width: 1200px;
+}
+
+.Harmonia_logo{
+  width: 8%;
+  margin-top: 2%;
+}
+
+.TextColumn {
+  flex: 1;
+  text-align: left;
+  padding-right: 40px;
+}
+
+.MainTitle {
+  font-size: 30px;
+  font-weight: 700;
+  color: #2b2e4a;
+  margin-top: 5%;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.Description {
+  font-size: 16px;
+  color: #444752;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.ImagesColumn {
+  flex: 1;
+  text-align: center;
+}
+
+.ImageContainer1 img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+  margin-top: 5px;
+  padding: 0;
+}
+
+@media screen and (max-width: 360px) {
+  .AccueilContainer {
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+    max-width: 100%;
+  }
+
+  .Harmonia_logo {
+    display: none;
+  }
+
+  .TextColumn {
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .MainTitle {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  .Description {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .ImagesColumn {
+    width: 100%;
+  }
+
+  .ImageContainer1 img {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 834px) {
+  
+  .AccueilContainer{
+    max-width: 650px;
+  }
+
+  .MainTitle{
+    font-size: 16px;
+  }
+
+  .Description{
+    font-size: 12px;
+  }
+
+  .Harmonia_logo{
+    width: 11%;
+  }
+}
