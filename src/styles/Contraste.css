@@ -68,8 +68,8 @@ body.contraste-mode .besoin-aide-form input, body.contraste-mode .besoin-aide-fo
     border: 2px solid #232323;
 }
 
-body.contraste-mode .modifier-box, body.contraste-mode .avis-global-form, 
-body.contraste-mode .modal-actions .modal-delete, body.contraste-mode .besoin-aide-form {
+body.contraste-mode .modifier-box, body.contraste-mode .avis-global-form, body.contraste-mode .modal-actions .modal-delete, 
+body.contraste-mode .besoin-aide-form {
     background-color: #000000;
 }
 
@@ -91,10 +91,14 @@ body.contraste-mode .footer-links a {
     color: #ffcc00;
 }
 
+body.contraste-mode .types-animaux-section h3{
+    color: #211a00; 
+}
+
 /* Page 404 */
-body.contraste-mode .not-found-container {
+body.contraste-mode .not-found-container, body.contraste-mode .types-animaux-container{
     background-color: #222;
-    color: #fff;
+    color: #ffcc00;
 }
 
 body.contraste-mode .validation-container {

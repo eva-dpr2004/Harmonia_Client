@@ -48,13 +48,13 @@ function TextPolitiqueDeConfidentialite() {
         <li>De vous opposer au traitement de vos données.</li>
         <li>De la portabilité de vos données.</li>
       </ul>
-      <p>Pour exercer ces droits, veuillez nous contacter à : privacy@harmonia.com</p>
+      <p>Pour exercer ces droits, veuillez nous contacter à : harmonia.contactus@gmail.com</p>
 
       <h3>Modification de la politique :</h3>
       <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Toute modification sera publiée sur cette page.</p>
 
       <h3>Contact :</h3>
-      <p>Pour toute question concernant cette politique de confidentialité, vous pouvez nous contacter à : privacy@harmonia.com</p>
+      <p>Pour toute question concernant cette politique de confidentialité, vous pouvez nous contacter à : harmonia.contactus@gmail.com</p>
     </div>
   )
 }

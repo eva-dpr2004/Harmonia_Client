@@ -6,7 +6,7 @@ import { AuthContext } from './context/AuthContext';
 import { AnimalProvider } from './context/AnimalContext';
 import useAuth from './context/useAuth'; 
 import DisableRightClick from './restrictions/disableRightClick';
-import DisableConsoleScripts from './restrictions/disableConsoleScripts';  
+import TokenChecker from './TokenChecker';
 
 function App() {
   const [authState, setAuthState] = useAuth(); 
@@ -16,8 +16,8 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <AnimalProvider>
           <BrowserRouter>
-            <DisableConsoleScripts />  
             <DisableRightClick>
+            <TokenChecker />
               <Router />
             </DisableRightClick>
           </BrowserRouter>

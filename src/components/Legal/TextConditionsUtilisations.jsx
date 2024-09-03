@@ -8,9 +8,9 @@ function TextConditionsUtilisations() {
       <p className='IntroductionParagraphe'>
         L'utilisation de ce site implique l'acceptation sans réserve des présentes Conditions d'Utilisation. Veuillez lire attentivement les conditions suivantes avant d'utiliser ce site.
       </p>
-      <h3>Conditions d'Inscription</h3>
+      <h3>Conditions d'Inscription et Connexion</h3>
       <p>
-        Pour accéder à certaines fonctionnalités de notre site, les utilisateurs doivent créer un compte en fournissant des informations précises et à jour.
+        Pour accéder à certaines fonctionnalités de notre site, les utilisateurs doivent créer un compte via le formulaire d'inscription en fournissant des informations précises et à jour puis se connecter via le formulaire d'inscription.
       </p>
       <h3>Moyens Techniques Nécessaires</h3>
       <p>
@@ -42,11 +42,23 @@ function TextConditionsUtilisations() {
       </p>
       <h3>Droits des Utilisateurs</h3>
       <p>
-        Vous avez le droit d'accéder, de rectifier et de supprimer vos données personnelles. Pour exercer ces droits, une fois votre compte crée et une fois authentifié vous pourrez le faire via la page de profil qui vous permettra d'accéder à une page de modification et de suppression du profil.
+        Vous avez le droit d'accéder, de rectifier et de supprimer vos données personnelles. Pour exercer ces droits, une fois votre compte créé et une fois authentifié, vous pourrez le faire via la page de profil qui vous permettra d'accéder à une page de modification et de suppression du profil.
+      </p>
+      <h3>Gestion des Mots de Passe</h3>
+      <p>
+        Actuellement, notre site ne dispose pas d'une fonctionnalité de récupération ou de réinitialisation des mots de passe. En cas d'oubli de votre mot de passe, veuillez noter que nous ne pouvons pas vous assister pour retrouver l'accès à votre compte pour le moment. Nous vous recommandons de bien noter votre mot de passe lors de la création de votre compte. Nous travaillons activement à ajouter cette fonctionnalité dans un avenir proche.
+      </p>
+      <h3>Responsabilité en Cas de Perte de Données</h3>
+      <p>
+        Nous ne pouvons être tenus responsables en cas de perte de données due à une mauvaise manipulation de la part de l'utilisateur ou à un problème technique sur le site. Les utilisateurs sont responsables de l'utilisation correcte des services proposés sur le site, notamment en ce qui concerne les données sensibles.
       </p>
       <h3>Disponibilité du Site</h3>
       <p>
-        Nous nous réservons le droit d'interrompre temporairement le service pour maintenance ou mises à jour sans préavis. Nous ne pouvons être tenus responsables des interruptions temporaires.
+        Nous nous réservons le droit d'interrompre temporairement le service pour maintenance, mises à jour, pannes imprévues, ou pour toute autre raison sans préavis. Nous ne pouvons être tenus responsables des interruptions temporaires ou des modifications des services.
+      </p>
+      <h3>Modifications des Conditions d'Utilisation</h3>
+      <p>
+        Nous nous réservons le droit de modifier les présentes Conditions d'Utilisation à tout moment. Les utilisateurs seront informés des modifications par une notification sur le site ou par e-mail. L'utilisation continue du site après la modification des conditions implique l'acceptation de celles-ci.
       </p>
       <h3>Litiges et Juridiction</h3>
       <p>
