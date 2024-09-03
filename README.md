@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Harmonia - Frontend (Client)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+**Harmonia** est une application web développée en React.js. Cette application permet aux utilisateurs de gérer des profils, ajouter et gérer des animaux, consulter des activités, et plus encore. L'interface utilisateur est optimisée pour une expérience fluide, avec un design réactif et des fonctionnalités complètes de gestion des données utilisateur.
 
-In the project directory, you can run:
+## Structure du Projet
 
-### `npm start`
+Le projet est organisé comme suit :
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **`public/`** : Contient les fichiers publics accessibles directement, incluant le fichier `index.html` qui charge l'application React, ainsi que le dossier `assets/` qui contient les images et autres ressources statiques.
+  - `index.html` : Fichier HTML principal.
+  - `assets/` : Contient les images du projet.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **`src/`** : Contient tout le code source de l'application React.
+  - **`components/`** : Composants React utilisés à travers l'application.
+  - **`context/`** : Contient les contextes utilisés pour gérer l'état global de l'application (par exemple, `AuthContext`, `AnimalContext`).
+  - **`pages/`** : Composants de page représentant les différentes vues de l'application.
+  - **`restrictions/`** : Contient les utilitaires pour appliquer des restrictions, comme la désactivation du clic droit.
+  - **`services/`** : Contient les services pour interagir avec les APIs.
+  - **`styles/`** : Fichiers CSS utilisés pour styliser l'application.
+  - **`App.js`** : Composant principal qui encapsule l'application et définit la structure générale.
+  - **`Router.js`** : Fichier de routage pour gérer les différentes routes de l'application.
+  - **`index.js`** : Point d'entrée principal de l'application.
+  - **`firebase.js`** : Configuration de Firebase pour l'intégration des services backend.
+  - **`TokenChecker.js`** : Vérifie les tokens pour l'authentification.
+  - **`reportWebVitals.js`** : Utilisé pour mesurer et analyser les performances de l'application.
 
-### `npm test`
+## Prérequis
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (version recommandée : 14.x ou supérieure)
+- npm ou yarn
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Cloner le dépôt (m'est réservé):**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/eva-dpr2004/harmonia-client.git
+   cd harmonia-client
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Installer les dépendances : npm install
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Configurer les variables d'environnement :
+Créez un fichier .env dans le répertoire racine du projet et ajoutez les variables d'environnement nécessaires.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Lancer l'application (temporairement en local) : npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+L'application sera accessible à l'adresse http://localhost:3000.
+Scripts Disponibles
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    npm start : Démarre l'application en mode développement.
+    npm run build : Compile l'application pour la production.
+    npm test : Lance les tests.
+    npm run eject : Ejecte la configuration par défaut de Create React App (attention, cette action est irréversible).
 
-## Learn More
+Technologies Utilisées
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    React : Bibliothèque JavaScript pour la création d'interfaces utilisateur.
+    React Router DOM : Gestion des routes de l'application.
+    Firebase : Backend as a Service pour l'authentification et la gestion des données.
+    Axios : Client HTTP pour effectuer des requêtes API.
+    MUI (Material-UI) : Librairie de composants React pour un design cohérent.
+    Formik & Yup : Gestion des formulaires et validation.
+    CSS Modules : Pour le stylisme des composants.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contexte et Gestion de l'État
 
-### Code Splitting
+L'application utilise React Context pour gérer l'état global comme l'authentification des utilisateurs (AuthContext) et la gestion des animaux (AnimalContext).
+Sécurité et Restrictions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Le projet inclut un script pour désactiver le clic droit (situé dans restrictions/disableRightClick.js) afin de restreindre certaines actions utilisateur.
+Déploiement
 
-### Analyzing the Bundle Size
+Pour créer un build de production, utilisez :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+bash
 
-### Making a Progressive Web App
+npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Le build sera optimisé pour la performance. Vous pouvez ensuite déployer le contenu du dossier build/ sur un serveur statique.
+Auteure
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Eva de Palma-Rosario

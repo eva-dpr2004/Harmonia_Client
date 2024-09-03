@@ -8,10 +8,10 @@ function TextMentionsLegales() {
       <p className='IntroductionParagraphe'>Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 pour la Confiance dans l'économie numérique, dite L.C.E.N., nous portons à la connaissance des utilisateurs et visiteurs du site : www.harmonia.com les informations suivantes :</p>
 
       <h3>1. Informations légales :</h3>
-      <p>
+      <address>
         Responsable de la publication : Eva De Palma Rosario<br/>
         Email : harmonia.contactus@gmail.com<br/>
-      </p>
+      </address>
 
       <h3>2. Conditions générales d’utilisation du site et des services proposés :</h3>
       <p>
