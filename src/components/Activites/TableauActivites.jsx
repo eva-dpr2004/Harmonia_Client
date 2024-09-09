@@ -105,8 +105,9 @@ function TableauActivites() {
   };
 
   const calculateTotalTime = () => {
+    const timeRegex = /^(\d{1,2})h\s(\d{1,2})min$/; // Expression régulière simplifiée pour éviter le backtracking excessif
     const totalMinutes = todaysActivities.reduce((total, activity) => {
-      const match = activity.Duree_Activite.match(/(\d+)h\s(\d+)min/);
+      const match = activity.Duree_Activite.match(timeRegex); // Utilisation de la regex simplifiée
       const hours = match ? parseInt(match[1], 10) : 0;
       const minutes = match ? parseInt(match[2], 10) : 0;
       return total + (hours * 60) + minutes;
@@ -116,8 +117,9 @@ function TableauActivites() {
   };
 
   const calculateTotalWeeklyTime = () => {
+    const timeRegex = /^(\d{1,2})h\s(\d{1,2})min$/; // Même expression régulière pour la semaine
     const totalMinutes = lastWeekActivities.reduce((total, activity) => {
-      const match = activity.Duree_Activite.match(/(\d+)h\s(\d+)min/);
+      const match = activity.Duree_Activite.match(timeRegex);
       const hours = match ? parseInt(match[1], 10) : 0;
       const minutes = match ? parseInt(match[2], 10) : 0;
       return total + (hours * 60) + minutes;
