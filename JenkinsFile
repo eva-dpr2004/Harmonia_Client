@@ -34,7 +34,7 @@ pipeline {
                     sonar-scanner \
                     -Dsonar.projectKey=Front-end \
                     -Dsonar.sources=. \
-                    -Dsonar.host.url=http://localhost:9000 \
+                    -Dsonar.host.url=http://172.20.0.4:9000 \
                     -Dsonar.token=sqp_1ce01da558a7699debf06896de3aac18598e7abd
                 '''
             }
