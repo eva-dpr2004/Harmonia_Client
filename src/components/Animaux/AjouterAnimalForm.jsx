@@ -81,12 +81,11 @@ function AjouterAnimalForm() {
           value.replace(/\s/g, '').length >= 3)
         .matches(/^[^!@#$%^&*(),.?":{}|<>]*$/, 'La race ne doit pas contenir de caractères spéciaux'),
       Sexe: Yup.string().required('Sexe est requis'),
-      Poids: Yup.number()
+      Poids: Yup.string() // Changement en string pour gérer les entrées non numériques
         .required('Poids est requis')
-        .min(0.1, 'Le poids doit être au minimum de 0.1 kg')
-        .max(4000, 'Le poids ne peut pas dépasser 4000kg')
-        .test('no-special-characters', 'Le poids ne doit pas contenir de caractères spéciaux', value => 
-          /^[0-9]*\.?[0-9]*$/.test(value)),
+        .matches(/^\d+(\.\d{1,3})?$/, 'Le poids doit être un nombre valide avec au maximum 3 décimales') // Vérification stricte
+        .test('min-value', 'Le poids doit être au minimum de 0.1 kg', value => parseFloat(value) >= 0.1)
+        .test('max-value', 'Le poids ne peut pas dépasser 4000kg', value => parseFloat(value) <= 4000),
       Habitat: Yup.string().required('Habitat est requis'),
     }),
     onSubmit: async values => {
