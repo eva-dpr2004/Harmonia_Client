@@ -14,7 +14,7 @@ pipeline {
                 sh '''
                     npm install -g node-pre-gyp
                     npm install -g typescript
-                    npm install
+                    npm install --include=dev
                     npm install jest --save-dev
                     npm install react-scripts --save-dev
                     npm run build
