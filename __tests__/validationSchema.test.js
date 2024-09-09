@@ -1,4 +1,4 @@
-import { validationSchema } from '../utils/validationSchema';
+const { validationSchema } = require('../utils/validationSchema'); 
 
 describe('Validation Schema for Inscription Form', () => {
 
