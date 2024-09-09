@@ -17,7 +17,7 @@ pipeline {
                     npm install --include=dev
                     npm install jest --save-dev
                     npm install react-scripts --save-dev
-                    npm run build
+                    npx react-scripts build
                 '''
             }
         }
