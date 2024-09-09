@@ -1,4 +1,4 @@
-import { validationSchema } from './validationSchema';
+import { validationSchema } from '../utils/validationSchema';
 
 describe('Validation Schema for Inscription Form', () => {
 
