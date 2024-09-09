@@ -80,10 +80,10 @@ function ConnexionForm() {
         <div className="form-container">
           <div className="form-box">
             {errorMessage && <p className="error">{errorMessage}</p>}
-            <label className="label">Nom ou Email :</label>
-            <input type="text" value={NomOrEmail} onChange={(event) => setNomOrEmail(event.target.value)} placeholder="Votre nom ou email..."/>
-            <label className="label">Mot de passe :</label>
-            <input type="password" value={Mot_De_Passe} onChange={(event) => setMot_De_Passe(event.target.value)} placeholder="Votre mot de passe..."/>
+            <label htmlFor="NomOrEmail" className="label">Nom ou Email :</label>
+            <input id="NomOrEmail" type="text" value={NomOrEmail} onChange={(event) => setNomOrEmail(event.target.value)} placeholder="Votre nom ou email..."/>
+            <label htmlFor="Mot_De_Passe" className="label">Mot de passe :</label>
+            <input id="Mot_De_Passe" type="password" value={Mot_De_Passe} onChange={(event) => setMot_De_Passe(event.target.value)} placeholder="Votre mot de passe..."/>
             <button onClick={login} className="button">Connexion</button>
           </div>
         </div>
