@@ -89,25 +89,25 @@ function InscriptionForm() {
                     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
                         {({ isSubmitting, values, errors }) => (
                             <Form>
-                                <label className="label">Nom:</label>
-                                <Field name="Nom" type="text" placeholder="Votre nom..." />
+                                <label htmlFor="Nom" className="label">Nom:</label>
+                                <Field id="Nom" name="Nom" type="text" placeholder="Votre nom..." />
                                 <ErrorMessage name="Nom" component="div" className="error" />
 
-                                <label className="label">Email:</label>
-                                <Field name="Email" type="email" placeholder="Votre email..." />
+                                <label htmlFor="Email" className="label">Email:</label>
+                                <Field id="Email" name="Email" type="email" placeholder="Votre email..." />
                                 <ErrorMessage name="Email" component="div" className="error" />
 
-                                <label className="label">Mot de Passe:</label>
-                                <Field name="Mot_De_Passe" type="password" placeholder="Votre mot de passe..." />
+                                <label htmlFor="Mot_De_Passe" className="label">Mot de Passe:</label>
+                                <Field id="Mot_De_Passe" name="Mot_De_Passe" type="password" placeholder="Votre mot de passe..." />
                                 <ErrorMessage name="Mot_De_Passe" component="div" className="error" />
 
-                                <label className="label">Confirmer Mot de Passe:</label>
-                                <Field name="Confirm_Mot_De_Passe" type="password" placeholder="Confirmez votre mot de passe..." />
+                                <label htmlFor="Confirm_Mot_De_Passe" className="label">Confirmer Mot de Passe:</label>
+                                <Field id="Confirm_Mot_De_Passe" name="Confirm_Mot_De_Passe" type="password" placeholder="Confirmez votre mot de passe..." />
                                 <ErrorMessage name="Confirm_Mot_De_Passe" component="div" className="error" />
 
                                 <div className="terms">
-                                    <Field type="checkbox" name="acceptTerms" />
-                                    <label>
+                                    <Field id="acceptTerms" type="checkbox" name="acceptTerms" />
+                                    <label htmlFor="acceptTerms">
                                         En continuant, vous acceptez nos <a href="/politique-de-confidentialite">Politique de Confidentialité</a>, <a href="/politique-de-cookies">Politique de Cookies</a> et <a href="/mentions-legales">Mentions Légales</a>.
                                     </label>
                                     <ErrorMessage name="acceptTerms" component="div" className="error" />
