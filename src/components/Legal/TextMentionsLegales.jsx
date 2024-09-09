@@ -66,11 +66,11 @@ function TextMentionsLegales() {
       <p>
         Licenses des images en provenance de Freepik :
         <ul>
-          <li><a href="http://www.freepik.com">Designed by slidesgo / Freepik</a></li>
-          <li><a href="http://www.freepik.com">Designed by stories / Freepik</a></li>
-          <li><a href="http://www.freepik.com">Designed by Freepik</a></li>
-          <li><a href="http://www.freepik.com">Designed by vectorjuice / Freepik</a></li>
-          <li><a href="http://www.freepik.com">Designed by pch.vector / Freepik</a></li>
+          <li><a href="https://www.freepik.com">Designed by slidesgo / Freepik</a></li>
+          <li><a href="https://www.freepik.com">Designed by stories / Freepik</a></li>
+          <li><a href="https://www.freepik.com">Designed by Freepik</a></li>
+          <li><a href="https://www.freepik.com">Designed by vectorjuice / Freepik</a></li>
+          <li><a href="https://www.freepik.com">Designed by pch.vector / Freepik</a></li>
         </ul>
       </p>
     </div>
