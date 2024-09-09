@@ -28,6 +28,18 @@ const validationSchema = Yup.object().shape({
     Confirm_Mot_De_Passe: Yup.string()
         .oneOf([Yup.ref('Mot_De_Passe'), null], "Les mots de passe doivent correspondre")
         .required("La confirmation du mot de passe est requise"),
+    Poids: Yup.string()
+        .required('Poids est requis')
+        .test('is-valid-number', 'Le poids doit être un nombre valide', value => {
+            // Validation que la valeur est un nombre après avoir retiré les caractères spéciaux
+            return /^[0-9]+(\.[0-9]+)?$/.test(value);
+        })
+        .test('min-value', 'Le poids doit être au minimum de 0.1 kg', value => {
+            return parseFloat(value) >= 0.1;
+        })
+        .test('max-value', 'Le poids ne peut pas dépasser 4000 kg', value => {
+            return parseFloat(value) <= 4000;
+        }),
     acceptTerms: Yup.boolean()
         .oneOf([true], "Vous devez accepter les termes et conditions pour continuer.")
         .required("L'acceptation des termes et conditions est obligatoire"),

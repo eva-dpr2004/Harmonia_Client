@@ -1,4 +1,4 @@
-const { validationSchema } = require('../utils/validationSchema'); 
+const { validationSchema } = require('../utils/validationSchema');
 
 describe('Validation Schema for Inscription Form', () => {
 
@@ -45,5 +45,26 @@ describe('Validation Schema for Inscription Form', () => {
     test('Not accepting terms should fail', async () => {
         const invalidData = { acceptTerms: false };
         await expect(validationSchema.validateAt('acceptTerms', invalidData)).rejects.toThrow("Vous devez accepter les termes et conditions pour continuer.");
+    });
+
+    // Tests pour Poids
+    test('Valid Poids should pass', async () => {
+        const validData = { Poids: '70' };
+        await expect(validationSchema.validateAt('Poids', validData)).resolves.toBe(validData.Poids);
+    });
+
+    test('Invalid Poids with special characters should fail', async () => {
+        const invalidData = { Poids: '70kg' }; // Teste avec des caractères spéciaux
+        await expect(validationSchema.validateAt('Poids', invalidData)).rejects.toThrow("Le poids doit être un nombre valide");
+    });
+
+    test('Poids greater than 4000 should fail', async () => {
+        const invalidData = { Poids: '5000' };
+        await expect(validationSchema.validateAt('Poids', invalidData)).rejects.toThrow("Le poids ne peut pas dépasser 4000 kg");
+    });
+
+    test('Poids less than 0.1 should fail', async () => {
+        const invalidData = { Poids: '0.05' };
+        await expect(validationSchema.validateAt('Poids', invalidData)).rejects.toThrow("Le poids doit être au minimum de 0.1 kg");
     });
 });
