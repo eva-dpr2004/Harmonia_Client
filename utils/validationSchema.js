@@ -31,7 +31,6 @@ const validationSchema = Yup.object().shape({
     Poids: Yup.string()
         .required('Poids est requis')
         .test('is-valid-number', 'Le poids doit être un nombre valide', value => {
-            // Validation que la valeur est un nombre après avoir retiré les caractères spéciaux
             return /^\d+(\.\d+)?$/.test(value);
         })
         .test('min-value', 'Le poids doit être au minimum de 0.1 kg', value => {

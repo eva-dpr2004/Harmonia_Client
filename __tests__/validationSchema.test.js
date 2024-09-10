@@ -1,7 +1,6 @@
 const { validationSchema } = require('../utils/validationSchema');
 
 describe('Validation Schema for Inscription Form', () => {
-
     test('Valid Nom should pass', async () => {
         const validData = { Nom: 'Jean' };
         await expect(validationSchema.validateAt('Nom', validData)).resolves.toBe(validData.Nom);
@@ -10,6 +9,21 @@ describe('Validation Schema for Inscription Form', () => {
     test('Invalid Nom with SQL keyword should fail', async () => {
         const invalidData = { Nom: 'DROP TABLE users' };
         await expect(validationSchema.validateAt('Nom', invalidData)).rejects.toThrow("Le nom ne doit pas contenir des mots réservés SQL");
+    });
+
+    test('Nom with less than 3 chars should fail', async () => {
+        const invalidData = { Nom: 'Jo' };
+        await expect(validationSchema.validateAt('Nom', invalidData)).rejects.toThrow("Le nom doit contenir au moins 3 caractères sans les espaces");
+    });
+
+    test('Nom with more than 100 chars should fail', async () => {
+        const invalidData = { Nom: 'J'.repeat(101) };
+        await expect(validationSchema.validateAt('Nom', invalidData)).rejects.toThrow("Le nom ne peut pas dépasser 100 caractères sans les espaces");
+    });
+
+    test('Nom with consecutive uppercase letters should fail', async () => {
+        const invalidData = { Nom: 'JeanNN' };
+        await expect(validationSchema.validateAt('Nom', invalidData)).rejects.toThrow("Le nom ne doit pas contenir deux majuscules consécutives");
     });
 
     test('Valid Email should pass', async () => {
@@ -47,14 +61,13 @@ describe('Validation Schema for Inscription Form', () => {
         await expect(validationSchema.validateAt('acceptTerms', invalidData)).rejects.toThrow("Vous devez accepter les termes et conditions pour continuer.");
     });
 
-    // Tests pour Poids
     test('Valid Poids should pass', async () => {
         const validData = { Poids: '70' };
         await expect(validationSchema.validateAt('Poids', validData)).resolves.toBe(validData.Poids);
     });
 
     test('Invalid Poids with special characters should fail', async () => {
-        const invalidData = { Poids: '70kg' }; // Teste avec des caractères spéciaux
+        const invalidData = { Poids: '70kg' }; 
         await expect(validationSchema.validateAt('Poids', invalidData)).rejects.toThrow("Le poids doit être un nombre valide");
     });
 
