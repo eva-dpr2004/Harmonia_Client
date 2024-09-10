@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/auth/auth', { withCredentials: true });
+        const response = await axios.get('https://harmoniaserver-01d3f6b29b48.herokuapp.com/auth/auth', { withCredentials: true });
         if (response.data) {
           setAuthState({
             isAuthenticated: true,

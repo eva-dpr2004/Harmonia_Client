@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const logout = async (setAuthState) => {
   try {
-    const response = await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true });
+    const response = await axios.post('https://harmoniaserver-01d3f6b29b48.herokuapp.com/auth/logout', {}, { withCredentials: true });
     if (response.data.success) {
       setAuthState({
         isAuthenticated: false,

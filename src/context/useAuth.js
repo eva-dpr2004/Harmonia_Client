@@ -10,7 +10,7 @@ const useAuth = () => {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:3001/auth/auth", { withCredentials: true })
+    axios.get("https://harmoniaserver-01d3f6b29b48.herokuapp.com/auth/auth", { withCredentials: true })
       .then((response) => {
         if (response.data.error) {
           setAuthState({

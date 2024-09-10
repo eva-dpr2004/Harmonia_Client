@@ -32,7 +32,7 @@ const Router = () => {
   const fetchAnimalCount = useCallback(async () => {
     if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
       try {
-        const response = await axios.get(`http://localhost:3001/animals/byUserId/${authState.user.Id_Utilisateur}`);
+        const response = await axios.get(`https://harmoniaserver-01d3f6b29b48.herokuapp.com/animals/byUserId/${authState.user.Id_Utilisateur}`);
         setAnimalCount(response.data.length);
       } catch (error) {
         console.error("Error fetching animals:", error);
