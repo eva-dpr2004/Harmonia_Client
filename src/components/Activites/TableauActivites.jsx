@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import { Select, MenuItem, FormControl, InputLabel, Card, CardContent, Typography, Pagination, Stack } from '@mui/material';
+import { Select, MenuItem, FormControl, InputLabel, Card, CardContent, Typography, Pagination, Stack, Button } from '@mui/material';
 import { getActivitesByUserId, deleteActivite } from '../../services/Activites';
 import './Tableau.css';
 
@@ -15,9 +15,8 @@ function TableauActivites() {
   const [totalTime, setTotalTime] = useState(0);
   const [totalWeeklyTime, setTotalWeeklyTime] = useState(0);
   const [hasWeeklyActivitiesForEachDay, setHasWeeklyActivitiesForEachDay] = useState(false);
-
   const [page, setPage] = useState(1);
-  const [itemsPerPage] = useState(10); 
+  const [itemsPerPage] = useState(10);
 
   const fetchActivities = useCallback(async () => {
     if (authState.isAuthenticated && authState.user?.Id_Utilisateur) {
@@ -80,7 +79,7 @@ function TableauActivites() {
 
   const checkWeeklyActivitiesForEachDay = useCallback(() => {
     const daysWithActivities = new Set(lastWeekActivities.map(activity => activity.Date));
-    
+
     const past7Days = Array.from({ length: 7 }, (_, i) => {
       const date = new Date();
       date.setDate(date.getDate() - i);
@@ -88,7 +87,7 @@ function TableauActivites() {
     });
 
     const allDaysCovered = past7Days.every(day => daysWithActivities.has(day));
-    
+
     setHasWeeklyActivitiesForEachDay(allDaysCovered);
   }, [lastWeekActivities]);
 
@@ -192,7 +191,7 @@ function TableauActivites() {
           <Stack >
             {sortedActivities.length > itemsPerPage && (
               <Pagination
-              className='pagination-container'
+                className='pagination-container'
                 count={Math.ceil(sortedActivities.length / itemsPerPage)}
                 page={page}
                 onChange={handlePageChange}
@@ -204,14 +203,25 @@ function TableauActivites() {
           </Stack>
           <div className='BoutonsMoyenne'>
             {hasEnoughActivities && (
-              <button variant="contained" className='AddActivité' onClick={calculateTotalTime}>
+              <Button variant="contained" className='AddActivité' onClick={calculateTotalTime} sx={{ 
+                backgroundColor: '#183159', 
+                '&:hover': { 
+                  backgroundColor: '#ffffffaa', 
+                  color: '#183159'
+                } 
+              }}>
                 Calculer la durée totale quotidienne
-              </button>
+              </Button>
             )}
             {hasWeeklyActivitiesForEachDay && (
-              <button variant="contained" className='AddActivité' onClick={calculateTotalWeeklyTime}>
+              <Button variant="contained" className='AddActivité' onClick={calculateTotalWeeklyTime} sx={{ 
+                backgroundColor: '#183159', 
+                '&:hover': { 
+                  backgroundColor: '#ffffffaa' 
+                } 
+              }}>
                 Calculer la durée totale des 7 derniers jours
-              </button>
+              </Button>
             )}
           </div>
           {showCard && (

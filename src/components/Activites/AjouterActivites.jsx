@@ -201,7 +201,7 @@ function AjouterActivites() {
               </tr>
             </tbody>
           </table>
-          <button type="submit" variant="contained" className='AddActivité'>
+          <button type="submit" className='AddActivité'>
             Ajouter l'Activité
           </button>
         </form>

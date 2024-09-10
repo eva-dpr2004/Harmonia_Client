@@ -164,29 +164,29 @@ function ModifierAnimalForm() {
         <div className="form-box">
           {message && <p className="error">{message}</p>} 
           <form onSubmit={handleSubmit}>
-            <label className="label">Nom:</label>
-            <input type="text" name="Nom" value={animal.Nom} onChange={handleChange} />
+            <label className="label" htmlFor="Nom">Nom:</label>
+            <input id="Nom" type="text" name="Nom" value={animal.Nom} onChange={handleChange} />
             
-            <label className="label">Date de Naissance:</label>
-            <input type="date" name="Date_De_Naissance" value={animal.Date_De_Naissance} onChange={handleChange} />
+            <label className="label" htmlFor="Date_De_Naissance">Date de Naissance:</label>
+            <input id="Date_De_Naissance" type="date" name="Date_De_Naissance" value={animal.Date_De_Naissance} onChange={handleChange} />
             
-            <label className="label">Date d'Adoption:</label>
-            <input type="date" name="Date_Adoption" value={animal.Date_Adoption} onChange={handleChange} />
+            <label className="label" htmlFor="Date_Adoption">Date d'Adoption:</label>
+            <input id="Date_Adoption" type="date" name="Date_Adoption" value={animal.Date_Adoption} onChange={handleChange} />
             
-            <label className="label">Espèce:</label>
-            <input type="text" name="Espece" value={animal.Espece} onChange={handleChange} />
+            <label className="label" htmlFor="Espece">Espèce:</label>
+            <input id="Espece" type="text" name="Espece" value={animal.Espece} onChange={handleChange} />
             
-            <label className="label">Race:</label>
-            <input type="text" name="Race" value={animal.Race} onChange={handleChange} />
+            <label className="label" htmlFor="Race">Race:</label>
+            <input id="Race" type="text" name="Race" value={animal.Race} onChange={handleChange} />
             
-            <label className="label">Sexe:</label>
-            <input type="text" name="Sexe" value={animal.Sexe} onChange={handleChange} />
+            <label className="label" htmlFor="Sexe">Sexe:</label>
+            <input id="Sexe" type="text" name="Sexe" value={animal.Sexe} onChange={handleChange} />
             
-            <label className="label">Poids (kg):</label>
-            <input type="number" name="Poids" value={animal.Poids} onChange={handleChange} />
+            <label className="label" htmlFor="Poids">Poids (kg):</label>
+            <input id="Poids" type="number" name="Poids" value={animal.Poids} onChange={handleChange} />
             
-            <label className="label">Habitat:</label>
-            <input type="text" name="Habitat" value={animal.Habitat} onChange={handleChange} />
+            <label className="label" htmlFor="Habitat">Habitat:</label>
+            <input id="Habitat" type="text" name="Habitat" value={animal.Habitat} onChange={handleChange} />
             
             <button type="submit" className="button">Enregistrer les modifications</button>
           </form>

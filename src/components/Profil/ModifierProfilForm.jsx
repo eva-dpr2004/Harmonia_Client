@@ -80,22 +80,27 @@ function ModifierProfilForm() {
         </h2>
         <form onSubmit={handleSubmit}>
           <p>Modifiez l'information de votre choix :</p>
-          <label>Modifier le Nom:</label>
+          
+          <label htmlFor="Nom">Modifier le Nom:</label>
           <input
+            id="Nom"
             type="text"
             name="Nom"
             placeholder='Nouveau Nom'
             value={formData.Nom}
             onChange={handleChange}
           />
-          <label>Modifier l'Email:</label>
+          
+          <label htmlFor="Email">Modifier l'Email:</label>
           <input
+            id="Email"
             type="email"
             name="Email"
             placeholder='Votre nouvel email'
             value={formData.Email}
             onChange={handleChange}
           />
+          
           <button type="submit">Mettre à jour</button>
         </form>
         {message && <p className="message">{message}</p>}
