@@ -3,7 +3,7 @@ import axios from "axios";
 const API_URL = "https://harmoniaserver-01d3f6b29b48.herokuapp.com/";
 
 export const createUser = (userData) => {
-  return axios.post(`${API_URL}/auth`, userData);
+  return axios.post(`${API_URL}/auth/register`, userData);
 };
 
 export const checkAuthStatus = async () => {
