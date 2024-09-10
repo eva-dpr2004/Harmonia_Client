@@ -55,3 +55,4 @@ export const getAnimalsByUserId = async (userId) => {
       throw error;
     }
 };
+

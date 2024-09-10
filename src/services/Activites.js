@@ -41,3 +41,4 @@ export const deleteActivite = async (id) => {
     throw error;
   }
 };
+
