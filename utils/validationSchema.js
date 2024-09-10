@@ -6,7 +6,7 @@ const validationSchema = Yup.object().shape({
         .required("Le nom est requis")
         .test('no-sql-keywords', 'Le nom ne doit pas contenir des mots réservés SQL', value =>
             !/(DROP\s+TABLE|SELECT|DELETE|INSERT|UPDATE|CREATE|ALTER|EXEC)/i.test(value))
-        .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ0-9-_' ]*$/, "Le nom doit contenir uniquement des lettres, des chiffres ou les caractères -_' et doit avoir entre 3 et 15 caractères.")
+        .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ\d-_' ]*$/, "Le nom doit contenir uniquement des lettres, des chiffres ou les caractères -_' et doit avoir entre 3 et 15 caractères.")
         .test('contains-min-chars', 'Le nom doit contenir au moins 3 caractères sans les espaces', value =>
             value && value.replace(/\s/g, '').length >= 3)
         .test('contains-max-chars', 'Le nom ne peut pas dépasser 100 caractères sans les espaces', value =>
@@ -32,7 +32,7 @@ const validationSchema = Yup.object().shape({
         .required('Poids est requis')
         .test('is-valid-number', 'Le poids doit être un nombre valide', value => {
             // Validation que la valeur est un nombre après avoir retiré les caractères spéciaux
-            return /^[0-9]+(\.[0-9]+)?$/.test(value);
+            return /^\d+(\.\d+)?$/.test(value);
         })
         .test('min-value', 'Le poids doit être au minimum de 0.1 kg', value => {
             return parseFloat(value) >= 0.1;
