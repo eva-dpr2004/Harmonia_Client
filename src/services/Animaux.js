@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://harmoniaserver-01d3f6b29b48.herokuapp.com/';
+const API_URL = 'https://harmoniaserver-01d3f6b29b48.herokuapp.com';
 
 export const addAnimal = async (animalData, token) => {
   try {
